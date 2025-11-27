@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="462.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantManagementController">
+   <children>
+      <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#backbutton" text="back" />
+      <Label layoutX="233.0" layoutY="27.0" text="Tenant management">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="21.0" layoutY="80.0" mnemonicParsing="false" onAction="#searchtenantbutton" text="search tenant" />
+      <Button layoutX="124.0" layoutY="80.0" mnemonicParsing="false" onAction="#showallbutton" text="Show all" />
+      <TableView fx:id="tenantmanagementtV" layoutX="14.0" layoutY="119.0" prefHeight="200.0" prefWidth="382.0">
+        <columns>
+          <TableColumn fx:id="tenantidCol" prefWidth="52.79998779296875" text="ID" />
+          <TableColumn fx:id="tenantCol" prefWidth="47.2000732421875" text="Name" />
+            <TableColumn fx:id="emailCOL" prefWidth="59.20001220703125" text="Email" />
+            <TableColumn fx:id="properetyidCOl" prefWidth="71.20001220703125" text="property" />
+            <TableColumn fx:id="leaseStartCol" prefWidth="72.0" text="lease start" />
+            <TableColumn fx:id="leaseendCol" prefWidth="78.4000244140625" text="lease end" />
+        </columns>
+      </TableView>
+      <Button layoutX="21.0" layoutY="327.0" mnemonicParsing="false" onAction="#viewfulldetailsOC" text="view full details " />
+      <Button layoutX="146.0" layoutY="327.0" mnemonicParsing="false" onAction="#refreshOC" text="refresh" />
+      <Label layoutX="409.0" layoutY="84.0" text="Tenant Application">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="409.0" layoutY="110.0" text="Pending Application:" />
+      <TableView fx:id="tenantapplicationtableView" layoutX="409.0" layoutY="137.0" prefHeight="137.0" prefWidth="322.0">
+        <columns>
+          <TableColumn fx:id="appidcol" prefWidth="56.7999267578125" text="App ID" />
+          <TableColumn fx:id="tenantappidCol" prefWidth="54.400054931640625" text="Tenant name" />
+            <TableColumn fx:id="propertycol" prefWidth="66.39990234375" text="property Id" />
+            <TableColumn fx:id="dateappCOl" prefWidth="71.20001220703125" text="date applied" />
+            <TableColumn fx:id="statusCol" prefWidth="60.7999267578125" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="432.0" layoutY="293.0" mnemonicParsing="false" onAction="#approvebuttonOC" text="Approve" />
+      <Button layoutX="539.0" layoutY="293.0" mnemonicParsing="false" onAction="#declinedOC" text="Declined" />
+   </children>
+</AnchorPane>

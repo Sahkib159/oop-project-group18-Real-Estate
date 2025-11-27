@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.rentTrackingController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backbutton" text="back" />
+      <Label layoutX="193.0" layoutY="17.0" text="RENT TRACKING &amp; REPORTS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="77.0" text="Month" />
+      <ComboBox fx:id="monthCB" layoutX="96.0" layoutY="73.0" prefWidth="150.0" />
+      <ComboBox fx:id="YearCB" layoutX="309.0" layoutY="73.0" prefWidth="150.0" />
+      <Label layoutX="272.0" layoutY="77.0" text="Year" />
+      <Button layoutX="500.0" layoutY="73.0" mnemonicParsing="false" onAction="#LoadOC" text="Load" />
+      <TableView fx:id="rentTrackTableview" layoutX="14.0" layoutY="126.0" prefHeight="200.0" prefWidth="325.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="tenantCOl" prefWidth="46.4000244140625" text="Tenant name" />
+            <TableColumn fx:id="rentamountCol" prefWidth="50.4000244140625" text="Rent Amount" />
+            <TableColumn fx:id="paidCol" prefWidth="42.39996337890625" text="paid" />
+            <TableColumn fx:id="pendingCol" prefWidth="51.20001220703125" text="pending" />
+            <TableColumn fx:id="dateCol" prefWidth="45.5999755859375" text="Date" />
+            <TableColumn fx:id="statusCol" prefWidth="42.39996337890625" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="356.0" layoutY="126.0" text="Monthly Summary" />
+      <Label layoutX="472.0" layoutY="126.0" text="Financial overview" />
+      <Label fx:id="collectrentL" layoutX="370.0" layoutY="167.0" text="COLLECTED" />
+      <Label fx:id="pendingrentL" layoutX="370.0" layoutY="191.0" text="PENDING" />
+      <Label fx:id="totalexpectedL" layoutX="370.0" layoutY="218.0" text="TOTAL EXPECTED" />
+      <Label fx:id="generatemessage" layoutX="472.0" layoutY="252.0" prefHeight="18.0" prefWidth="118.0" text="Label" />
+      <Button layoutX="351.0" layoutY="248.0" mnemonicParsing="false" onAction="#generateOC" text="Generate report" />
+      <Button layoutX="358.0" layoutY="294.0" mnemonicParsing="false" onAction="#exportOC" text="Export" />
+      <Button layoutX="446.0" layoutY="294.0" mnemonicParsing="false" onAction="#refreshOC" text="Refresh" />
+   </children>
+</AnchorPane>

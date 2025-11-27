@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantProfileController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="back" />
+      <Label layoutX="162.0" layoutY="40.0" text="Profile ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="82.0" text="Personal Information:" />
+      <Label layoutX="41.0" layoutY="116.0" text="Name:" />
+      <Label layoutX="42.0" layoutY="149.0" text="Email:" />
+      <Label layoutX="36.0" layoutY="182.0" text="Phone:" />
+      <Button layoutX="253.0" layoutY="243.0" mnemonicParsing="false" onAction="#saveOnClickButton" text="save changes" />
+      <Label fx:id="messageShowLabel" layoutX="92.0" layoutY="305.0" prefHeight="18.0" prefWidth="204.0" />
+      <Label layoutX="31.0" layoutY="213.0" text="Location:" />
+      <TextField fx:id="nameTF" layoutX="90.0" layoutY="112.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="emailTF" layoutX="91.0" layoutY="145.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="PhoneTF" layoutX="92.0" layoutY="178.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="LocationTF" layoutX="93.0" layoutY="209.0" prefHeight="26.0" prefWidth="215.0" />
+   </children>
+</AnchorPane>
