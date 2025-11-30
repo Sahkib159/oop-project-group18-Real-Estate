@@ -1,5 +1,9 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 public class tenantManagementController
 {
     @javafx.fxml.FXML

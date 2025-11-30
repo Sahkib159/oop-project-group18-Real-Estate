@@ -1,5 +1,8 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
+
 public class propertySearchController
 {
     @javafx.fxml.FXML

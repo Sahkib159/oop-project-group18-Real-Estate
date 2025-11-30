@@ -1,6 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sonda.MarketingOfficer;
 
-public class publishPromotionsController
+public class publishmarketReportsController
 {
     @javafx.fxml.FXML
     public void initialize() {
