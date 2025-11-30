@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="491.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport.assistduringpropertyviewingSchedulingController">
+   <children>
+      <Label layoutX="125.0" layoutY="20.0" prefHeight="41.0" prefWidth="464.0" text="  Assist During Property Viewing Scheduling">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="96.0" text="Booking ID :" />
+      <Label layoutX="43.0" layoutY="140.0" text="Customer Name :" />
+      <Label layoutX="43.0" layoutY="190.0" text="Customer Contact :" />
+      <Label layoutX="397.0" layoutY="96.0" text="Property ID :" />
+      <Label layoutX="369.0" layoutY="140.0" text="Preferred Date :" />
+      <Label layoutX="369.0" layoutY="181.0" text="Preferred Time :" />
+      <DatePicker fx:id="preferreddatepicker" layoutX="457.0" layoutY="136.0" />
+      <ComboBox fx:id="preferredtimecombobox" layoutX="469.0" layoutY="178.0" prefWidth="150.0" />
+      <Button layoutX="50.0" layoutY="233.0" mnemonicParsing="false" onAction="#checkavailabilitybutton" text="Check Availability" />
+      <Button layoutX="256.0" layoutY="233.0" mnemonicParsing="false" onAction="#savebookingbutton" text="Save Booking" />
+      <Button layoutX="457.0" layoutY="233.0" mnemonicParsing="false" onAction="#updatebookingbutton" text="Update Booking" />
+      <TableView layoutX="-1.0" layoutY="277.0" prefHeight="213.0" prefWidth="639.0">
+        <columns>
+          <TableColumn fx:id="bookingidcolumn" prefWidth="111.99999749660492" text="Booking ID" />
+          <TableColumn fx:id="customercolumn" prefWidth="102.00003814697266" text="Customer" />
+            <TableColumn fx:id="propertyidcolumn" prefWidth="154.00001525878906" text="Property ID" />
+            <TableColumn fx:id="datecolumn" prefWidth="127.99993896484375" text="Date" />
+            <TableColumn fx:id="timecolumn" prefWidth="143.33334350585938" text="Time" />
+        </columns>
+      </TableView>
+      <TextField fx:id="bookingidfield" layoutX="125.0" layoutY="92.0" />
+      <TextField fx:id="customernamefield" layoutX="145.0" layoutY="136.0" />
+      <TextField fx:id="customercontactField" layoutX="159.0" layoutY="186.0" />
+      <TextField fx:id="propertyidField" layoutX="470.0" layoutY="92.0" />
+   </children>
+</AnchorPane>
