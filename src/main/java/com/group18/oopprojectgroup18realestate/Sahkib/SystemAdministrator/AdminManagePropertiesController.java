@@ -2,6 +2,7 @@ package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -56,7 +57,7 @@ public class AdminManagePropertiesController
     public void backOnClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

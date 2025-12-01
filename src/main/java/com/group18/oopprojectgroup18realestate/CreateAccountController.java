@@ -2,6 +2,7 @@ package com.group18.oopprojectgroup18realestate;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -23,14 +24,33 @@ public class CreateAccountController
 
     @javafx.fxml.FXML
     public void initialize() {
+        newRoleComboBox.getItems().addAll(
+                "System Administrator",
+                "Finance Officer",
+                "Marketing Officer",
+                "Customer Support Executive",
+                "Property Renter",
+                "Property Manager",
+                "Property buyer",
+                "Sales Agent"
+        );
     }
 
 
     @javafx.fxml.FXML
     public void returnOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/group18/oopprojectgroup18realestate/LogIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @javafx.fxml.FXML
+    public void createNewAccountOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/group18/oopprojectgroup18realestate/LogIn.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

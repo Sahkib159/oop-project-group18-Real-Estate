@@ -22,5 +22,6 @@
       <Label layoutX="78.0" layoutY="222.0" text="Select Role:" />
       <Button layoutX="489.0" layoutY="328.0" mnemonicParsing="false" onAction="#returnOnClick" text="Return" />
       <Label fx:id="statusLabel" layoutX="60.0" layoutY="319.0" prefHeight="42.0" prefWidth="235.0" text="statusLabel" />
+      <Button layoutX="216.0" layoutY="263.0" mnemonicParsing="false" onAction="#createNewAccountOnClick" text="Create New Account" />
    </children>
 </AnchorPane>
