@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.LogInController">
    <children>
       <Label layoutX="243.0" layoutY="54.0" text="User Login">
@@ -19,7 +18,7 @@
       <TextField fx:id="passwordField" layoutX="178.0" layoutY="159.0" />
       <Label layoutX="76.0" layoutY="132.0" text="Username:" />
       <Label layoutX="76.0" layoutY="163.0" text="Password:" />
-      <ComboBox layoutX="177.0" layoutY="191.0" onAction="#roleComboBox" prefWidth="150.0" />
+      <ComboBox fx:id="roleComboBox" layoutX="177.0" layoutY="191.0" prefWidth="150.0" />
       <Label layoutX="77.0" layoutY="195.0" prefHeight="0.0" prefWidth="61.0" text="Select Role:" />
       <Button layoutX="217.0" layoutY="243.0" mnemonicParsing="false" onAction="#logInOnClick" text="Log In" />
       <Label fx:id="errorLabel" layoutX="81.0" layoutY="299.0" prefHeight="35.0" prefWidth="253.0" />

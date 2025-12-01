@@ -1,5 +1,15 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class AdminManagePropertiesController
 {
     @javafx.fxml.FXML
@@ -37,11 +47,17 @@ public class AdminManagePropertiesController
     public void deletePropertyOnClick(ActionEvent actionEvent) {
     }
 
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
     public void addPropertyOnClick(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void backOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 }
