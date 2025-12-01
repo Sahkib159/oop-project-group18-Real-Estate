@@ -1,5 +1,15 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class tenantProfileController
 {
     @javafx.fxml.FXML
@@ -22,6 +32,11 @@ public class tenantProfileController
     }
 
     @javafx.fxml.FXML
-    public void backButtonOnClick(ActionEvent actionEvent) {
+    public void backButtonOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantDashBoard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

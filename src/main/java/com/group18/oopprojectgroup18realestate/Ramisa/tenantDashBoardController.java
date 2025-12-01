@@ -1,5 +1,13 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class tenantDashBoardController
 {
     @javafx.fxml.FXML
@@ -7,34 +15,75 @@ public class tenantDashBoardController
     }
 
     @javafx.fxml.FXML
-    public void tenantProfileOnClickButton(ActionEvent actionEvent) {
+    public void tenantProfileOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantProfile.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void logoutOnClickButton(ActionEvent actionEvent) {
+    public void logoutOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(".fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void maintenanceOnClickButton(ActionEvent actionEvent) {
+    public void maintenanceOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantMaintenance.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void searchPropertyOnClickButton(ActionEvent actionEvent) {
+    public void searchPropertyOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("propertySearch.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @javafx.fxml.FXML
-    public void inquairySupportOnClickButton(ActionEvent actionEvent) {
+    public void inquairySupportOnClickButton(ActionEvent actionEvent)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("inquirySupport.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void paymentOnClickButton(ActionEvent actionEvent) {
+    public void paymentOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantPayments.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void bookmarkOnClickButton(ActionEvent actionEvent) {
+    public void bookmarkOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookmarkProperty.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
-    public void leasemanagementOnClickButton(ActionEvent actionEvent) {
+    public void leasemanagementOnClickButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaseManagement.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

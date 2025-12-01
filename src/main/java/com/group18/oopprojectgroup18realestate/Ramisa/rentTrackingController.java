@@ -1,33 +1,46 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.time.LocalDate;
+
 public class rentTrackingController
 {
     @javafx.fxml.FXML
-    private ComboBox YearCB;
+    private ComboBox<Integer> YearCB;
     @javafx.fxml.FXML
-    private TableView rentTrackTableview;
+    private TableView<RentPaymentRelated> rentTrackTableview;
     @javafx.fxml.FXML
-    private TableColumn paidCol;
+    private TableColumn<RentPaymentRelated,Double> paidCol;
     @javafx.fxml.FXML
     private Label pendingrentL;
     @javafx.fxml.FXML
-    private TableColumn tenantCOl;
+    private TableColumn<RentPaymentRelated,Integer> tenantCOl;
     @javafx.fxml.FXML
-    private TableColumn rentamountCol;
+    private TableColumn<RentPaymentRelated,Double> rentamountCol;
     @javafx.fxml.FXML
     private Label generatemessage;
     @javafx.fxml.FXML
-    private ComboBox monthCB;
+    private ComboBox<String> monthCB;
     @javafx.fxml.FXML
     private Label totalexpectedL;
     @javafx.fxml.FXML
-    private TableColumn idCol;
+    private TableColumn <RentPaymentRelated,Integer>idCol;
     @javafx.fxml.FXML
-    private TableColumn dateCol;
+    private TableColumn<RentPaymentRelated, LocalDate> dateCol;
     @javafx.fxml.FXML
-    private TableColumn statusCol;
+    private TableColumn<RentPaymentRelated,String> statusCol;
     @javafx.fxml.FXML
-    private TableColumn pendingCol;
+    private TableColumn<RentPaymentRelated,Double> pendingCol;
     @javafx.fxml.FXML
     private Label collectrentL;
 
@@ -44,7 +57,12 @@ public class rentTrackingController
     }
 
     @javafx.fxml.FXML
-    public void backbutton(ActionEvent actionEvent) {
+    public void backbutton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProjectManagerDashBoard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML

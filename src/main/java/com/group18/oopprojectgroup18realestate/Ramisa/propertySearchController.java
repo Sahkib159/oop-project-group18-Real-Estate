@@ -1,30 +1,73 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class propertySearchController
 {
     @javafx.fxml.FXML
-    private TableColumn typeCol;
+    private TableColumn<PropertyRental,String> typeCol;
     @javafx.fxml.FXML
     private TextField locationTF;
     @javafx.fxml.FXML
-    private TableColumn propertyIDCol;
+    private TableColumn<PropertyRental,Integer> propertyIDCol;
     @javafx.fxml.FXML
-    private TableColumn statusCol;
+    private TableColumn<PropertyRental,String> statusCol;
     @javafx.fxml.FXML
-    private ComboBox typeCB;
+    private ComboBox<String> typeCB;
     @javafx.fxml.FXML
-    private TableView searchPropertyTableview;
+    private TableView<PropertyRental> searchPropertyTableview;
     @javafx.fxml.FXML
     private TextField budgetTF;
     @javafx.fxml.FXML
-    private TableColumn LocationCol;
+    private TableColumn<PropertyRental,String> LocationCol;
     @javafx.fxml.FXML
-    private TableColumn priceCol;
+    private TableColumn<PropertyRental,Double> priceCol;
     @javafx.fxml.FXML
     private Label outputLabel;
 
+
+    private ArrayList<PropertyRental> allpropertiesList = new ArrayList<>();
+    private ArrayList<BookMark> bookmarkList = new ArrayList<>();
+    private ObservableList<PropertyRental> propertyList;
+
+
     @javafx.fxml.FXML
     public void initialize() {
+        System.out.println("property search screen loaded");
+
+        allpropertiesList = new ArrayList<>();
+        bookmarkList = new ArrayList<>();
+        propertyList = FXCollections.observableArrayList();
+
+
+        typeCB.getItems().addAll("apartment","house","studio","flat","all");
+
+
+        propertyIDCol.setCellValueFactory( new PropertyValueFactory<>("propertyID"));
+        LocationCol.setCellValueFactory( new PropertyValueFactory<>("location"));
+        typeCol.setCellValueFactory( new PropertyValueFactory<>("propertyType"));
+        priceCol.setCellValueFactory( new PropertyValueFactory<>("rentPrice"));
+        statusCol.setCellValueFactory( new PropertyValueFactory<>("status"));
+
+
+        // after projectmanager add/remove properties,loads properties in search list
+
+
+        propertyList.addAll(allpropertiesList);
+        searchPropertyTableview.setItems(propertyList);
+
     }
 
     @javafx.fxml.FXML
@@ -36,6 +79,11 @@ public class propertySearchController
     }
 
     @javafx.fxml.FXML
-    public void backButtonOnClick(ActionEvent actionEvent) {
+    public void backButtonOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantDashBoard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

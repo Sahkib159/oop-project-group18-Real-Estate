@@ -1,33 +1,44 @@
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.time.LocalDate;
+
 public class tenantManagementController
 {
     @javafx.fxml.FXML
-    private TableColumn propertycol;
+    private TableColumn<TenantRecord,String> propertycol;
     @javafx.fxml.FXML
-    private TableColumn leaseStartCol;
+    private TableColumn<TenantRecord, LocalDate> leaseStartCol;
     @javafx.fxml.FXML
-    private TableColumn appidcol;
+    private TableColumn<TenantRecord,Integer> appidcol;
     @javafx.fxml.FXML
-    private TableColumn tenantCol;
+    private TableColumn<TenantRecord,String> tenantCol;
     @javafx.fxml.FXML
-    private TableColumn properetyidCOl;
+    private TableColumn<TenantRecord,Integer> properetyidCOl;
     @javafx.fxml.FXML
-    private TableColumn leaseendCol;
+    private TableColumn<TenantRecord,LocalDate> leaseendCol;
     @javafx.fxml.FXML
-    private TableColumn dateappCOl;
+    private TableColumn<TenantRecord,LocalDate> dateappCOl;
     @javafx.fxml.FXML
-    private TableView tenantapplicationtableView;
+    private TableView<TenantRecord> tenantapplicationtableView;
     @javafx.fxml.FXML
-    private TableColumn tenantidCol;
+    private TableColumn<TenantRecord,Integer> tenantidCol;
     @javafx.fxml.FXML
-    private TableColumn tenantappidCol;
+    private TableColumn<TenantRecord,Integer> tenantappidCol;
     @javafx.fxml.FXML
-    private TableColumn statusCol;
+    private TableColumn<TenantRecord,String> statusCol;
     @javafx.fxml.FXML
-    private TableColumn emailCOL;
+    private TableColumn<TenantRecord,String> emailCOL;
     @javafx.fxml.FXML
-    private TableView tenantmanagementtV;
+    private TableView<TenantRecord> tenantmanagementtV;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -42,7 +53,12 @@ public class tenantManagementController
     }
 
     @javafx.fxml.FXML
-    public void backbutton(ActionEvent actionEvent) {
+    public void backbutton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProjectManagerDashBoard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
