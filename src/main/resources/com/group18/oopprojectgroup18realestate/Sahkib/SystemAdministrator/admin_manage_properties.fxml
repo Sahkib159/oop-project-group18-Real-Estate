@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="553.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminManagePropertiesController">
    <children>
       <Label layoutX="154.0" layoutY="30.0" text="Manage Properties">
@@ -29,7 +28,7 @@
             <TableColumn fx:id="statusCol" prefWidth="123.199951171875" text="Status" />
         </columns>
       </TableView>
-      <ComboBox layoutX="159.0" layoutY="224.0" onAction="#statusComboBox" prefWidth="150.0" />
+      <ComboBox fx:id="statusComboBox" layoutX="159.0" layoutY="224.0" prefWidth="150.0" />
       <Label layoutX="36.0" layoutY="92.0" prefHeight="26.0" prefWidth="91.0" text="Property ID:">
          <font>
             <Font size="14.0" />
