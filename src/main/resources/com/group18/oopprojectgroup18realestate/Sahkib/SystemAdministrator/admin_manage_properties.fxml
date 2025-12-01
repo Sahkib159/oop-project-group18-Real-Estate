@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminManagePropertiesController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="553.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminManagePropertiesController">
+   <children>
+      <Label layoutX="154.0" layoutY="30.0" text="Manage Properties">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="propertyIdTextField" layoutX="160.0" layoutY="93.0" />
+      <TextField fx:id="propertyTitleTextField" layoutX="160.0" layoutY="126.0" />
+      <TextField fx:id="propertyLocationTextField" layoutX="160.0" layoutY="160.0" />
+      <Button layoutX="371.0" layoutY="160.0" mnemonicParsing="false" onAction="#deletePropertyOnClick" text="Delete Property" />
+      <TableView fx:id="tableView" layoutX="33.0" layoutY="287.0" prefHeight="200.0" prefWidth="443.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="119.20001220703125" text="ID" />
+          <TableColumn fx:id="titleCol" prefWidth="106.4000244140625" text="Title" />
+            <TableColumn fx:id="priceCol" prefWidth="96.0" text="Price" />
+            <TableColumn fx:id="statusCol" prefWidth="123.199951171875" text="Status" />
+        </columns>
+      </TableView>
+      <ComboBox layoutX="159.0" layoutY="224.0" onAction="#statusComboBox" prefWidth="150.0" />
+      <Label layoutX="36.0" layoutY="92.0" prefHeight="26.0" prefWidth="91.0" text="Property ID:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="125.0" prefHeight="26.0" prefWidth="97.0" text=" Property Title:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="159.0" prefHeight="26.0" prefWidth="120.0" text="Property Location:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="191.0" prefHeight="26.0" prefWidth="150.0" text="Property Price:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="propertyPriceTextField" layoutX="160.0" layoutY="192.0" />
+      <Label layoutX="33.0" layoutY="223.0" prefHeight="26.0" prefWidth="120.0" text="Status Combo Box:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="371.0" layoutY="126.0" mnemonicParsing="false" onAction="#editPropertyOnClick" text="Edit Property" />
+      <Button layoutX="369.0" layoutY="93.0" mnemonicParsing="false" onAction="#addPropertyOnClick" text="Add Property" />
+      <Button layoutX="470.0" layoutY="513.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+   </children>
 </AnchorPane>
