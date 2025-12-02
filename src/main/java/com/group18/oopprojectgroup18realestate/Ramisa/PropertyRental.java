@@ -8,58 +8,31 @@ public class PropertyRental implements Serializable {
     private double rentPrice;
     private String propertyType;
     private String status;
+    private double budget;
 
     //constructor
 
-    public PropertyRental(int propertyID, String location, double rentPrice, String propertyType, String status) {
+    public PropertyRental(int propertyID, String location, double rentPrice, String propertyType, double budget, String status) {
         this.propertyID = propertyID;
         this.location = location;
         this.rentPrice = rentPrice;
         this.propertyType = propertyType;
+        this.budget = budget;
         this.status = status;
     }
+
 
     //getter & setter
 
-    public int getPropertyID() {
-        return propertyID;
-    }
-
-    public void setPropertyID(int propertyID) {
+    public PropertyRental(int propertyID, double budget, String status, String propertyType, double rentPrice, String location) {
         this.propertyID = propertyID;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
+        this.budget = budget;
+        this.status = status;
+        this.propertyType = propertyType;
+        this.rentPrice = rentPrice;
         this.location = location;
     }
 
-    public double getRentPrice() {
-        return rentPrice;
-    }
-
-    public void setRentPrice(double rentPrice) {
-        this.rentPrice = rentPrice;
-    }
-
-    public String getPropertyType() {
-        return propertyType;
-    }
-
-    public void setPropertyType(String propertyType) {
-        this.propertyType = propertyType;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
     //toString
 
     @Override
@@ -70,6 +43,7 @@ public class PropertyRental implements Serializable {
                 ", rentPrice=" + rentPrice +
                 ", propertyType='" + propertyType + '\'' +
                 ", status='" + status + '\'' +
+                ", budget=" + budget +
                 '}';
     }
 }

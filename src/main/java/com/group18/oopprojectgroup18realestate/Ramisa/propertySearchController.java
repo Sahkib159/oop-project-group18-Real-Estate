@@ -41,6 +41,8 @@ public class propertySearchController
     private ArrayList<PropertyRental> allpropertiesList = new ArrayList<>();
     private ArrayList<BookMark> bookmarkList = new ArrayList<>();
     private ObservableList<PropertyRental> propertyList;
+    @javafx.fxml.FXML
+    private Label messageL;
 
 
     @javafx.fxml.FXML
@@ -76,6 +78,32 @@ public class propertySearchController
 
     @javafx.fxml.FXML
     public void searchPropertyOnClick(ActionEvent actionEvent) {
+        String location = locationTF.getText().strip();
+        String type = typeCB.getValue();
+        String budgetText = budgetTF.getText().strip();
+
+        //empty check
+        if (location.isEmpty() || type==null || budgetText.isEmpty()){
+            messageL.setText("please fill all information");
+            return;
+        }
+
+
+        // validation (budget)
+        double budget;
+        try{
+            budget = Double.parseDouble(budgetText);
+        } catch (Exception e) {
+            messageL.setText("invalid budget format");
+            return;
+
+        }
+
+
+
+
+
+
     }
 
     @javafx.fxml.FXML

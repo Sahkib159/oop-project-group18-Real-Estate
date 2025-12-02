@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +39,12 @@ public class bookmarkPropertyController
 
     @javafx.fxml.FXML
     public void initialize() {
+
+
+        idCol.setCellValueFactory(new PropertyValueFactory<>("propertyID"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("rentPrice"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("saveDate"));
     }
 
     @javafx.fxml.FXML

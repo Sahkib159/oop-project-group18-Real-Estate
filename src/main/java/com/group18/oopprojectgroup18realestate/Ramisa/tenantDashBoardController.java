@@ -53,7 +53,7 @@ public class tenantDashBoardController
 
     @javafx.fxml.FXML
     public void inquairySupportOnClickButton(ActionEvent actionEvent)throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("inquirySupport.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("inquirySuppport.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -80,7 +80,7 @@ public class tenantDashBoardController
 
     @javafx.fxml.FXML
     public void leasemanagementOnClickButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaseManagement.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaseMangement.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);

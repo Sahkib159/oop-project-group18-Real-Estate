@@ -31,7 +31,7 @@ public class leaseManagementController
 
     @javafx.fxml.FXML
     public void backbuttonOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaseManagement.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenantDashBoard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);

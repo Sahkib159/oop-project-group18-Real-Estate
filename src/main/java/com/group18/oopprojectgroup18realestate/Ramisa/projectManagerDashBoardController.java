@@ -50,4 +50,8 @@ public class projectManagerDashBoardController
         stage.show();
 
     }
+
+    @javafx.fxml.FXML
+    public void logoutButtonOnClick(ActionEvent actionEvent) {
+    }
 }

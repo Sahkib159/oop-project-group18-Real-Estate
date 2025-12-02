@@ -29,6 +29,18 @@ public class tenantProfileController
 
     @javafx.fxml.FXML
     public void saveOnClickButton(ActionEvent actionEvent) {
+        String name = nameTF.getText().strip();
+        String email = emailTF.getText().strip();
+        String phone = PhoneTF.getText().strip();
+        String location = LocationTF.getText().strip();
+
+        //  check field
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || location.isEmpty()) {
+            messageShowLabel.setText("Please fill all fields!");
+            return;
+        }
+
+
     }
 
     @javafx.fxml.FXML

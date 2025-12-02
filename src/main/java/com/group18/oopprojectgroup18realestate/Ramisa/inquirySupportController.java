@@ -19,10 +19,18 @@ public class inquirySupportController
 
     @javafx.fxml.FXML
     public void initialize() {
+        inquirymessageTF.setText("write your question or message");
     }
 
     @javafx.fxml.FXML
     public void sendinquiryOnClickButton(ActionEvent actionEvent) {
+        String message = inquiryTA.getText().strip();
+
+        //validation check
+        if(message.isEmpty()){
+            inquirymessageTF.setText("please write message first");
+            return;
+        }
     }
 
     @javafx.fxml.FXML
