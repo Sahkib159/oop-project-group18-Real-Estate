@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="499.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport.managesupportTicketsController">
+   <children>
+      <Label layoutX="163.0" layoutY="14.0" prefHeight="51.0" prefWidth="273.0" text="  Manage Support Tickets">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="78.0" text="Ticket ID : " />
+      <Label layoutX="39.0" layoutY="120.0" text="User Name : " />
+      <Label layoutX="328.0" layoutY="120.0" text="Ticket Status :   " />
+      <Label layoutX="332.0" layoutY="78.0" text="Priority : " />
+      <TextField fx:id="ticketidTextfield" layoutX="107.0" layoutY="74.0" />
+      <TextField fx:id="usernametextField" layoutX="117.0" layoutY="116.0" />
+      <ComboBox fx:id="priorityCombobox" layoutX="398.0" layoutY="74.0" prefWidth="150.0" />
+      <ComboBox fx:id="ticketStatusComboBox" layoutX="427.0" layoutY="116.0" prefWidth="150.0" />
+      <Button layoutX="47.0" layoutY="168.0" mnemonicParsing="false" onAction="#createticketbutton" text="Create Ticket" />
+      <Button layoutX="198.0" layoutY="168.0" mnemonicParsing="false" onAction="#updateticketbutton" text="Update Ticket" />
+      <Button layoutX="385.0" layoutY="168.0" mnemonicParsing="false" onAction="#closeticketbutton" text="Close Ticket" />
+      <TableView layoutY="257.0" prefHeight="258.0" prefWidth="656.0">
+        <columns>
+          <TableColumn fx:id="ticketidColumn" prefWidth="157.33331298828125" text="Ticket ID" />
+          <TableColumn fx:id="usernamecolumn" prefWidth="156.66665649414062" text="User Name" />
+            <TableColumn fx:id="prioritycolumn" prefWidth="176.0" text="Priority" />
+            <TableColumn fx:id="ticketstatuscolumn" prefWidth="167.3333740234375" text="Ticket Status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
