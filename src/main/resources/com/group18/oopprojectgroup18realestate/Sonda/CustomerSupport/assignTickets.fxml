@@ -31,7 +31,7 @@
       <Button layoutX="50.0" layoutY="212.0" mnemonicParsing="false" onAction="#assignticketbutton" text="Assign Ticket" />
       <Button layoutX="238.0" layoutY="212.0" mnemonicParsing="false" onAction="#updateassignmentbutton" text="Update Assignment" />
       <Button layoutX="21.0" layoutY="27.0" mnemonicParsing="false" onAction="#cleatformbutton" text="Back" />
-      <TableView layoutX="-5.0" layoutY="283.0" prefHeight="221.0" prefWidth="636.0">
+      <TableView fx:id="tableview" layoutX="-5.0" layoutY="283.0" prefHeight="221.0" prefWidth="636.0">
         <columns>
           <TableColumn fx:id="ticketidcolumn" prefWidth="96.66668438911438" text="Ticket ID" />
           <TableColumn fx:id="issuetypecolumn" prefWidth="95.3333511352539" text="Issue Type" />

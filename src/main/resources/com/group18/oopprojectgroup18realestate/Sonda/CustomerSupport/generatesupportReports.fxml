@@ -26,7 +26,7 @@
       <ComboBox fx:id="departmentfiltercombobox" layoutX="430.0" layoutY="134.0" prefWidth="150.0" />
       <Button layoutX="187.0" layoutY="184.0" mnemonicParsing="false" onAction="#generatereportbutton" text="Generate Report" />
       <Button layoutX="330.0" layoutY="184.0" mnemonicParsing="false" onAction="#clearfilterbutton" text="Clear Filters" />
-      <TableView layoutY="267.0" prefHeight="221.0" prefWidth="625.0">
+      <TableView fx:id="tableview" layoutY="267.0" prefHeight="221.0" prefWidth="625.0">
         <columns>
           <TableColumn fx:id="datecolumn" prefWidth="96.66665399074554" text="Date" />
           <TableColumn fx:id="ticketidcolumn" prefWidth="108.00000762939453" text="Ticket ID" />

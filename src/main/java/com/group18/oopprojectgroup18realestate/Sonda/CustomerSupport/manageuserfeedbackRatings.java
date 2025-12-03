@@ -37,6 +37,8 @@ public class manageuserfeedbackRatings {
 
     @FXML
     private TableColumn<?, ?> typecolumn;
+    @FXML
+    private TableView tableview;
 
     @FXML
     void clearformbutton(ActionEvent event) {

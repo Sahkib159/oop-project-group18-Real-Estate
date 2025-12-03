@@ -45,4 +45,11 @@ public class customerSupportDashboardController {
 
     }
 
+    @FXML
+    public void backbutton(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void logoutbutton(ActionEvent actionEvent) {
+    }
 }

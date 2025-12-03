@@ -2,21 +2,18 @@ package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class assistduringpropertyviewingSchedulingController {
 
     @FXML
-    private TableColumn<?, ?> bookingidcolumn;
+    private TableColumn<assistduringproperty, String> bookingidcolumn;
 
     @FXML
     private TextField bookingidfield;
 
     @FXML
-    private TableColumn<?, ?> customercolumn;
+    private TableColumn<assistduringproperty, String> customercolumn;
 
     @FXML
     private TextField customercontactField;
@@ -25,7 +22,7 @@ public class assistduringpropertyviewingSchedulingController {
     private TextField customernamefield;
 
     @FXML
-    private TableColumn<?, ?> datecolumn;
+    private TableColumn<assistduringproperty, String> datecolumn;
 
     @FXML
     private DatePicker preferreddatepicker;
@@ -37,10 +34,12 @@ public class assistduringpropertyviewingSchedulingController {
     private TextField propertyidField;
 
     @FXML
-    private TableColumn<?, ?> propertyidcolumn;
+    private TableColumn<AssistduringpropertyviewingScheduling, String> propertyidcolumn;
 
     @FXML
-    private TableColumn<?, ?> timecolumn;
+    private TableColumn<AssistduringpropertyviewingScheduling, String> timecolumn;
+    @FXML
+    private TableView<assistduringproperty> tableview;
 
     @FXML
     void checkavailabilitybutton(ActionEvent event) {
