@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="442.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.FinanceOfficerDashboardController">
+   <children>
+      <Label layoutX="189.0" layoutY="30.0" text="Finance Officer Dashboard">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="64.0" layoutY="112.0" mnemonicParsing="false" onAction="#recordClientPaymentsOnClick" text="Record client payments." />
+      <Button layoutX="64.0" layoutY="158.0" mnemonicParsing="false" onAction="#manageVendorPaymentsOnClick" text="Manage vendor payments" />
+      <Button layoutX="64.0" layoutY="208.0" mnemonicParsing="false" onAction="#TrackRevenueFromPropertySalesOnClick" text="Track revenue from property sales." />
+      <Button layoutX="64.0" layoutY="261.0" mnemonicParsing="false" onAction="#viewMonthlyRevenueSummaryOnClick" text="View Monthly Revenue Summary" />
+      <Button layoutX="400.0" layoutY="261.0" mnemonicParsing="false" onAction="#showEstimatedTaxAmountOnClick" text="Show Estimated Tax Amount" />
+      <Button layoutX="400.0" layoutY="208.0" mnemonicParsing="false" onAction="#displayPaymentsOlderThan30DaysOnClick" text="Display Payments Older Than 30 Days" />
+      <Button layoutX="401.0" layoutY="158.0" mnemonicParsing="false" onAction="#approveBudgetAllocationsOnClick" text="Approve budget allocations." />
+      <Button layoutX="400.0" layoutY="112.0" mnemonicParsing="false" onAction="#viewBasicSalaryTableOnClick" text="View Basic Salary Table" />
+      <Button layoutX="301.0" layoutY="331.0" mnemonicParsing="false" onAction="#logOutOnClick" text="Log Out" />
+      <Button layoutX="556.0" layoutY="387.0" mnemonicParsing="false" onAction="#BackOnClick" text="Back" />
+   </children>
+</AnchorPane>
