@@ -1,7 +1,6 @@
 module com.group18.oopprojectgroup18realestate {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.logging;
 
 
     opens com.group18.oopprojectgroup18realestate to javafx.fxml;
