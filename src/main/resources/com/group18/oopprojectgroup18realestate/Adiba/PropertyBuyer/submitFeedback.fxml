@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="491.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Adiba.PropertyBuyer.SubmitFeedbackController">
    <children>
       <Label layoutX="236.0" layoutY="42.0" prefHeight="38.0" prefWidth="186.0" text="Submit Feedback">
@@ -29,5 +28,6 @@
       <TextArea fx:id="yourCommentTF" layoutX="230.0" layoutY="194.0" prefHeight="111.0" prefWidth="258.0" />
       <Button layoutX="422.0" layoutY="344.0" mnemonicParsing="false" onAction="#submitFeedbackOA" text="Submit feedback" />
       <Button layoutX="33.0" layoutY="29.0" mnemonicParsing="false" onAction="#backOA" text="Back" />
+      <Label fx:id="outputLabel" layoutX="220.0" layoutY="397.0" prefHeight="38.0" prefWidth="207.0" />
    </children>
 </AnchorPane>

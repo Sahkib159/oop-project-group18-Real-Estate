@@ -15,7 +15,8 @@ public class PropertyBuyerDashboardController
     }
 
     @javafx.fxml.FXML
-    public void logoutOA(ActionEvent actionEvent) {
+    public void logoutOA(ActionEvent actionEvent){
+
     }
 
     @javafx.fxml.FXML

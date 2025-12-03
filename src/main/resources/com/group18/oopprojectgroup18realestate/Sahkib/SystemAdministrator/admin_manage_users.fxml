@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="574.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminManageUsersController">
+   <children>
+      <Label layoutX="198.0" layoutY="26.0" prefHeight="35.0" prefWidth="163.0" text="Manage Users">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="90.0" text="User Name:" />
+      <TextField fx:id="usernameTextField" layoutX="152.0" layoutY="86.0" />
+      <Button layoutX="400.0" layoutY="182.0" mnemonicParsing="false" onAction="#deleteUserOnClick" text="Delete User" />
+      <TableView fx:id="tableView" layoutX="52.0" layoutY="279.0" prefHeight="200.0" prefWidth="434.0">
+        <columns>
+          <TableColumn fx:id="usernameCol" prefWidth="224.8000602722168" text="username" />
+          <TableColumn fx:id="roleCol" minWidth="4.79998779296875" prefWidth="211.199951171875" text="role" />
+        </columns>
+      </TableView>
+      <Label layoutX="52.0" layoutY="134.0" text="Password:" />
+      <TextField fx:id="passwordTextField" layoutX="152.0" layoutY="130.0" />
+      <Button layoutX="399.0" layoutY="129.0" mnemonicParsing="false" onAction="#editUserOnClick" prefHeight="26.0" prefWidth="78.0" text="Edit User" />
+      <Button layoutX="399.0" layoutY="77.0" mnemonicParsing="false" onAction="#addUserOnClick" prefHeight="26.0" prefWidth="78.0" text="Add User" />
+      <ComboBox layoutX="152.0" layoutY="182.0" onAction="#roleComboBox" prefWidth="150.0" />
+      <Label layoutX="54.0" layoutY="186.0" text="Role Combo Box:" />
+      <Button layoutX="445.0" layoutY="510.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+   </children>
+</AnchorPane>

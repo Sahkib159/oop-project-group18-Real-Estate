@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="527.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantMaintenanceController">
+   <children>
+      <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#backbuttonOnClick" text="back" />
+      <Label layoutX="167.0" layoutY="23.0" text="MAINTENACE REQUEST">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="58.0" text="submit new request" />
+      <Label layoutX="16.0" layoutY="105.0" text="describe issue:" />
+      <TextArea fx:id="issueTA" layoutX="19.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="19.0" layoutY="340.0" mnemonicParsing="false" onAction="#submitOnClickButton" text="submit" />
+      <Label fx:id="outputmessgaelabel" layoutX="79.0" layoutY="343.0" prefHeight="18.0" prefWidth="157.0" />
+      <Label layoutX="265.0" layoutY="85.0" text="My request" />
+      <TableView fx:id="maintenanceTableview" layoutX="279.0" layoutY="129.0" prefHeight="200.0" prefWidth="228.0">
+        <columns>
+          <TableColumn fx:id="MIDCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="IssuesCol" prefWidth="75.0" text="Issue" />
+            <TableColumn fx:id="statusCol" prefWidth="75.0" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="265.0" layoutY="105.0" text="Tables of requests:" />
+      <Label layoutX="279.0" layoutY="343.0" prefHeight="18.0" prefWidth="157.0" text="Selected requests details:" />
+      <Label fx:id="selectedIssueIndetailsLabel" layoutX="285.0" layoutY="371.0" prefHeight="84.0" prefWidth="194.0" text="Issue description" />
+      <Label layoutX="12.0" layoutY="376.0" text="Managers Note:" />
+      <TextArea fx:id="managersNoteTA" layoutX="19.0" layoutY="401.0" prefHeight="108.0" prefWidth="200.0" />
+      <Label layoutX="20.0" layoutY="85.0" text="property Id:" />
+      <TextField fx:id="propertyidTF" layoutX="93.0" layoutY="81.0" />
+   </children>
+</AnchorPane>

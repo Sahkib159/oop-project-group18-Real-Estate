@@ -8,12 +8,6 @@ public class bookProperty implements Serializable {
     private String propertyID;
     private String paymentPlan;
 
-    public bookProperty(String name, String contact, String propertyID, String paymentPlan) {
-        this.name = name;
-        this.contact = contact;
-        this.propertyID = propertyID;
-        this.paymentPlan = paymentPlan;
-    }
 
     public String getName() {
         return name;
@@ -55,5 +49,14 @@ public class bookProperty implements Serializable {
                 ", propertyID='" + propertyID + '\'' +
                 ", paymentPlan='" + paymentPlan + '\'' +
                 '}';
+    }
+
+    public bookProperty(String name, String contact, String propertyID, String paymentPlan) {
+        this.name = name;
+        this.contact = contact;
+        this.propertyID = propertyID;
+        this.paymentPlan = paymentPlan;
+
+
     }
 }

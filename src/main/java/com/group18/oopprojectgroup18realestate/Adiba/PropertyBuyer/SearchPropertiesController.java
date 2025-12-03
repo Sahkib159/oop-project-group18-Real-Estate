@@ -13,11 +13,11 @@ public class
 SearchPropertiesController
 {
     @javafx.fxml.FXML
-    private TableColumn<Property, String> locationCol;
+    private TableColumn<bookProperty, String> locationCol;
     @javafx.fxml.FXML
-    private TableColumn<Property, Double> sizeCol;
+    private TableColumn<bookProperty, Double> sizeCol;
     @javafx.fxml.FXML
-    private TableColumn<Property, String> typeCol;
+    private TableColumn<bookProperty, String> typeCol;
     @javafx.fxml.FXML
     private TextField locationTF;
     @javafx.fxml.FXML
@@ -25,13 +25,13 @@ SearchPropertiesController
     @javafx.fxml.FXML
     private TextField propertyInfoTF;
     @javafx.fxml.FXML
-    private TableColumn<Property, String> nameCol;
+    private TableColumn<bookProperty, String> nameCol;
     @javafx.fxml.FXML
-    private TableView<Property> availablePropertiesTable;
+    private TableView<bookProperty> availablePropertiesTable;
     @javafx.fxml.FXML
     private TextField sizeTF;
     @javafx.fxml.FXML
-    private TableColumn<Property, Double> priceCol;
+    private TableColumn<bookProperty, Double> priceCol;
     @javafx.fxml.FXML
     private TextField priceTF;
 

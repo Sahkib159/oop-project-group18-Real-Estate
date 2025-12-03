@@ -1,0 +1,66 @@
+package com.group18.oopprojectgroup18realestate;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+public class LogInController {
+
+    @FXML private TextField usernameField;
+    @FXML private TextField passwordField;
+    @FXML private Label errorLabel;
+    @FXML private ComboBox<String> roleComboBox;
+
+    @FXML
+    public void initialize() {
+        roleComboBox.getItems().addAll(
+                "System Administrator",
+                "Finance Officer",
+                "Marketing Officer",
+                "Customer Support Executive",
+                "Property Renter",
+                "Property Manager",
+                "Property buyer",
+                "Sales Agent"
+        );
+    }
+
+    @FXML
+    public void logInOnClick(ActionEvent event) throws Exception {
+
+        String role = roleComboBox.getSelectionModel().getSelectedItem();
+
+        if (role == null) {
+            errorLabel.setText("Please select a role!");
+            return;
+        }
+
+        switch (role) {
+            case "System Administrator":
+                SceneSwitcher.switchTo(
+                        "Sahkib/SystemAdministrator/SystemAdministratorDashboard",
+                        (Node) event.getSource()
+                );
+                break;
+
+            case "Finance Officer":
+                SceneSwitcher.switchTo(
+                        "Sahkib/FinanceOfficer/FinanceOfficerDashboard",
+                        (Node) event.getSource()
+                );
+                break;
+
+            default:
+                errorLabel.setText("Dashboard not implemented yet!");
+                break;
+        }
+    }
+
+    @FXML
+    public void createAccountOnClick(ActionEvent event) throws Exception {
+        SceneSwitcher.switchTo("create_account", (Node) event.getSource());
+    }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="305.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.projectManagerDashBoardController">
+   <children>
+      <Label layoutX="97.0" layoutY="22.0" text="Project Manager DashBoard">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="145.0" layoutY="115.0" mnemonicParsing="false" onAction="#propertyMangementOnClickButton" text="Property Mangement" />
+      <Button layoutX="170.0" layoutY="220.0" mnemonicParsing="false" onAction="#aboutrentbutton" text="About Rent " />
+      <Button layoutX="150.0" layoutY="153.0" mnemonicParsing="false" onAction="#tenantmanagementOnClick" text="Tenant Mangement" />
+      <Button layoutX="144.0" layoutY="187.0" mnemonicParsing="false" onAction="#maintainanceButton" text="Handle Maintainance " />
+      <Label layoutX="170.0" layoutY="58.0" text="WELCOME!">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="380.0" layoutY="266.0" mnemonicParsing="false" onAction="#logoutButtonOnClick" text="LOG OUT" />
+   </children>
+</AnchorPane>
