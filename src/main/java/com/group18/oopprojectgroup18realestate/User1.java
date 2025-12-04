@@ -1,6 +1,9 @@
 package com.group18.oopprojectgroup18realestate;
 
-public class User1 {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class User1 implements Serializable {
     private String username;
     private String password;
     private String role;
@@ -43,4 +46,20 @@ public class User1 {
                 ", role='" + role + '\'' +
                 '}';
     }
+//    public User1 login(String username, String password) {
+//        if (Objects.equals(this.getUsername(), username) && Objects.equals(this.getPassword(), password)) {
+//            return this;
+//        }
+//        else {
+//            return null ;
+//        }
+//    }
+//
+//    public boolean resetPassword(String oldPassword, String newPassword) {
+//        if (Objects.equals(this.getPassword(), oldPassword)) {
+//            this.setPassword(newPassword);
+//            return true ;
+//        }
+//        return false ;
+//    }
 }
