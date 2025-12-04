@@ -1,6 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
-import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.Property;
+import com.group18.oopprojectgroup18realestate.Property;
 import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.PropertyService;
 
 import javafx.collections.FXCollections;

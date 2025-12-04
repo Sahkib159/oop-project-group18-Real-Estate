@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class VendorPayment implements Serializable {
 
+
+
     private String vendorId;
     private double amount;
     private String date;
@@ -18,11 +20,32 @@ public class VendorPayment implements Serializable {
         return vendorId;
     }
 
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
+    }
+
     public double getAmount() {
         return amount;
     }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public String getDate() {
         return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "VendorPayment{" +
+                "vendorId='" + vendorId + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
+package com.group18.oopprojectgroup18realestate;
 
 public class Issue {
     private String issueId;

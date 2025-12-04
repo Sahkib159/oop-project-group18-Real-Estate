@@ -1,5 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
+import com.group18.oopprojectgroup18realestate.LogEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

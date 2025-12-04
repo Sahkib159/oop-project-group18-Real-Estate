@@ -18,11 +18,32 @@ public class SalaryRecord implements Serializable {
         return employeeId;
     }
 
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
     public double getAmount() {
         return amount;
     }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public String getDate() {
         return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "SalaryRecord{" +
+                "employeeId='" + employeeId + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

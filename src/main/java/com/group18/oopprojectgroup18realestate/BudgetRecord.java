@@ -21,8 +21,16 @@ public class BudgetRecord implements Serializable {
         return department;
     }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
     public double getAmount() {
         return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String getStatus() {
@@ -31,5 +39,14 @@ public class BudgetRecord implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "BudgetRecord{" +
+                "department='" + department + '\'' +
+                ", amount=" + amount +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

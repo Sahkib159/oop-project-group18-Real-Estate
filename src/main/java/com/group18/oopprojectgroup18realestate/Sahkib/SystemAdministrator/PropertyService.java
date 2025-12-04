@@ -1,6 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
-import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.Property;
+import com.group18.oopprojectgroup18realestate.Property;
 
 import java.io.*;
 import java.util.ArrayList;

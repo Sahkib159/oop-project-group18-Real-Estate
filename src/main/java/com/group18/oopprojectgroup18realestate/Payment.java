@@ -13,11 +13,36 @@ public class Payment implements Serializable {
         this.date = date;
     }
 
-    public String getClientId() { return clientId; }
-    public double getAmount() { return amount; }
-    public String getDate() { return date; }
+    public String getClientId() {
+        return clientId;
+    }
 
-    public void setClientId(String clientId) { this.clientId = clientId; }
-    public void setAmount(double amount) { this.amount = amount; }
-    public void setDate(String date) { this.date = date; }
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "clientId='" + clientId + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
