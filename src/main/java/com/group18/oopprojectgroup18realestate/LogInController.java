@@ -7,12 +7,21 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.List;
+
 public class LogInController {
 
-    @FXML private TextField usernameField;
-    @FXML private TextField passwordField;
-    @FXML private Label errorLabel;
-    @FXML private ComboBox<String> roleComboBox;
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private TextField passwordField;
+
+    @FXML
+    private Label errorLabel;
+
+    @FXML
+    private ComboBox<String> roleComboBox;
 
     @FXML
     public void initialize() {
@@ -31,32 +40,71 @@ public class LogInController {
     @FXML
     public void logInOnClick(ActionEvent event) throws Exception {
 
-        String role = roleComboBox.getSelectionModel().getSelectedItem();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String role = roleComboBox.getValue();
 
-        if (role == null) {
-            errorLabel.setText("Please select a role!");
+        // Validation
+        if (username.isEmpty() || password.isEmpty() || role == null) {
+            errorLabel.setText("Please fill all fields!");
             return;
         }
 
-        switch (role) {
-            case "System Administrator":
+        //Loads users from users.bin
+        List<User1> users = UserService.loadUsers();
+
+        // Check login from users.bin
+        for (User1 u : users) {
+            if (u.getUsername().equals(username)
+                    && u.getPassword().equals(password)
+                    && u.getRole().equals(role)) {
+
+                // if runs Switch to dashboard
                 SceneSwitcher.switchTo(
-                        "Sahkib/SystemAdministrator/SystemAdministratorDashboard",
+                        getDashboardPath(role),
                         (Node) event.getSource()
                 );
-                break;
-
-            case "Finance Officer":
-                SceneSwitcher.switchTo(
-                        "Sahkib/FinanceOfficer/FinanceOfficerDashboard",
-                        (Node) event.getSource()
-                );
-                break;
-
-            default:
-                errorLabel.setText("Dashboard not implemented yet!");
-                break;
+                return;
+            }
         }
+
+        // If no match found
+        errorLabel.setText("Invalid username, password, or role!");
+    }
+
+
+    // Switch path by role
+
+    private String getDashboardPath(String role) {
+
+        return switch (role) {
+
+            case "System Administrator" ->
+                    "Sahkib/SystemAdministrator/SystemAdministratorDashboard";
+
+            case "Finance Officer" ->
+                    "Sahkib/FinanceOfficer/FinanceOfficerDashboard";
+
+            case "Marketing Officer" ->
+                    "Sahkib/MarketingOfficer/MarketingOfficerDashboard";
+
+            case "Customer Support Executive" ->
+                    "Sahkib/CustomerSupport/CustomerSupportDashboard";
+
+            case "Property Renter" ->
+                    "Sahkib/PropertyRenter/PropertyRenterDashboard";
+
+            case "Property Manager" ->
+                    "Sahkib/PropertyManager/PropertyManagerDashboard";
+
+            case "Property buyer" ->
+                    "Sahkib/PropertyBuyer/PropertyBuyerDashboard";
+
+            case "Sales Agent" ->
+                    "Sahkib/SalesAgent/SalesAgentDashboard";
+
+            default -> "";
+        };
     }
 
     @FXML

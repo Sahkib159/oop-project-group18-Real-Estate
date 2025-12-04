@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="365.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminSystemSummaryController">
    <children>
       <Label layoutX="187.0" layoutY="45.0" prefHeight="38.0" prefWidth="186.0" text="System Summary">
@@ -13,10 +12,10 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="245.0" layoutY="97.0" text="Total Users" />
-      <Label layoutX="234.0" layoutY="127.0" text="Total Payments" />
-      <Label layoutX="233.0" layoutY="159.0" text="Total Properties" />
-      <Label layoutX="247.0" layoutY="191.0" text="Total Logs" />
+      <Label fx:id="totalUsersLabel" layoutX="234.0" layoutY="100.0" text="Total Users" />
+      <Label fx:id="totalPaymentsLabel" layoutX="233.0" layoutY="126.0" text="Total Payments" />
+      <Label fx:id="totalPropertiesLabel" layoutX="233.0" layoutY="155.0" text="Total Properties" />
+      <Label fx:id="totalLogsLabel" layoutX="234.0" layoutY="185.0" text="Total Logs" />
       <Button layoutX="206.0" layoutY="217.0" mnemonicParsing="false" onAction="#refreshOnClick" prefHeight="67.0" prefWidth="138.0" text="Refresh" />
       <Button layoutX="476.0" layoutY="317.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
    </children>
