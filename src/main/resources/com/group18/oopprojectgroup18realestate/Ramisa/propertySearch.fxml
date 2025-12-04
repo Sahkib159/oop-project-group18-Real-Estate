@@ -33,8 +33,9 @@
             <TableColumn fx:id="statusCol" prefWidth="75.0" text="status" />
         </columns>
       </TableView>
-      <Label fx:id="outputLabel" layoutX="10.0" layoutY="261.0" prefHeight="171.0" prefWidth="213.0" text="property details" wrapText="true" />
+      <Label fx:id="propertydetailsL" layoutX="10.0" layoutY="261.0" prefHeight="171.0" prefWidth="213.0" text="property details" wrapText="true" />
       <Button layoutX="272.0" layoutY="334.0" mnemonicParsing="false" onAction="#bookPropertyOnClickButton" text="Save To Bookmarks" />
       <Label fx:id="messageL" layoutX="256.0" layoutY="302.0" prefHeight="18.0" prefWidth="150.0" />
+      <Button layoutX="102.0" layoutY="227.0" mnemonicParsing="false" onAction="#loadButtonOC" text="Load" />
    </children>
 </AnchorPane>

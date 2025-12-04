@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -32,10 +33,27 @@ public class tenantMaintenanceController
 
     @javafx.fxml.FXML
     public void initialize() {
+
+        // table columns
+        MIDCol.setCellValueFactory(new PropertyValueFactory<>("requestID"));
+        IssuesCol.setCellValueFactory(new PropertyValueFactory<>("issue"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        // Show in table
+        maintenanceTableview.getItems().clear();
+        maintenanceTableview.getItems().addAll();
     }
 
     @javafx.fxml.FXML
     public void submitOnClickButton(ActionEvent actionEvent) {
+
+        String issue = issueTA.getText().trim();
+
+        // Validation
+        if (issue.isEmpty()) {
+            outputmessgaelabel.setText("Please describe the issue!");
+            return;
+        }
     }
 
     @javafx.fxml.FXML

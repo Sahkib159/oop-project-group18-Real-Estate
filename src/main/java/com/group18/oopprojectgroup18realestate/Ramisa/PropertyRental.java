@@ -24,14 +24,54 @@ public class PropertyRental implements Serializable {
 
     //getter & setter
 
-    public PropertyRental(int propertyID, double budget, String status, String propertyType, double rentPrice, String location) {
+    public int getPropertyID() {
+        return propertyID;
+    }
+
+    public void setPropertyID(int propertyID) {
         this.propertyID = propertyID;
-        this.budget = budget;
-        this.status = status;
-        this.propertyType = propertyType;
-        this.rentPrice = rentPrice;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
         this.location = location;
     }
+
+    public double getRentPrice() {
+        return rentPrice;
+    }
+
+    public void setRentPrice(double rentPrice) {
+        this.rentPrice = rentPrice;
+    }
+
+    public String getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(String propertyType) {
+        this.propertyType = propertyType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
 
     //toString
 

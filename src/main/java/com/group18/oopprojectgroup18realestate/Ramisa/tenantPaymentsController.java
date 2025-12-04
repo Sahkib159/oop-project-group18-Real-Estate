@@ -46,6 +46,9 @@ public class tenantPaymentsController
         methodCol.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("Status"));
 
+        //table
+        paymenthistoryTV.getItems().clear();
+        paymenthistoryTV.getItems().addAll();
     }
 
     @javafx.fxml.FXML

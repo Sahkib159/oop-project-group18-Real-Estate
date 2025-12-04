@@ -52,6 +52,12 @@ public class projectManagerDashBoardController
     }
 
     @javafx.fxml.FXML
-    public void logoutButtonOnClick(ActionEvent actionEvent) {
+    public void logoutButtonOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/group18/oopprojectgroup18realestate/Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

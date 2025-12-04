@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="305.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.projectManagerDashBoardController">
    <children>
-      <Label layoutX="97.0" layoutY="22.0" text="Project Manager DashBoard">
+      <Label layoutX="97.0" layoutY="22.0" text="Property Manager DashBoard">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

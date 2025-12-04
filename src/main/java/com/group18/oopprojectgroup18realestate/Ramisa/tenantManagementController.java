@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,7 +43,23 @@ public class tenantManagementController
 
     @javafx.fxml.FXML
     public void initialize() {
+        // Tenant table
+        tenantidCol.setCellValueFactory(new PropertyValueFactory<>("tenantID"));
+        tenantCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        emailCOL.setCellValueFactory(new PropertyValueFactory<>("email"));
+        properetyidCOl.setCellValueFactory(new PropertyValueFactory<>("propertyID"));
+        leaseStartCol.setCellValueFactory(new PropertyValueFactory<>("leaseStart"));
+        leaseendCol.setCellValueFactory(new PropertyValueFactory<>("leaseEnd"));
+
+        // Application table
+        appidcol.setCellValueFactory(new PropertyValueFactory<>("applicationID"));
+        tenantappidCol.setCellValueFactory(new PropertyValueFactory<>("tenantID"));
+        dateappCOl.setCellValueFactory(new PropertyValueFactory<>("applicationDate"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        propertycol.setCellValueFactory(new PropertyValueFactory<>("property"));
+
     }
+
 
     @javafx.fxml.FXML
     public void approvebuttonOC(ActionEvent actionEvent) {

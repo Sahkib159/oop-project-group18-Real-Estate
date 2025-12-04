@@ -1,4 +1,4 @@
-package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
+/*package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -138,3 +138,4 @@ public class coordinateissueResolutionController {
     }
 
 }
+*/

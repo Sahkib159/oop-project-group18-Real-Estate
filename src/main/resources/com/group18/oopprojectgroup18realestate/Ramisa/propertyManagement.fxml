@@ -36,7 +36,6 @@
       <TextField fx:id="contactTF" layoutX="90.0" layoutY="279.0" />
       <Button layoutX="20.0" layoutY="328.0" mnemonicParsing="false" onAction="#addbuttonOC" text="ADD" />
       <Button layoutX="86.0" layoutY="328.0" mnemonicParsing="false" onAction="#updateOC" text="UPDATE" />
-      <Button layoutX="179.0" layoutY="328.0" mnemonicParsing="false" onAction="#clearOC" text="CLEAR" />
       <Label layoutX="300.0" layoutY="75.0" text="ALL  PROPERTIES">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -44,18 +43,19 @@
       </Label>
       <Button layoutX="408.0" layoutY="71.0" mnemonicParsing="false" onAction="#searchOC" text="Search" />
       <Button layoutX="493.0" layoutY="71.0" mnemonicParsing="false" onAction="#showOC" text="Show all" />
-      <TableView fx:id="PMtableView" layoutX="298.0" layoutY="113.0" prefHeight="200.0" prefWidth="323.0">
+      <TableView fx:id="PMtableView" layoutX="251.0" layoutY="113.0" prefHeight="200.0" prefWidth="370.0">
         <columns>
-          <TableColumn fx:id="idcol" prefWidth="56.800048828125" text="ID" />
+          <TableColumn fx:id="idcol" prefWidth="56.800048828125" text="PropertyID" />
           <TableColumn fx:id="locCol" prefWidth="48.0" text="Location" />
-            <TableColumn fx:id="PriceCol" prefWidth="54.39996337890625" text="Price" />
-            <TableColumn fx:id="typeCOL" prefWidth="53.5999755859375" text="Type" />
+            <TableColumn fx:id="PriceCol" prefWidth="54.39996337890625" text="RentPrice" />
+            <TableColumn fx:id="typeCOL" prefWidth="53.5999755859375" text=" PropertyType" />
             <TableColumn fx:id="StatusCOL" prefWidth="58.39990234375" text="Status" />
             <TableColumn fx:id="facilitiesCOL" prefWidth="48.00006103515625" text="Facilities" />
+            <TableColumn fx:id="contactCOL" prefWidth="75.0" text="Contact" />
         </columns>
       </TableView>
       <Button layoutX="339.0" layoutY="328.0" mnemonicParsing="false" onAction="#loadOC" text="load" />
       <Button layoutX="426.0" layoutY="328.0" mnemonicParsing="false" onAction="#removeOC" text="remove" />
-      <Button layoutX="507.0" layoutY="328.0" mnemonicParsing="false" onAction="#refreshOC" text="refresh" />
+      <Label fx:id="messageL" layoutX="169.0" layoutY="360.0" prefHeight="18.0" prefWidth="222.0" />
    </children>
 </AnchorPane>
