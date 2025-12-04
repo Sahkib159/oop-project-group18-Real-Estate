@@ -19,23 +19,23 @@
       <Label layoutX="47.0" layoutY="108.0" text="Property ID :" />
       <Label layoutX="47.0" layoutY="143.0" text="Property Name : " />
       <Label layoutX="47.0" layoutY="182.0" text="Price : " />
-      <TextField layoutX="153.0" layoutY="104.0" />
-      <TextField layoutX="153.0" layoutY="139.0" />
-      <TextField layoutX="153.0" layoutY="178.0" />
+      <TextField fx:id="propertyIdField" layoutX="153.0" layoutY="104.0" />
+      <TextField fx:id="propertynameField" layoutX="153.0" layoutY="139.0" />
+      <TextField fx:id="priceField" layoutX="153.0" layoutY="178.0" />
       <Label layoutX="338.0" layoutY="108.0" text="Property Type : " />
       <Label layoutX="352.0" layoutY="155.0" text="Status : " />
-      <ComboBox layoutX="428.0" layoutY="104.0" prefWidth="150.0" />
-      <ComboBox layoutX="428.0" layoutY="148.0" prefWidth="150.0" />
-      <Button layoutX="66.0" layoutY="218.0" mnemonicParsing="false" text="Add Property" />
-      <Button layoutX="248.0" layoutY="218.0" mnemonicParsing="false" text="Update Property" />
-      <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" text="back" />
+      <ComboBox fx:id="PropertyTypeField" layoutX="428.0" layoutY="104.0" prefWidth="150.0" />
+      <ComboBox fx:id="StatusField" layoutX="428.0" layoutY="148.0" prefWidth="150.0" />
+      <Button layoutX="66.0" layoutY="218.0" mnemonicParsing="false" onAction="#addPropertybutton" text="Add Property" />
+      <Button layoutX="248.0" layoutY="218.0" mnemonicParsing="false" onAction="#updatePropertyButton" text="Update Property" />
+      <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#backbutton" text="back" />
       <TableView layoutX="-2.0" layoutY="273.0" prefHeight="213.0" prefWidth="607.0">
         <columns>
-          <TableColumn prefWidth="123.99999737739563" text="Property ID" />
-          <TableColumn prefWidth="116.66666412353516" text="Property Name" />
-            <TableColumn prefWidth="103.33329772949219" text="Price" />
-            <TableColumn prefWidth="137.33331298828125" text="Property Type" />
-            <TableColumn prefWidth="126.66671752929688" text="Status" />
+          <TableColumn fx:id="propertyIdcolumn" prefWidth="123.99999737739563" text="Property ID" />
+          <TableColumn fx:id="propertynameColumn" prefWidth="116.66666412353516" text="Property Name" />
+            <TableColumn fx:id="priceColumn" prefWidth="103.33329772949219" text="Price" />
+            <TableColumn fx:id="propertytypeColumn" prefWidth="137.33331298828125" text="Property Type" />
+            <TableColumn fx:id="statusColumn" prefWidth="126.66671752929688" text="Status" />
         </columns>
       </TableView>
    </children>

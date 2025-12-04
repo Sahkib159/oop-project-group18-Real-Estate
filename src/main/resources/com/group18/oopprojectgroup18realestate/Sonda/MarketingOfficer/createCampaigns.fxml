@@ -21,21 +21,21 @@
       <Label layoutX="59.0" layoutY="161.0" text="Campaign Budget :" />
       <Label layoutX="354.0" layoutY="122.0" text="End Date :" />
       <Label layoutX="354.0" layoutY="78.0" text="Start Date :" />
-      <DatePicker layoutX="421.0" layoutY="74.0" />
-      <DatePicker layoutX="429.0" layoutY="118.0" />
-      <TextField layoutX="161.0" layoutY="74.0" />
-      <TextField layoutX="169.0" layoutY="118.0" />
-      <TextField layoutX="169.0" layoutY="157.0" />
-      <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
-      <Button layoutX="135.0" layoutY="197.0" mnemonicParsing="false" text="Add selected property" />
-      <Button layoutX="341.0" layoutY="197.0" mnemonicParsing="false" text="Remove selected property" />
+      <DatePicker fx:id="startDatePicker" layoutX="421.0" layoutY="74.0" />
+      <DatePicker fx:id="EndDatePicker" layoutX="429.0" layoutY="118.0" />
+      <TextField fx:id="campaignTitleField" layoutX="161.0" layoutY="74.0" />
+      <TextField fx:id="targetaudiField" layoutX="169.0" layoutY="118.0" />
+      <TextField fx:id="campaignBudetField" layoutX="169.0" layoutY="157.0" />
+      <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#backbutton" text="Back" />
+      <Button layoutX="135.0" layoutY="197.0" mnemonicParsing="false" onAction="#addselectpropertyButton" text="Add selected property" />
+      <Button layoutX="341.0" layoutY="197.0" mnemonicParsing="false" onAction="#removeselectedpropertybutton" text="Remove selected property" />
       <TableView layoutY="245.0" prefHeight="226.0" prefWidth="641.0">
         <columns>
-          <TableColumn prefWidth="115.3333410024643" text="Campaign Title" />
-          <TableColumn prefWidth="104.66669464111328" text="Target Audience" />
-            <TableColumn prefWidth="135.3333282470703" text="CAmpaign Budget" />
-            <TableColumn prefWidth="146.0" text="Start Date" />
-            <TableColumn prefWidth="139.99996948242188" text="End Date" />
+          <TableColumn fx:id="campaigntitleColumn" prefWidth="115.3333410024643" text="Campaign Title" />
+          <TableColumn fx:id="targetaudiColumn" prefWidth="104.66669464111328" text="Target Audience" />
+            <TableColumn fx:id="campaignBudgetColumn" prefWidth="135.3333282470703" text="CAmpaign Budget" />
+            <TableColumn fx:id="startDateColumn" prefWidth="146.0" text="Start Date" />
+            <TableColumn fx:id="EndDateColumn" prefWidth="139.99996948242188" text="End Date" />
         </columns>
       </TableView>
    </children>

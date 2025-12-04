@@ -4,6 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class assistduringpropertyviewingSchedulingController {
 
     @FXML
@@ -28,7 +33,7 @@ public class assistduringpropertyviewingSchedulingController {
     private DatePicker preferreddatepicker;
 
     @FXML
-    private ComboBox<?> preferredtimecombobox;
+    private ComboBox<String> preferredtimecombobox;
 
     @FXML
     private TextField propertyidField;
@@ -40,6 +45,12 @@ public class assistduringpropertyviewingSchedulingController {
     private TableColumn<AssistduringpropertyviewingScheduling, String> timecolumn;
     @FXML
     private TableView<assistduringproperty> tableview;
+
+    @javafx.fxml.FXML
+    public void initialize() {
+
+    }
+
 
     @FXML
     void checkavailabilitybutton(ActionEvent event) {
@@ -53,6 +64,30 @@ public class assistduringpropertyviewingSchedulingController {
 
     @FXML
     void updatebookingbutton(ActionEvent event) {
+        tableview.getItems().clear();
+        loadAll();
+
+    }
+    public void loadAll() {
+        ObjectInputStream ois = null;
+        try {
+            CoordinateIssue y;
+            ois = new ObjectInputStream(new FileInputStream("Assistduringproperty.bin"));
+            while (true) {
+                y = (CoordinateIssue) ois.readObject();
+                tableview.getItems().addAll(y);
+            }
+        } catch (Exception ex) {
+            try {
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException ex2) {
+                ex2.printStackTrace();
+            }
+            ex.printStackTrace();
+        }
+
 
     }
 

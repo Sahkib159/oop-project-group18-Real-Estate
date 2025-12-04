@@ -13,31 +13,31 @@ public class handleComplaintsController {
     private TextField complaintidtextField;
 
     @FXML
-    private ComboBox<?> complaintstatuscombobox;
+    private ComboBox<String> complaintstatuscombobox;
 
     @FXML
-    private ComboBox<?> complainttypecombobox;
+    private ComboBox<String> complainttypecombobox;
 
     @FXML
     private TextField contractnumbertextfield;
 
     @FXML
-    private TableColumn<?, ?> customernamecolumn;
+    private TableColumn<Handlecomplaints, String> customernamecolumn;
 
     @FXML
     private TextField customernametextfield;
 
     @FXML
-    private TableColumn<?, ?> datesubmittedcolumn;
+    private TableColumn<Handlecomplaints, String> datesubmittedcolumn;
 
     @FXML
-    private TableColumn<?, ?> idcolumn;
+    private TableColumn<Handlecomplaints, String> idcolumn;
 
     @FXML
-    private TableColumn<?, ?> statuscolumn;
+    private TableColumn<Handlecomplaints, String> statuscolumn;
 
     @FXML
-    private TableColumn<?, ?> typecolumn;
+    private TableColumn<Handlecomplaints, String> typecolumn;
     @FXML
     private TableView tableview;
 

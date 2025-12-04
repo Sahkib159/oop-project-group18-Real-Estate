@@ -10,10 +10,10 @@ import javafx.scene.control.TableView;
 public class generatesupportReportsController {
 
     @FXML
-    private TableColumn<generatesupport, String> customercolumn;
+    private TableColumn<Generatesupportreports, String> customercolumn;
 
     @FXML
-    private TableColumn<generatesupport, String> datecolumn;
+    private TableColumn<Generatesupportreports, String> datecolumn;
 
     @FXML
     private ComboBox<String> departmentfiltercombobox;
@@ -28,13 +28,13 @@ public class generatesupportReportsController {
     private DatePicker startdatepicker;
 
     @FXML
-    private TableColumn<generatesupport, String> statuscolumn;
+    private TableColumn<Generatesupportreports, String> statuscolumn;
 
     @FXML
-    private TableColumn<generatesupport, String> ticketidcolumn;
+    private TableColumn<Generatesupportreports, String> ticketidcolumn;
 
     @FXML
-    private TableColumn<generatesupport, String> typecolumn;
+    private TableColumn<Generatesupportreports, String> typecolumn;
     @FXML
     private TableView tableview;
 
