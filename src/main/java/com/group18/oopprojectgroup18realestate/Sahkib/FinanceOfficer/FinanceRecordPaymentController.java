@@ -1,8 +1,10 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.group18.oopprojectgroup18realestate.Payment;
+import com.group18.oopprojectgroup18realestate.FinanceService;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,31 +15,32 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class FinanceRecordPaymentController
-{
-    @javafx.fxml.FXML
+public class FinanceRecordPaymentController {
+
+    @FXML
     private TextField clientIdTextField;
-    @javafx.fxml.FXML
+
+    @FXML
     private TextField amountTextField;
 
-    // In-memory list of payments
-    private ObservableList<Payment> paymentList = FXCollections.observableArrayList();
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
+        // No sample data needed since we use file handling
     }
 
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
+    @FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
-    @javafx.fxml.FXML
-    public void savePaymentOnClick(ActionEvent actionEvent) {
+    @FXML
+    public void savePaymentOnClick(ActionEvent event) {
+
         String clientId = clientIdTextField.getText();
         String amountStr = amountTextField.getText();
 
@@ -55,21 +58,23 @@ public class FinanceRecordPaymentController
             return;
         }
 
-        // Create payment object
+        // Create Payment object
         Payment payment = new Payment(clientId, amount, LocalDate.now().toString());
-        paymentList.add(payment);
+
+        // Save into payments.bin using FinanceService
+        FinanceService.addPayment(payment);
 
         showAlert("Success", "Payment recorded successfully!");
 
         // Clear fields
         clientIdTextField.clear();
         amountTextField.clear();
-
     }
+
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
         alert.setHeaderText(null);
+        alert.setTitle(title);
         alert.setContentText(msg);
         alert.showAndWait();
     }

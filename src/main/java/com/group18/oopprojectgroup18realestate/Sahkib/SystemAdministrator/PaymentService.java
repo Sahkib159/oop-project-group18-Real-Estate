@@ -1,6 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
-import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.Payment;
+import com.group18.oopprojectgroup18realestate.Payment;
 
 import java.io.*;
 import java.util.ArrayList;

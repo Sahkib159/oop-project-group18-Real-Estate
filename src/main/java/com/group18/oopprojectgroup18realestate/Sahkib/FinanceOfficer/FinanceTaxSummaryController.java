@@ -1,7 +1,7 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.group18.oopprojectgroup18realestate.Payment;
+import com.group18.oopprojectgroup18realestate.FinanceService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,44 +11,51 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
-public class FinanceTaxSummaryController
-{
+public class FinanceTaxSummaryController {
+
     @javafx.fxml.FXML
     private Label totalTaxLabel;
 
-    // Sample payment data
-    private final ObservableList<Payment> paymentList = FXCollections.observableArrayList();
-
     @javafx.fxml.FXML
     public void initialize() {
+        // Nothing needed here (data will load on button click)
     }
 
     @javafx.fxml.FXML
     public void calculateTaxOnClick(ActionEvent actionEvent) {
-        if (paymentList.isEmpty()) {
+
+        // Load payments from payments.bin
+        List<Payment> payments = FinanceService.loadPayments();
+
+        if (payments.isEmpty()) {
             showAlert("Error", "No payments available.");
+            totalTaxLabel.setText("Total Tax: 0 BDT");
             return;
         }
 
         double totalTax = 0;
 
-        for (Payment p : paymentList) {
-            totalTax += p.getAmount() * 0.05;   // 5% tax
+        // 5% tax on each payment
+        for (Payment p : payments) {
+            totalTax += p.getAmount() * 0.05;
         }
 
         totalTaxLabel.setText("Total Tax: " + totalTax + " BDT");
     }
 
+
     @javafx.fxml.FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
+
+
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

@@ -92,10 +92,10 @@ public class LogInController {
                     "Sahkib/CustomerSupport/CustomerSupportDashboard";
 
             case "Property Renter" ->
-                    "Sahkib/PropertyRenter/PropertyRenterDashboard";
+                    "Ramisa/tenantDashBoard";
 
             case "Property Manager" ->
-                    "Sahkib/PropertyManager/PropertyManagerDashboard";
+                    "Ramisa/PropertyManagerDashBoard";
 
             case "Property buyer" ->
                     "Sahkib/PropertyBuyer/PropertyBuyerDashboard";

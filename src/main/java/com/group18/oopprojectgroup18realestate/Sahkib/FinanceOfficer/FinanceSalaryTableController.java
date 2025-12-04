@@ -1,54 +1,75 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.group18.oopprojectgroup18realestate.SalaryRecord;
+import com.group18.oopprojectgroup18realestate.FinanceService;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
-public class FinanceSalaryTableController
-{
-    @javafx.fxml.FXML
-    private TableColumn<SalaryRecord, String> salaryCol;
-    @javafx.fxml.FXML
-    private TableView<SalaryRecord> tableView;
-    @javafx.fxml.FXML
-    private TableColumn<SalaryRecord, String> employeeCol;
-    @javafx.fxml.FXML
-    private Label totalLabel;
+public class FinanceSalaryTableController {
 
-    // Temporary employee salary list
-    private final ObservableList<SalaryRecord> salaryList = FXCollections.observableArrayList();
+    @FXML
+    private TextField employeeIdTextField;
 
-    @javafx.fxml.FXML
+    @FXML
+    private TextField amountTextField;
+
+    @FXML
     public void initialize() {
+        // nothing required here
     }
 
-    @javafx.fxml.FXML
-    public void calculateTotalOnClick(ActionEvent actionEvent) {
-        double total = 0;
+    @FXML
+    public void recordSalaryOnClick(ActionEvent event) {
 
-        for (SalaryRecord s : salaryList) {
-            total += s.getSalary();
+        String employeeId = employeeIdTextField.getText();
+        String amountStr = amountTextField.getText();
+
+        if (employeeId.isEmpty() || amountStr.isEmpty()) {
+            showAlert("Error", "Please fill all fields.");
+            return;
         }
 
-        totalLabel.setText("Total: " + total + " BDT");
+        double amount;
+        try {
+            amount = Double.parseDouble(amountStr);
+        } catch (Exception e) {
+            showAlert("Error", "Amount must be a valid number.");
+            return;
+        }
+
+        SalaryRecord record = new SalaryRecord(employeeId, amount, LocalDate.now().toString());
+        FinanceService.addSalary(record);
+
+        showAlert("Success", "Salary record saved successfully.");
+
+        employeeIdTextField.clear();
+        amountTextField.clear();
     }
 
-
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+    @FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void showAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
