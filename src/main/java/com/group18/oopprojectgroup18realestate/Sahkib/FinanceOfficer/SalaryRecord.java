@@ -1,27 +1,25 @@
-package com.group18.oopprojectgroup18realestate;
+package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
 import java.io.Serializable;
 
-public class VendorPayment implements Serializable {
+public class SalaryRecord implements Serializable {
 
-
-
-    private String vendorId;
+    private String employeeId;
     private double amount;
     private String date;
 
-    public VendorPayment(String vendorId, double amount, String date) {
-        this.vendorId = vendorId;
+    public SalaryRecord(String employeeId, double amount, String date) {
+        this.employeeId = employeeId;
         this.amount = amount;
         this.date = date;
     }
 
-    public String getVendorId() {
-        return vendorId;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setVendorId(String vendorId) {
-        this.vendorId = vendorId;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     public double getAmount() {
@@ -42,8 +40,8 @@ public class VendorPayment implements Serializable {
 
     @Override
     public String toString() {
-        return "VendorPayment{" +
-                "vendorId='" + vendorId + '\'' +
+        return "SalaryRecord{" +
+                "employeeId='" + employeeId + '\'' +
                 ", amount=" + amount +
                 ", date='" + date + '\'' +
                 '}';

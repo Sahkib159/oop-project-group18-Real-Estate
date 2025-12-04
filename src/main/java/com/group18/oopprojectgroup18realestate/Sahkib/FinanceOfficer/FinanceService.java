@@ -1,21 +1,17 @@
-package com.group18.oopprojectgroup18realestate;
+package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
+
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.BudgetRecord;
+import com.group18.oopprojectgroup18realestate.Payment;
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.SalaryRecord;
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.VendorPayment;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-//Client Payments
-//Vendor Payments
-//Salary Records
-//Budget Records
-
-
-
 public class FinanceService {
 
-    //Client Payments
+//Client Payment
     private static final String PAYMENT_FILE = "payments.bin";
 
     public static List<Payment> loadPayments() {
@@ -30,8 +26,7 @@ public class FinanceService {
     }
 
     public static void savePayments(List<Payment> list) {
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream(PAYMENT_FILE))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PAYMENT_FILE))) {
             out.writeObject(list);
         } catch (Exception e) {
             System.out.println("Error saving payments.bin");
@@ -45,8 +40,7 @@ public class FinanceService {
     }
 
 
-
-    //Vendor Payments
+//Vendor Payment
     private static final String VENDOR_PAYMENT_FILE = "vendor_payments.bin";
 
     public static List<VendorPayment> loadVendorPayments() {
@@ -61,8 +55,7 @@ public class FinanceService {
     }
 
     public static void saveVendorPayments(List<VendorPayment> list) {
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream(VENDOR_PAYMENT_FILE))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(VENDOR_PAYMENT_FILE))) {
             out.writeObject(list);
         } catch (Exception e) {
             System.out.println("Error saving vendor_payments.bin");
@@ -76,9 +69,7 @@ public class FinanceService {
     }
 
 
-
-
-    //Salary Payments
+//Salary records
     private static final String SALARY_FILE = "salaries.bin";
 
     public static List<SalaryRecord> loadSalaries() {
@@ -93,13 +84,13 @@ public class FinanceService {
     }
 
     public static void saveSalaries(List<SalaryRecord> list) {
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream(SALARY_FILE))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(SALARY_FILE))) {
             out.writeObject(list);
         } catch (Exception e) {
             System.out.println("Error saving salaries.bin");
         }
     }
+
 
     public static void addSalary(SalaryRecord record) {
         List<SalaryRecord> list = loadSalaries();
@@ -108,9 +99,7 @@ public class FinanceService {
     }
 
 
-
-
-    //Budget Records
+//Budget Record
     private static final String BUDGET_FILE = "budgets.bin";
 
     public static List<BudgetRecord> loadBudgets() {
@@ -125,8 +114,7 @@ public class FinanceService {
     }
 
     public static void saveBudgets(List<BudgetRecord> list) {
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream(BUDGET_FILE))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(BUDGET_FILE))) {
             out.writeObject(list);
         } catch (Exception e) {
             System.out.println("Error saving budgets.bin");

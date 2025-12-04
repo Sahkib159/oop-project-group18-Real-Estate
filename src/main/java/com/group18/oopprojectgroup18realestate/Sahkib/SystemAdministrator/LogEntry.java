@@ -1,4 +1,4 @@
-package com.group18.oopprojectgroup18realestate;
+package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
 import java.io.Serializable;
 

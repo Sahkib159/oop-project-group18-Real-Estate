@@ -1,6 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
-import com.group18.oopprojectgroup18realestate.LogEntry;
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.LogEntry;
 
 import java.io.*;
 import java.time.LocalDate;

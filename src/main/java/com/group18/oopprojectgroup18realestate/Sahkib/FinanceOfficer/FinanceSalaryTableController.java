@@ -1,8 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-import com.group18.oopprojectgroup18realestate.SalaryRecord;
-import com.group18.oopprojectgroup18realestate.FinanceService;
-
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.SalaryRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

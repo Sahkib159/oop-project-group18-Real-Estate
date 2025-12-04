@@ -1,8 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-import com.group18.oopprojectgroup18realestate.VendorPayment;
-import com.group18.oopprojectgroup18realestate.FinanceService;
-
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.VendorPayment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
