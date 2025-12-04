@@ -9,7 +9,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -17,6 +19,13 @@ public class AdminBackupManagerController {
 
     @FXML
     private TextArea outputArea;
+
+    private static final String[] FILES_TO_BACKUP = {
+            "users.bin",
+            "properties.bin",
+            "payments.bin",
+            "logs.bin"
+    };
 
     @FXML
     public void initialize() {
@@ -26,20 +35,54 @@ public class AdminBackupManagerController {
     @FXML
     public void createBackupOnClick(ActionEvent event) {
 
-        // Fake backup message for now (no file copy yet)
+        // Create timestamped folder
         String timestamp = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
 
-        outputArea.appendText("Backup created successfully at: " + timestamp + "\n");
+        String backupFolderPath = "backups/backup_" + timestamp;
+        File backupFolder = new File(backupFolderPath);
+        backupFolder.mkdirs();
 
-        showAlert("Backup Completed", "Backup created at:\n" + timestamp);
+        outputArea.appendText("Backup started at: " + timestamp + "\n");
+
+        int filesCopied = 0;
+
+        // Copy each file individually
+        for (String fileName : FILES_TO_BACKUP) {
+
+            File originalFile = new File(fileName);
+
+            if (originalFile.exists()) {
+                try {
+                    Path source = originalFile.toPath();
+                    Path dest = Paths.get(backupFolderPath + "/" + fileName);
+
+                    Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+
+                    outputArea.appendText("✔ Backed up: " + fileName + "\n");
+                    filesCopied++;
+
+                } catch (Exception e) {
+                    outputArea.appendText("✘ Failed to copy: " + fileName + "\n");
+                }
+            } else {
+                outputArea.appendText("Skipped (not found): " + fileName + "\n");
+            }
+        }
+
+        outputArea.appendText("\nBackup completed. Files copied: " + filesCopied + "\n\n");
+
+        showAlert("Backup Completed", "Backup created successfully!\nFolder:\n" + backupFolderPath);
+//I added it later
+        LogService.addLog("Backup created.");
+
     }
 
     @FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
+    public void backOnClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

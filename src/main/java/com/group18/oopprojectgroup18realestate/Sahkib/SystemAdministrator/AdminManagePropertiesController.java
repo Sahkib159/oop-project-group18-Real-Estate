@@ -1,8 +1,12 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.Property;
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.PropertyService;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -11,50 +15,108 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
-public class AdminManagePropertiesController
-{
-    @javafx.fxml.FXML
+public class AdminManagePropertiesController {
+
+    @FXML
     private TextField propertyLocationTextField;
-    @javafx.fxml.FXML
-    private TableColumn<Property, String> titleCol;
-    @javafx.fxml.FXML
-    private TableColumn<Property, String> idCol;
-    @javafx.fxml.FXML
+    @FXML
     private TextField propertyPriceTextField;
-    @javafx.fxml.FXML
-    private TableColumn<Property, String> statusCol;
-    @javafx.fxml.FXML
+    @FXML
     private TextField propertyTitleTextField;
-    @javafx.fxml.FXML
-    private TableView<Property> tableView;
-    @javafx.fxml.FXML
+    @FXML
     private TextField propertyIdTextField;
-    @javafx.fxml.FXML
+
+    @FXML
+    private TableView<Property> tableView;
+    @FXML
+    private TableColumn<Property, String> idCol;
+    @FXML
+    private TableColumn<Property, String> titleCol;
+    @FXML
+    private TableColumn<Property, String> statusCol;
+    @FXML
     private TableColumn<Property, String> priceCol;
-    @javafx.fxml.FXML
+
+    @FXML
     private ComboBox<String> statusComboBox;
 
+    // Main property list (loaded from file)
+    private ObservableList<Property> propertyList;
 
-    private ObservableList<Property> propertyList = FXCollections.observableArrayList();
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
+
+        // TableView column mapping
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        // ComboBox
         statusComboBox.getItems().addAll("Available", "Sold", "Rented", "Pending");
 
-        // sample data
+        // Load from file
+        List<Property> loaded = PropertyService.loadProperties();
+        propertyList = FXCollections.observableArrayList(loaded);
+
+
+        // SAMPLE DATA
+        /*
         propertyList.add(new Property("P101", "Luxury Apartment", "Gulshan", 55000, "Available"));
         propertyList.add(new Property("P102", "Office Space", "Banani", 80000, "Rented"));
+        PropertyService.saveProperties(new ArrayList<>(propertyList));
+        */
 
         tableView.setItems(propertyList);
     }
 
-    @javafx.fxml.FXML
+
+    @FXML
+    public void addPropertyOnClick(ActionEvent actionEvent) {
+        String id = propertyIdTextField.getText();
+        String title = propertyTitleTextField.getText();
+        String location = propertyLocationTextField.getText();
+        String priceStr = propertyPriceTextField.getText();
+        String status = statusComboBox.getValue();
+
+        if (id.isEmpty() || title.isEmpty() || location.isEmpty() || priceStr.isEmpty() || status == null) {
+            showAlert("Error", "Please fill all fields");
+            return;
+        }
+
+        double price;
+        try { price = Double.parseDouble(priceStr); }
+        catch (Exception e) {
+            showAlert("Error", "Price must be a number!");
+            return;
+        }
+
+        // Prevent duplicate ID
+        for (Property p : propertyList) {
+            if (p.getId().equalsIgnoreCase(id)) {
+                showAlert("Error", "Property ID already exists!");
+                return;
+            }
+        }
+
+        Property newProperty = new Property(id, title, location, price, status);
+
+        propertyList.add(newProperty);
+        PropertyService.saveProperties(propertyList);
+
+        tableView.refresh();
+        clearFields();
+
+        showAlert("Success", "Property Added!");
+//I added it later
+        LogService.addLog("Property " + id + " added.");
+
+    }
+
+
+    @FXML
     public void editPropertyOnClick(ActionEvent actionEvent) {
         Property selected = tableView.getSelectionModel().getSelectedItem();
 
@@ -75,30 +137,31 @@ public class AdminManagePropertiesController
         }
 
         double price;
-        try {
-            price = Double.parseDouble(priceStr);
-        } catch (Exception e) {
+        try { price = Double.parseDouble(priceStr); }
+        catch (Exception e) {
             showAlert("Error", "Price must be a number!");
             return;
         }
 
-        // Update data
+        // Update property
         selected.setId(id);
         selected.setTitle(title);
         selected.setLocation(location);
         selected.setPrice(price);
         selected.setStatus(status);
 
+        PropertyService.saveProperties(propertyList);
         tableView.refresh();
         clearFields();
 
         showAlert("Success", "Property Updated!");
+//I added it later
+        LogService.addLog("Property " + id + " updated.");
 
     }
 
 
-
-    @javafx.fxml.FXML
+    @FXML
     public void deletePropertyOnClick(ActionEvent actionEvent) {
         Property selected = tableView.getSelectionModel().getSelectedItem();
 
@@ -108,48 +171,16 @@ public class AdminManagePropertiesController
         }
 
         propertyList.remove(selected);
-        tableView.refresh();
+        PropertyService.saveProperties(propertyList);
 
+        tableView.refresh();
         showAlert("Success", "Property Deleted!");
+//I added it later
+        LogService.addLog("Property " + selected.getId() + " deleted.");
+
     }
 
 
-    @javafx.fxml.FXML
-    public void addPropertyOnClick(ActionEvent actionEvent) {
-        String id = propertyIdTextField.getText();
-        String title = propertyTitleTextField.getText();
-        String location = propertyLocationTextField.getText();
-        String priceStr = propertyPriceTextField.getText();
-        String status = statusComboBox.getValue();
-
-        // Validation
-        if (id.isEmpty() || title.isEmpty() || location.isEmpty() || priceStr.isEmpty() || status == null) {
-            showAlert("Error", "Please fill all fields");
-            return;
-        }
-
-        double price;
-        try {
-            price = Double.parseDouble(priceStr);
-        } catch (Exception e) {
-            showAlert("Error", "Price must be a number!");
-            return;
-        }
-
-        // Check if property already exists
-        for (Property p : propertyList) {
-            if (p.getId().equalsIgnoreCase(id)) {
-                showAlert("Error", "Property ID already exists!");
-                return;
-            }
-        }
-
-        propertyList.add(new Property(id, title, location, price, status));
-        tableView.refresh();
-        clearFields();
-
-        showAlert("Success", "Property Added!");
-    }
     private void clearFields() {
         propertyIdTextField.clear();
         propertyTitleTextField.clear();
@@ -159,18 +190,18 @@ public class AdminManagePropertiesController
     }
 
     private void showAlert(String title, String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-        alert.showAndWait();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText(null);
+        a.setTitle(title);
+        a.setContentText(msg);
+        a.showAndWait();
     }
 
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+    @FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

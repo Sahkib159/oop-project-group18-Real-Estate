@@ -1,43 +1,45 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
 import com.group18.oopprojectgroup18realestate.User1;
+import com.group18.oopprojectgroup18realestate.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class AdminAssignRolesController {
-    @javafx.fxml.FXML
-    private TableColumn<User1, String> usernameCol;
-    @javafx.fxml.FXML
+
+    @FXML
     private TableView<User1> tableView;
-    @javafx.fxml.FXML
+
+    @FXML
+    private TableColumn<User1, String> usernameCol;
+
+    @FXML
     private TableColumn<User1, String> currentRoleCol;
-    @javafx.fxml.FXML
+
+    @FXML
     private ComboBox<String> newRoleComboBox;
 
+    private ObservableList<User1> userList;
 
-    private ObservableList<User1> userList = FXCollections.observableArrayList();
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
 
-        //TableView
+        // Setup columns
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
-        currentRoleCol.setCellValueFactory(new PropertyValueFactory<>("currentRole"));
+        currentRoleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-        //ComboBox
+        // ComboBox
         newRoleComboBox.getItems().addAll(
                 "System Administrator",
                 "Finance Officer",
@@ -48,16 +50,22 @@ public class AdminAssignRolesController {
                 "Property Buyer",
                 "Sales Agent"
         );
-        //Sample Data
+
+        // Old sample data
+        /*
         userList.add(new User1("admin", "1234", "System Administrator"));
         userList.add(new User1("finance01", "9999", "Finance Officer"));
         userList.add(new User1("support01", "abcd", "Customer Support Executive"));
-        
+        tableView.setItems(userList);
+        */
 
+        // NEW: Load from users.bin
+        List<User1> loadedUsers = UserService.loadUsers();
+        userList = FXCollections.observableArrayList(loadedUsers);
         tableView.setItems(userList);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void updateRoleOnClick(ActionEvent actionEvent) {
 
         User1 selectedUser = tableView.getSelectionModel().getSelectedItem();
@@ -74,32 +82,34 @@ public class AdminAssignRolesController {
             return;
         }
 
-        // Update role
+        // Update role in memory
         selectedUser.setRole(newRole);
+
+        // Refresh table
         tableView.refresh();
 
-        showAlert("Success", "Role updated for user: " + selectedUser.getUsername());
+        // SAVE UPDATED USER LIST TO users.bin
+        UserService.saveUsers(userList);
+
+        showAlert("Success", "Role updated for " + selectedUser.getUsername());
+///I added it later to addLog into logs.bin
+        LogService.addLog("Role changed for " + selectedUser.getUsername() + " to " + newRole);
+
     }
-
-
-
-
 
     private void showAlert(String title, String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-        alert.showAndWait();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText(null);
+        a.setTitle(title);
+        a.setContentText(msg);
+        a.showAndWait();
     }
 
-
-
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+    @FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

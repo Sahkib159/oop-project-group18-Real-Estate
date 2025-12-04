@@ -1,9 +1,11 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
 import com.group18.oopprojectgroup18realestate.User1;
+import com.group18.oopprojectgroup18realestate.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,34 +15,46 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdminManageUsersController
-{
-    @javafx.fxml.FXML
-    private TableColumn<User1, String> usernameCol;
-    @javafx.fxml.FXML
+public class AdminManageUsersController {
+
+    @FXML
     private TableView<User1> tableView;
-    @javafx.fxml.FXML
+
+    @FXML
+    private TableColumn<User1, String> usernameCol;
+
+    @FXML
     private TableColumn<User1, String> roleCol;
-    @javafx.fxml.FXML
-    private TextField passwordTextField;
-    @javafx.fxml.FXML
+
+    @FXML
     private TextField usernameTextField;
-    @javafx.fxml.FXML
+
+    @FXML
+    private TextField passwordTextField;
+
+    @FXML
     private ComboBox<String> roleComboBox;
 
-    //Temporary user List
-    private final ArrayList<User1> userList = new ArrayList<>();
+
+    // OLD temporary list
+    // private final ArrayList<User1> userList = new ArrayList<>();
 
 
-    @javafx.fxml.FXML
+    // NEW list connected with file handling
+    private ObservableList<User1> userList;
+
+
+    @FXML
     public void initialize() {
 
-        //TableView
+        // Setup Table Columns
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-        //ComboBox
+
+        // Role ComboBox
         roleComboBox.getItems().addAll(
                 "System Administrator",
                 "Finance Officer",
@@ -52,7 +66,8 @@ public class AdminManageUsersController
                 "Sales Agent"
         );
 
-        //Sample data
+        // OLD sample data
+        /*
         userList.add(new User1("admin", "1234", "System Administrator"));
         userList.add(new User1("finance01", "9999", "Finance Officer"));
         userList.add(new User1("marketing01", "1234", "Marketing Officer"));
@@ -61,13 +76,67 @@ public class AdminManageUsersController
         userList.add(new User1("property02", "1234", "Property Manager"));
         userList.add(new User1("property03", "1234", "Property Buyer"));
         userList.add(new User1("sales01", "1234", "Sales Agent"));
-
         tableView.setItems(FXCollections.observableList(userList));
+        */
+
+        //NEW: LOAD users from users.bin
+        loadUsersIntoTable();
 
     }
 
-    @javafx.fxml.FXML
-    public void editUserOnClick(ActionEvent actionEvent) {
+
+    // Load all users from file into TableView
+    private void loadUsersIntoTable() {
+        // loads from users.bin
+        List<User1> saved = UserService.loadUsers();
+        userList = FXCollections.observableArrayList(saved);
+        tableView.setItems(userList);
+    }
+
+
+
+    // ADD USER (now saves into users.bin)
+    @FXML
+    public void addUserOnClick(ActionEvent event) {
+
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        String role = roleComboBox.getValue();
+
+        if (username.isEmpty() || password.isEmpty() || role == null) {
+            showAlert("Error", "Please fill all fields");
+            return;
+        }
+
+        // Check duplicates
+        for (User1 u : userList) {
+            if (u.getUsername().equalsIgnoreCase(username)) {
+                showAlert("Error", "Username already exists!");
+                return;
+            }
+        }
+
+        User1 newUser = new User1(username, password, role);
+
+        userList.add(newUser);
+        // SAVE to file
+        UserService.saveUsers(userList);
+
+        tableView.refresh();
+        clearFields();
+
+        showAlert("Success", "User added!");
+
+        //I added it later to addLog into logs.bin
+        LogService.addLog("User " + username + " created with role " + role + ".");
+
+    }
+
+
+
+    // EDIT USER (updates users.bin)
+    @FXML
+    public void editUserOnClick(ActionEvent event) {
 
         User1 selected = tableView.getSelectionModel().getSelectedItem();
 
@@ -88,15 +157,24 @@ public class AdminManageUsersController
         selected.setUsername(newUsername);
         selected.setPassword(newPassword);
         selected.setRole(newRole);
-
+        // SAVE changes
+        UserService.saveUsers(userList);
         tableView.refresh();
         clearFields();
 
         showAlert("Success", "User updated!");
+
+        //I added it later to ediLog into logs.bin
+        LogService.addLog("User " + selected.getUsername() + " updated.");
+
     }
 
-    @javafx.fxml.FXML
-    public void deleteUserOnClick(ActionEvent actionEvent) {
+
+
+    // DELETE USER (updates users.bin)
+    @FXML
+    public void deleteUserOnClick(ActionEvent event) {
+
         User1 selected = tableView.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
@@ -105,70 +183,40 @@ public class AdminManageUsersController
         }
 
         userList.remove(selected);
+        // SAVE updated list
+        UserService.saveUsers(userList);
         tableView.refresh();
 
         showAlert("Success", "User deleted!");
+
+        //I added it later to ediLog into logs.bin
+        LogService.addLog("User " + selected.getUsername() + " deleted.");
+
     }
 
 
-
-
-
-    @javafx.fxml.FXML
-    public void addUserOnClick(ActionEvent actionEvent) {
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        String role = roleComboBox.getValue();
-
-        //prevent errors
-        if (username.isEmpty() || password.isEmpty() || role == null) {
-            showAlert("Error", "Please fill all fields");
-            return;
-        }
-
-        // prevent duplicates
-        for (User1 u : userList) {
-            if (u.getUsername().equalsIgnoreCase(username)) {
-                showAlert("Error", "Username already exists!");
-                return;
-            }
-        }
-
-        userList.add(new User1(username, password, role));
-        tableView.refresh();
-        clearFields();
-
-        showAlert("Success", "User added!");
-    }
-
-
-
-
+    // Helpers
     private void clearFields() {
         usernameTextField.clear();
         passwordTextField.clear();
         roleComboBox.getSelectionModel().clearSelection();
     }
 
-
     private void showAlert(String title, String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-        alert.showAndWait();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText(null);
+        a.setTitle(title);
+        a.setContentText(msg);
+        a.showAndWait();
     }
 
 
-
-
-
-
-    @javafx.fxml.FXML
+    // BACK BUTTON
+    @FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

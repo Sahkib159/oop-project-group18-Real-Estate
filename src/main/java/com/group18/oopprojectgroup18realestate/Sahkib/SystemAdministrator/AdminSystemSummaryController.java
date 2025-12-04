@@ -1,5 +1,9 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
+import com.group18.oopprojectgroup18realestate.UserService;
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.PaymentService;
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.PropertyService;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
@@ -33,10 +37,11 @@ public class AdminSystemSummaryController {
 
     private void loadSummary() {
 
-        int totalUsers = 10;        // users.txt
-        int totalPayments = 5;      // payments.txt
-        int totalProperties = 8;    // properties.txt
-        int totalLogs = 3;          // logs.txt
+        // REAL VALUES
+        int totalUsers = UserService.loadUsers().size();
+        int totalPayments = PaymentService.loadPayments().size();
+        int totalProperties = PropertyService.loadProperties().size();
+        int totalLogs = 0;  // CHANGE later if logs.bin exists
 
         totalUsersLabel.setText(String.valueOf(totalUsers));
         totalPaymentsLabel.setText(String.valueOf(totalPayments));

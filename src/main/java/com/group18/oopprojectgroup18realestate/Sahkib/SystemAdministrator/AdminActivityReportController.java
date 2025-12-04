@@ -29,13 +29,18 @@ public class AdminActivityReportController
 
     @javafx.fxml.FXML
     public void initialize() {
-        // SAMPLE LOG DATA
-        logList.add(new LogEntry("2025-01-10", "User admin created a new Finance Officer."));
-        logList.add(new LogEntry("2025-01-12", "Property P102 marked as Rented."));
-        logList.add(new LogEntry("2025-01-15", "Payment C101 recorded."));
-        logList.add(new LogEntry("2025-02-01", "Issue ISS-104 marked as In Progress."));
-        logList.add(new LogEntry("2025-02-10", "Backup created."));
-        logList.add(new LogEntry("2025-02-14", "User finance01 password reset."));
+//        // SAMPLE LOG DATA
+//        logList.add(new LogEntry("2025-01-10", "User admin created a new Finance Officer."));
+//        logList.add(new LogEntry("2025-01-12", "Property P102 marked as Rented."));
+//        logList.add(new LogEntry("2025-01-15", "Payment C101 recorded."));
+//        logList.add(new LogEntry("2025-02-01", "Issue ISS-104 marked as In Progress."));
+//        logList.add(new LogEntry("2025-02-10", "Backup created."));
+//        logList.add(new LogEntry("2025-02-14", "User finance01 password reset."));
+
+
+        logList.setAll(LogService.loadLogs());
+
+
     }
 
 
