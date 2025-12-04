@@ -37,11 +37,11 @@ public class AdminSystemSummaryController {
 
     private void loadSummary() {
 
-        // REAL VALUES
+        // Real values
         int totalUsers = UserService.loadUsers().size();
         int totalPayments = PaymentService.loadPayments().size();
         int totalProperties = PropertyService.loadProperties().size();
-        int totalLogs = 0;  // CHANGE later if logs.bin exists
+        int totalLogs = 0;
 
         totalUsersLabel.setText(String.valueOf(totalUsers));
         totalPaymentsLabel.setText(String.valueOf(totalPayments));

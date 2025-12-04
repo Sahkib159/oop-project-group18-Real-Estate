@@ -22,7 +22,7 @@ public class FinanceSalesRevenueController {
 
     @FXML
     public void initialize() {
-        // nothing needed here — data loads only when button is clicked
+
     }
 
     @FXML
@@ -67,6 +67,8 @@ public class FinanceSalesRevenueController {
         stage.show();
     }
 
+
+    //Alart
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

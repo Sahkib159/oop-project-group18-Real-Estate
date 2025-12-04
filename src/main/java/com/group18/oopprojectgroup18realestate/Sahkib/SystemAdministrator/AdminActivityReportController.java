@@ -25,7 +25,7 @@ public class AdminActivityReportController
     @javafx.fxml.FXML
     private DatePicker startDatePicker;
 
-    // In-memory logs (sample data for now)
+
     private final ObservableList<LogEntry> logList = FXCollections.observableArrayList();
 
     @javafx.fxml.FXML

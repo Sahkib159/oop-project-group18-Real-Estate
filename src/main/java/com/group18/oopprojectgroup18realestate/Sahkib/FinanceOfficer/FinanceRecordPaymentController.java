@@ -25,7 +25,7 @@ public class FinanceRecordPaymentController {
 
     @FXML
     public void initialize() {
-        // No sample data needed since we use file handling
+
     }
 
     @FXML
@@ -71,6 +71,8 @@ public class FinanceRecordPaymentController {
         amountTextField.clear();
     }
 
+
+    //Alert
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

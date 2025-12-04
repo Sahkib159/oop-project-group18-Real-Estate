@@ -4,20 +4,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * FinanceService handles saving/loading:
- * - Client Payments
- * - Vendor Payments
- * - Salary Records
- *
- * All stored using ObjectOutputStream / ObjectInputStream
- */
+
+
+//Client Payments
+//Vendor Payments
+//Salary Records
+//Budget Records
+
+
+
 public class FinanceService {
 
-    /* ========================================================
-                      CLIENT PAYMENTS
-       ======================================================== */
-
+    //Client Payments
     private static final String PAYMENT_FILE = "payments.bin";
 
     public static List<Payment> loadPayments() {
@@ -48,10 +46,7 @@ public class FinanceService {
 
 
 
-    /* ========================================================
-                      VENDOR PAYMENTS
-       ======================================================== */
-
+    //Vendor Payments
     private static final String VENDOR_PAYMENT_FILE = "vendor_payments.bin";
 
     public static List<VendorPayment> loadVendorPayments() {
@@ -82,10 +77,8 @@ public class FinanceService {
 
 
 
-    /* ========================================================
-                      SALARY PAYMENTS
-       ======================================================== */
 
+    //Salary Payments
     private static final String SALARY_FILE = "salaries.bin";
 
     public static List<SalaryRecord> loadSalaries() {
@@ -113,10 +106,11 @@ public class FinanceService {
         list.add(record);
         saveSalaries(list);
     }
-    /* ========================================================
-                      BUDGET RECORDS
-   ======================================================== */
 
+
+
+
+    //Budget Records
     private static final String BUDGET_FILE = "budgets.bin";
 
     public static List<BudgetRecord> loadBudgets() {

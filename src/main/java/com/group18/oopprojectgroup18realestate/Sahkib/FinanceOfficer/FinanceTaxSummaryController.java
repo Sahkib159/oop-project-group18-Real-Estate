@@ -20,7 +20,7 @@ public class FinanceTaxSummaryController {
 
     @javafx.fxml.FXML
     public void initialize() {
-        // Nothing needed here (data will load on button click)
+
     }
 
     @javafx.fxml.FXML

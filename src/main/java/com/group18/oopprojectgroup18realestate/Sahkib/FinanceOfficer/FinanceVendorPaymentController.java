@@ -25,7 +25,7 @@ public class FinanceVendorPaymentController {
 
     @FXML
     public void initialize() {
-        // No sample data needed; real data saved in vendor_payments.bin
+
     }
 
     @FXML
@@ -69,7 +69,7 @@ public class FinanceVendorPaymentController {
         vendorIdTextField.clear();
         amountTextField.clear();
     }
-
+    //Alert
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,14 +39,9 @@ public class FinanceBudgetApprovalController {
     public void initialize() {
 
         // Bind columns
-        departmentCol.setCellValueFactory(cell ->
-                new SimpleStringProperty(cell.getValue().getDepartment()));
-
-        amountCol.setCellValueFactory(cell ->
-                new SimpleStringProperty(String.valueOf(cell.getValue().getAmount())));
-
-        statusCol.setCellValueFactory(cell ->
-                new SimpleStringProperty(cell.getValue().getStatus()));
+        departmentCol.setCellValueFactory(new PropertyValueFactory<>("department"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         // ComboBox options
         decisionComboBox.getItems().addAll("Approved", "Rejected");

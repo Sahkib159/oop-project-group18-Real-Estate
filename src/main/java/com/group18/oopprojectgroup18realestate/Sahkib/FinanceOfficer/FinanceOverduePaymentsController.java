@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,17 +41,9 @@ public class FinanceOverduePaymentsController {
     public void initialize() {
 
         // Bind columns
-        clientCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getClientId())
-        );
-
-        amountCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cell.getValue().getAmount()))
-        );
-
-        dateCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getDate())
-        );
+        clientCol.setCellValueFactory(new PropertyValueFactory<>("client"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
 
