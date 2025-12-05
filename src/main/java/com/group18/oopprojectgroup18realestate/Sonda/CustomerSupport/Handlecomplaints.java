@@ -9,16 +9,13 @@ public class Handlecomplaints extends User implements Serializable {
     private int complntId;
     private String customer;
     private String complaintType;
-    private String status;
-    private LocalDate date;
 
-    public Handlecomplaints(String email, String pass, int complntId, String customer, String complaintType, String status, LocalDate date) {
+
+    public Handlecomplaints(String email, String pass, int complntId, String customer, String complaintType) {
         super(email, pass);
         this.complntId = complntId;
         this.customer = customer;
         this.complaintType = complaintType;
-        this.status = status;
-        this.date = date;
     }
 
     public int getComplntId() {
@@ -45,30 +42,12 @@ public class Handlecomplaints extends User implements Serializable {
         this.complaintType = complaintType;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     @Override
     public String toString() {
         return "Handlecomplaints{" +
                 "complntId=" + complntId +
                 ", customer='" + customer + '\'' +
                 ", complaintType='" + complaintType + '\'' +
-                ", status='" + status + '\'' +
-                ", date=" + date +
                 '}';
     }
 }

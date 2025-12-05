@@ -35,7 +35,7 @@ public class MarketingOfficerdashboardController
 
     @Deprecated
     public void manage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manageproperties.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
