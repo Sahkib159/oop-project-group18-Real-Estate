@@ -92,7 +92,7 @@ public class assignTicketsController{
                 fos=new FileOutputStream(f);
                 oos=new ObjectOutputStream(fos);
             }
-            AssignTickets y=new AssignTickets(email,ticSummary,ticId,currentStatus);
+            AssignTickets y=new AssignTickets(email,ticId,ticSummary,currentStatus);
             tableview.getItems().add(y);
 
             oos.writeObject(y);

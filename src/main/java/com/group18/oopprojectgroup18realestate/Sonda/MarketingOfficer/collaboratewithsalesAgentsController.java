@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class collaboratewithsalesAgentsController {
 
     @FXML
@@ -32,7 +34,7 @@ public class collaboratewithsalesAgentsController {
     private TextField materialtextfield;
 
     @FXML
-    void backbutton(ActionEvent event) {
+    public void backbutton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MarketingOfficerDashboard.fxml"));
         Scene nextScene = new Scene(fxmlLoader.load());
         Stage nextStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

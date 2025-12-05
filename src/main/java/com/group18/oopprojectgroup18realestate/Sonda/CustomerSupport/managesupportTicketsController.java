@@ -10,30 +10,30 @@ import javafx.scene.control.TextField;
 public class managesupportTicketsController {
 
     @FXML
-    private ComboBox<?> priorityCombobox;
+    private ComboBox<String> priorityCombobox;
 
     @FXML
-    private TableColumn<?, ?> prioritycolumn;
+    private TableColumn<Managesupporttickets, String> prioritycolumn;
 
     @FXML
-    private ComboBox<?> ticketStatusComboBox;
+    private ComboBox<String> ticketStatusComboBox;
 
     @FXML
-    private TableColumn<?, ?> ticketidColumn;
+    private TableColumn<Managesupporttickets, String> ticketidColumn;
 
     @FXML
     private TextField ticketidTextfield;
 
     @FXML
-    private TableColumn<?, ?> ticketstatuscolumn;
+    private TableColumn<Managesupporttickets, String> ticketstatuscolumn;
 
     @FXML
-    private TableColumn<?, ?> usernamecolumn;
+    private TableColumn<Managesupporttickets, String> usernamecolumn;
 
     @FXML
     private TextField usernametextField;
     @FXML
-    private TableView tableview;
+    private TableView<Managesupporttickets> tableview;
 
     @FXML
     void closeticketbutton(ActionEvent event) {

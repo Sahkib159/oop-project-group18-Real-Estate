@@ -36,7 +36,7 @@ public class Analyzemarket {
     }
 
     @Override
-    public StringtoString() {
+    public String toString() {
         return "Analyzemarket{" +
                 "area='" + area + '\'' +
                 ", competetor='" + competetor + '\'' +
