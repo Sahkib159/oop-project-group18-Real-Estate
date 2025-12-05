@@ -1,6 +1,11 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-public class VendorPayment {
+import java.io.Serializable;
+
+public class VendorPayment implements Serializable {
+
+
+
     private String vendorId;
     private double amount;
     private String date;

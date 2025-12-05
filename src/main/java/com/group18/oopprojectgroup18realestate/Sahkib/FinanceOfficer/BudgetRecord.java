@@ -1,6 +1,9 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-public class BudgetRecord {
+import java.io.Serializable;
+
+public class BudgetRecord implements Serializable {
+
     private String department;
     private double amount;
     private String status;
@@ -11,24 +14,26 @@ public class BudgetRecord {
         this.status = status;
     }
 
+    // Getters
     public String getDepartment() {
         return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
     }
 
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public String getStatus() {
         return status;
+    }
+
+    // Setters
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public void setStatus(String status) {

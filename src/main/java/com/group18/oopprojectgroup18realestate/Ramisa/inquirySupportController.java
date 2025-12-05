@@ -39,7 +39,6 @@ public class inquirySupportController
 
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("inquiries.bin"))) {
             out.writeObject(inquiryList);
-            // Event 6: Confirmation message
             inquirymessageTF.setText("Inquiry sent successfully!");
             inquiryTA.clear();
         } catch (Exception e) {
