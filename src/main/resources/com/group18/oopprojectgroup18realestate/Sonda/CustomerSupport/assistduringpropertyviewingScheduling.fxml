@@ -28,7 +28,7 @@
       <Button layoutX="50.0" layoutY="233.0" mnemonicParsing="false" onAction="#checkavailabilitybutton" text="Check Availability" />
       <Button layoutX="256.0" layoutY="233.0" mnemonicParsing="false" onAction="#savebookingbutton" text="Save Booking" />
       <Button layoutX="457.0" layoutY="233.0" mnemonicParsing="false" onAction="#updatebookingbutton" text="Update Booking" />
-      <TableView layoutX="-1.0" layoutY="277.0" prefHeight="213.0" prefWidth="639.0">
+      <TableView fx:id="tableview" layoutX="-1.0" layoutY="277.0" prefHeight="213.0" prefWidth="639.0">
         <columns>
           <TableColumn fx:id="bookingidcolumn" prefWidth="111.99999749660492" text="Booking ID" />
           <TableColumn fx:id="customercolumn" prefWidth="102.00003814697266" text="Customer" />

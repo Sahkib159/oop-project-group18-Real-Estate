@@ -5,35 +5,38 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class generatesupportReportsController {
 
     @FXML
-    private TableColumn<?, ?> customercolumn;
+    private TableColumn<Generatesupportreports, String> customercolumn;
 
     @FXML
-    private TableColumn<?, ?> datecolumn;
+    private TableColumn<Generatesupportreports, String> datecolumn;
 
     @FXML
-    private ComboBox<?> departmentfiltercombobox;
+    private ComboBox<String> departmentfiltercombobox;
 
     @FXML
     private DatePicker enddatepicker;
 
     @FXML
-    private ComboBox<?> reporttypecombobox;
+    private ComboBox<String> reporttypecombobox;
 
     @FXML
     private DatePicker startdatepicker;
 
     @FXML
-    private TableColumn<?, ?> statuscolumn;
+    private TableColumn<Generatesupportreports, String> statuscolumn;
 
     @FXML
-    private TableColumn<?, ?> ticketidcolumn;
+    private TableColumn<Generatesupportreports, String> ticketidcolumn;
 
     @FXML
-    private TableColumn<?, ?> typecolumn;
+    private TableColumn<Generatesupportreports, String> typecolumn;
+    @FXML
+    private TableView tableview;
 
     @FXML
     void clearfilterbutton(ActionEvent event) {

@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="574.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminManageUsersController">
    <children>
       <Label layoutX="198.0" layoutY="26.0" prefHeight="35.0" prefWidth="163.0" text="Manage Users">
@@ -30,7 +29,7 @@
       <TextField fx:id="passwordTextField" layoutX="152.0" layoutY="130.0" />
       <Button layoutX="399.0" layoutY="129.0" mnemonicParsing="false" onAction="#editUserOnClick" prefHeight="26.0" prefWidth="78.0" text="Edit User" />
       <Button layoutX="399.0" layoutY="77.0" mnemonicParsing="false" onAction="#addUserOnClick" prefHeight="26.0" prefWidth="78.0" text="Add User" />
-      <ComboBox layoutX="152.0" layoutY="182.0" onAction="#roleComboBox" prefWidth="150.0" />
+      <ComboBox fx:id="roleComboBox" layoutX="152.0" layoutY="182.0" prefWidth="150.0" />
       <Label layoutX="54.0" layoutY="186.0" text="Role Combo Box:" />
       <Button layoutX="445.0" layoutY="510.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
    </children>

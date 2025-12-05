@@ -18,7 +18,7 @@
       <TextField fx:id="newPasswordTextField" layoutX="204.0" layoutY="174.0" />
       <Label layoutX="77.0" layoutY="141.0" text="Enter New Username:" />
       <Label layoutX="78.0" layoutY="178.0" text="Enter New Password:" />
-      <ComboBox fx:id="newRoleComboBox" layoutX="203.0" layoutY="218.0" prefWidth="150.0" />
+      <ComboBox fx:id="newRoleComboBox" layoutX="203.0" layoutY="218.0" onAction="#RoleComboBoxOnClick" prefWidth="150.0" />
       <Label layoutX="78.0" layoutY="222.0" text="Select Role:" />
       <Button layoutX="489.0" layoutY="328.0" mnemonicParsing="false" onAction="#returnOnClick" text="Return" />
       <Label fx:id="statusLabel" layoutX="60.0" layoutY="319.0" prefHeight="42.0" prefWidth="235.0" text="statusLabel" />

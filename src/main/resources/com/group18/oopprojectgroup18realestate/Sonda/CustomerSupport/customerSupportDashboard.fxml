@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="504.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport.customerSupportDashboardController">
    <children>
       <Label layoutX="169.0" layoutY="28.0" prefHeight="68.0" prefWidth="317.0" text="      Customer Support Executive">
@@ -21,5 +20,7 @@
       <Button layoutX="64.0" layoutY="317.0" mnemonicParsing="false" onAction="#assignTicketsButton" prefHeight="68.0" prefWidth="182.0" text="Assign Tickets" />
       <Button layoutX="64.0" layoutY="408.0" mnemonicParsing="false" onAction="#trackcomplaintStatusButton" prefHeight="68.0" prefWidth="182.0" text="Track Complaint Status" />
       <Button layoutX="395.0" layoutY="408.0" mnemonicParsing="false" onAction="#generatesupportReportsButton" prefHeight="68.0" prefWidth="248.0" text="Generate Support Reports" />
+      <Button layoutX="26.0" layoutY="28.0" mnemonicParsing="false" onAction="#backbutton" text="Back" />
+      <Button layoutX="602.0" layoutY="28.0" mnemonicParsing="false" onAction="#logoutbutton" text="Logout" />
    </children>
 </AnchorPane>

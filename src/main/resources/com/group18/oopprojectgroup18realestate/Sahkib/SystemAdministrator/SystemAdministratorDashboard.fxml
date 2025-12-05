@@ -16,7 +16,7 @@
       <Button layoutX="94.0" layoutY="168.0" mnemonicParsing="false" onAction="#assignAccessRolesOnClick" text="Assign access roles" textAlignment="CENTER" />
       <Button layoutX="94.0" layoutY="220.0" mnemonicParsing="false" onAction="#viewBasicSystemSummaryOnClick" text="View Basic System Summary" />
       <Button layoutX="96.0" layoutY="276.0" mnemonicParsing="false" onAction="#managePropertyListOnClick" text="Manage Property List" />
-      <Button layoutX="387.0" layoutY="121.0" mnemonicParsing="false" onAction="#downloadABackupCopyOfSystemFilesOnClick" text="Download a Backup Copy of System Files" />
+      <Button layoutX="387.0" layoutY="121.0" mnemonicParsing="false" onAction="#downloadABackupCopyOfSystemFilesOnClick" text="Backup of System Files" />
       <Button layoutX="390.0" layoutY="168.0" mnemonicParsing="false" onAction="#resolveTechnicalIssueOnClick" text="Resolve technical issues" />
       <Button layoutX="387.0" layoutY="220.0" mnemonicParsing="false" onAction="#resetUserPasswordsOnClick" text="Reset User Passwords" />
       <Button layoutX="387.0" layoutY="276.0" mnemonicParsing="false" onAction="#generateActivitiesOnClick" text="Generate activity reports." />

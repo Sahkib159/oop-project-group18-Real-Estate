@@ -3,6 +3,7 @@ package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class trackcomplaintStatusController {
@@ -36,6 +37,8 @@ public class trackcomplaintStatusController {
 
     @FXML
     private TableColumn<?, ?> typecolumn;
+    @FXML
+    private TableView tableview;
 
     @FXML
     void clearbutton(ActionEvent event) {

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.rentTrackingController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backbutton" text="back" />
@@ -19,9 +18,9 @@
       </Label>
       <Label layoutX="37.0" layoutY="77.0" text="Month" />
       <ComboBox fx:id="monthCB" layoutX="96.0" layoutY="73.0" prefWidth="150.0" />
-      <ComboBox fx:id="YearCB" layoutX="309.0" layoutY="73.0" prefWidth="150.0" />
-      <Label layoutX="272.0" layoutY="77.0" text="Year" />
-      <Button layoutX="500.0" layoutY="73.0" mnemonicParsing="false" onAction="#LoadOC" text="Load" />
+      <ComboBox fx:id="YearCB" layoutX="295.0" layoutY="73.0" prefWidth="150.0" />
+      <Label layoutX="257.0" layoutY="77.0" text="Year" />
+      <Button layoutX="481.0" layoutY="73.0" mnemonicParsing="false" onAction="#LoadOC" text="Load" />
       <TableView fx:id="rentTrackTableview" layoutX="14.0" layoutY="126.0" prefHeight="200.0" prefWidth="325.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="40.0" text="ID" />
@@ -38,9 +37,8 @@
       <Label fx:id="collectrentL" layoutX="370.0" layoutY="167.0" text="COLLECTED" />
       <Label fx:id="pendingrentL" layoutX="370.0" layoutY="191.0" text="PENDING" />
       <Label fx:id="totalexpectedL" layoutX="370.0" layoutY="218.0" text="TOTAL EXPECTED" />
-      <Label fx:id="generatemessage" layoutX="472.0" layoutY="252.0" prefHeight="18.0" prefWidth="118.0" text="Label" />
-      <Button layoutX="351.0" layoutY="248.0" mnemonicParsing="false" onAction="#generateOC" text="Generate report" />
-      <Button layoutX="358.0" layoutY="294.0" mnemonicParsing="false" onAction="#exportOC" text="Export" />
-      <Button layoutX="446.0" layoutY="294.0" mnemonicParsing="false" onAction="#refreshOC" text="Refresh" />
+      <Label fx:id="messageL" layoutX="47.0" layoutY="342.0" prefHeight="18.0" prefWidth="400.0" text="Message:" />
+      <Button layoutX="345.0" layoutY="257.0" mnemonicParsing="false" onAction="#generateOC" text="Generate report" />
+      <Button layoutX="356.0" layoutY="294.0" mnemonicParsing="false" onAction="#refreshOC" text="Refresh" />
    </children>
 </AnchorPane>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.FinanceSalaryTableController">
    <children>
       <Label layoutX="240.0" layoutY="37.0" text="Salary Table">
@@ -22,7 +21,7 @@
         </columns>
       </TableView>
       <Button layoutX="389.0" layoutY="109.0" mnemonicParsing="false" onAction="#calculateTotalOnClick" text="Calculate Total" />
-      <Label layoutX="394.0" layoutY="151.0" prefHeight="18.0" prefWidth="41.0" text="Total: 0" />
+      <Label fx:id="totalLabel" layoutX="394.0" layoutY="151.0" prefHeight="18.0" prefWidth="41.0" text="Total: 0" />
       <Button layoutX="504.0" layoutY="332.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
    </children>
 </AnchorPane>

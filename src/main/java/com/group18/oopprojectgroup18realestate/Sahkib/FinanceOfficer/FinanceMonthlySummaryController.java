@@ -1,41 +1,150 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
+import com.group18.oopprojectgroup18realestate.Payment;
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.VendorPayment;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
-public class FinanceMonthlySummaryController
-{
-    @javafx.fxml.FXML
+public class FinanceMonthlySummaryController {
+
+    @FXML
+    private ComboBox<String> monthComboBox;
+
+    @FXML
+    private ComboBox<String> yearComboBox;
+
+    @FXML
     private TextArea summaryOutputTextArea;
 
-    @javafx.fxml.FXML
+
+    @FXML
     public void initialize() {
+
+        // Month list
+        monthComboBox.getItems().addAll(
+                "01","02","03","04","05","06",
+                "07","08","09","10","11","12"
+        );
+
+        // Year list
+        yearComboBox.getItems().addAll("2024", "2025", "2026");
     }
 
-    @javafx.fxml.FXML
-    public void yearComboBox(ActionEvent actionEvent) {
+
+    @FXML
+    public void loadSummaryOnClick(ActionEvent event) {
+
+        String month = monthComboBox.getValue();
+        String year  = yearComboBox.getValue();
+
+        if (month == null || year == null) {
+            showAlert("Error", "Please select both Month and Year.");
+            return;
+        }
+
+        List<Payment> paymentList = FinanceService.loadPayments();
+        List<VendorPayment> vendorList = FinanceService.loadVendorPayments();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("========== Monthly Summary ==========\n");
+        sb.append("Month: ").append(month).append("/").append(year).append("\n\n");
+
+        double totalClientRevenue = 0;
+        double totalVendorExpense = 0;
+
+        int clientCount = 0;
+        int vendorCount = 0;
+
+        sb.append("---- Client Payments ----\n");
+
+        for (Payment p : paymentList) {
+
+            LocalDate date = LocalDate.parse(p.getDate());
+
+            if (date.getMonthValue() == Integer.parseInt(month)
+                    && date.getYear() == Integer.parseInt(year)) {
+
+                sb.append("Client ID: ").append(p.getClientId())
+                        .append(" | Amount: ").append(p.getAmount())
+                        .append(" | Date: ").append(p.getDate())
+                        .append("\n");
+
+                totalClientRevenue += p.getAmount();
+                clientCount++;
+            }
+        }
+
+        if (clientCount == 0) {
+            sb.append("No client payments found.\n");
+        }
+
+        sb.append("\n---- Vendor Payments ----\n");
+
+        for (VendorPayment vp : vendorList) {
+
+            LocalDate date = LocalDate.parse(vp.getDate());
+
+            if (date.getMonthValue() == Integer.parseInt(month)
+                    && date.getYear() == Integer.parseInt(year)) {
+
+                sb.append("Vendor ID: ").append(vp.getVendorId())
+                        .append(" | Amount: -").append(vp.getAmount())
+                        .append(" | Date: ").append(vp.getDate())
+                        .append("\n");
+
+                totalVendorExpense += vp.getAmount();
+                vendorCount++;
+            }
+        }
+
+        if (vendorCount == 0) {
+            sb.append("No vendor expenses found.\n");
+        }
+
+        sb.append("\n============== Summary ==============\n");
+        sb.append("Total Client Payments : ").append(clientCount)
+                .append(" (").append(totalClientRevenue).append(" BDT)\n");
+        sb.append("Total Vendor Expenses : ").append(vendorCount)
+                .append(" (-").append(totalVendorExpense).append(" BDT)\n");
+
+        double netBalance = totalClientRevenue - totalVendorExpense;
+
+        sb.append("-------------------------------------\n");
+        sb.append("Net Balance : ").append(netBalance).append(" BDT\n");
+        sb.append("=====================================\n");
+
+        summaryOutputTextArea.setText(sb.toString());
     }
 
-    @javafx.fxml.FXML
-    public void loadSummaryOnClick(ActionEvent actionEvent) {
-    }
 
-    @javafx.fxml.FXML
-    public void monthComboBox(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+    @FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    //alert
+    private void showAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
