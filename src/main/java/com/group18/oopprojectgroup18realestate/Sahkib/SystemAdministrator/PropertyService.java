@@ -8,12 +8,15 @@ import java.util.List;
 
 public class PropertyService {
 
+    //Path
     private static final String FILE_PATH = "properties.bin";
 
+   //returns ALL properties which are stored in "Properties.bin"
     public static List<Property> loadProperties() {
         File f = new File(FILE_PATH);
         if (!f.exists()) return new ArrayList<>();
 
+        //Read
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
             return (List<Property>) in.readObject();
         } catch (Exception e) {
@@ -21,7 +24,9 @@ public class PropertyService {
         }
     }
 
+    //Save new Properties in "Properties.bin"
     public static void saveProperties(List<Property> properties) {
+        //Write
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
             out.writeObject(properties);
         } catch (Exception e) {

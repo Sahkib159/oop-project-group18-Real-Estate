@@ -1,7 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
 import com.group18.oopprojectgroup18realestate.Property;
-import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.PropertyService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,18 +14,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminManagePropertiesController {
 
     @FXML
-    private TextField propertyLocationTextField;
-    @FXML
-    private TextField propertyPriceTextField;
+    private TextField propertyIdTextField;
     @FXML
     private TextField propertyTitleTextField;
     @FXML
-    private TextField propertyIdTextField;
+    private TextField propertyLocationTextField;
+    @FXML
+    private TextField propertyPriceTextField;
+
+    @FXML
+    private ComboBox<String> statusComboBox;
 
     @FXML
     private TableView<Property> tableView;
@@ -39,147 +42,101 @@ public class AdminManagePropertiesController {
     @FXML
     private TableColumn<Property, String> priceCol;
 
-    @FXML
-    private ComboBox<String> statusComboBox;
-
-    // Main property list (loaded from file)
     private ObservableList<Property> propertyList;
 
     @FXML
     public void initialize() {
 
-        // TableView column mapping
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        // ComboBox
         statusComboBox.getItems().addAll("Available", "Sold", "Rented", "Pending");
 
-        // Load from file
         List<Property> loaded = PropertyService.loadProperties();
         propertyList = FXCollections.observableArrayList(loaded);
-
-
-        // SAMPLE DATA
-        /*
-        propertyList.add(new Property("P101", "Luxury Apartment", "Gulshan", 55000, "Available"));
-        propertyList.add(new Property("P102", "Office Space", "Banani", 80000, "Rented"));
-        PropertyService.saveProperties(new ArrayList<>(propertyList));
-        */
 
         tableView.setItems(propertyList);
     }
 
-
     @FXML
-    public void addPropertyOnClick(ActionEvent actionEvent) {
+    public void addPropertyOnClick(ActionEvent event) {
+
         String id = propertyIdTextField.getText();
         String title = propertyTitleTextField.getText();
         String location = propertyLocationTextField.getText();
         String priceStr = propertyPriceTextField.getText();
         String status = statusComboBox.getValue();
 
-        if (id.isEmpty() || title.isEmpty() || location.isEmpty() || priceStr.isEmpty() || status == null) {
-            showAlert("Error", "Please fill all fields");
+        if (id.isEmpty() || title.isEmpty() || location.isEmpty() ||
+                priceStr.isEmpty() || status == null) {
+            showAlert("Error", "Please fill all fields.");
             return;
         }
 
         double price;
         try { price = Double.parseDouble(priceStr); }
         catch (Exception e) {
-            showAlert("Error", "Price must be a number!");
+            showAlert("Error", "Price must be a number.");
             return;
         }
 
-        // Prevent duplicate ID
         for (Property p : propertyList) {
             if (p.getId().equalsIgnoreCase(id)) {
-                showAlert("Error", "Property ID already exists!");
+                showAlert("Error", "Property ID already exists.");
                 return;
             }
         }
 
-        Property newProperty = new Property(id, title, location, price, status);
+        Property newP = new Property(id, title, location, price, status);
+        propertyList.add(newP);
 
-        propertyList.add(newProperty);
-        PropertyService.saveProperties(propertyList);
+        PropertyService.saveProperties(new ArrayList<>(propertyList));
 
-        tableView.refresh();
         clearFields();
-
-        showAlert("Success", "Property Added!");
-//I added it later
-        LogService.addLog("Property " + id + " added.");
-
+        tableView.refresh();
+        showAlert("Success", "Property added successfully.");
     }
 
+    @FXML
+    public void editPropertyOnClick(ActionEvent event) {
+
+        Property selected = tableView.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("Error", "Select a property to edit.");
+            return;
+        }
+
+        selected.setId(propertyIdTextField.getText());
+        selected.setTitle(propertyTitleTextField.getText());
+        selected.setLocation(propertyLocationTextField.getText());
+        selected.setPrice(Double.parseDouble(propertyPriceTextField.getText()));
+        selected.setStatus(statusComboBox.getValue());
+
+        PropertyService.saveProperties(new ArrayList<>(propertyList));
+
+        clearFields();
+        tableView.refresh();
+        showAlert("Success", "Property updated successfully.");
+    }
 
     @FXML
-    public void editPropertyOnClick(ActionEvent actionEvent) {
+    public void deletePropertyOnClick(ActionEvent event) {
+
         Property selected = tableView.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
-            showAlert("Error", "Select a property to edit!");
-            return;
-        }
-
-        String id = propertyIdTextField.getText();
-        String title = propertyTitleTextField.getText();
-        String location = propertyLocationTextField.getText();
-        String priceStr = propertyPriceTextField.getText();
-        String status = statusComboBox.getValue();
-
-        if (id.isEmpty() || title.isEmpty() || location.isEmpty() || priceStr.isEmpty() || status == null) {
-            showAlert("Error", "Please fill all fields");
-            return;
-        }
-
-        double price;
-        try { price = Double.parseDouble(priceStr); }
-        catch (Exception e) {
-            showAlert("Error", "Price must be a number!");
-            return;
-        }
-
-        // Update property
-        selected.setId(id);
-        selected.setTitle(title);
-        selected.setLocation(location);
-        selected.setPrice(price);
-        selected.setStatus(status);
-
-        PropertyService.saveProperties(propertyList);
-        tableView.refresh();
-        clearFields();
-
-        showAlert("Success", "Property Updated!");
-//I added it later
-        LogService.addLog("Property " + id + " updated.");
-
-    }
-
-
-    @FXML
-    public void deletePropertyOnClick(ActionEvent actionEvent) {
-        Property selected = tableView.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            showAlert("Error", "Select a property to delete!");
+            showAlert("Error", "Select a property to delete.");
             return;
         }
 
         propertyList.remove(selected);
-        PropertyService.saveProperties(propertyList);
+        PropertyService.saveProperties(new ArrayList<>(propertyList));
 
         tableView.refresh();
-        showAlert("Success", "Property Deleted!");
-//I added it later
-        LogService.addLog("Property " + selected.getId() + " deleted.");
-
+        showAlert("Success", "Property deleted successfully.");
     }
-
 
     private void clearFields() {
         propertyIdTextField.clear();
@@ -201,7 +158,7 @@ public class AdminManagePropertiesController {
     public void backOnClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

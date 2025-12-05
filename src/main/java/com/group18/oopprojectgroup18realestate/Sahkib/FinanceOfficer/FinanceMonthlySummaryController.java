@@ -1,6 +1,7 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
 import com.group18.oopprojectgroup18realestate.Payment;
+import com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer.VendorPayment;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,18 +55,19 @@ public class FinanceMonthlySummaryController {
         }
 
         List<Payment> paymentList = FinanceService.loadPayments();
-
-        if (paymentList.isEmpty()) {
-            summaryOutputTextArea.setText("No payments recorded.");
-            return;
-        }
-
-        double totalAmount = 0;
-        int count = 0;
+        List<VendorPayment> vendorList = FinanceService.loadVendorPayments();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("==== Monthly Summary ====\n");
+        sb.append("========== Monthly Summary ==========\n");
         sb.append("Month: ").append(month).append("/").append(year).append("\n\n");
+
+        double totalClientRevenue = 0;
+        double totalVendorExpense = 0;
+
+        int clientCount = 0;
+        int vendorCount = 0;
+
+        sb.append("---- Client Payments ----\n");
 
         for (Payment p : paymentList) {
 
@@ -79,20 +81,49 @@ public class FinanceMonthlySummaryController {
                         .append(" | Date: ").append(p.getDate())
                         .append("\n");
 
-                totalAmount += p.getAmount();
-                count++;
+                totalClientRevenue += p.getAmount();
+                clientCount++;
             }
         }
 
-        if (count == 0) {
-            summaryOutputTextArea.setText("No payments found for " + month + "/" + year);
-            return;
+        if (clientCount == 0) {
+            sb.append("No client payments found.\n");
         }
 
-        sb.append("\n-------------------------------\n");
-        sb.append("Total Payments: ").append(count).append("\n");
-        sb.append("Total Revenue : ").append(totalAmount).append(" BDT\n");
-        sb.append("-------------------------------");
+        sb.append("\n---- Vendor Payments ----\n");
+
+        for (VendorPayment vp : vendorList) {
+
+            LocalDate date = LocalDate.parse(vp.getDate());
+
+            if (date.getMonthValue() == Integer.parseInt(month)
+                    && date.getYear() == Integer.parseInt(year)) {
+
+                sb.append("Vendor ID: ").append(vp.getVendorId())
+                        .append(" | Amount: -").append(vp.getAmount())
+                        .append(" | Date: ").append(vp.getDate())
+                        .append("\n");
+
+                totalVendorExpense += vp.getAmount();
+                vendorCount++;
+            }
+        }
+
+        if (vendorCount == 0) {
+            sb.append("No vendor expenses found.\n");
+        }
+
+        sb.append("\n============== Summary ==============\n");
+        sb.append("Total Client Payments : ").append(clientCount)
+                .append(" (").append(totalClientRevenue).append(" BDT)\n");
+        sb.append("Total Vendor Expenses : ").append(vendorCount)
+                .append(" (-").append(totalVendorExpense).append(" BDT)\n");
+
+        double netBalance = totalClientRevenue - totalVendorExpense;
+
+        sb.append("-------------------------------------\n");
+        sb.append("Net Balance : ").append(netBalance).append(" BDT\n");
+        sb.append("=====================================\n");
 
         summaryOutputTextArea.setText(sb.toString());
     }
@@ -107,6 +138,7 @@ public class FinanceMonthlySummaryController {
         stage.show();
     }
 
+
     //alert
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -115,5 +147,4 @@ public class FinanceMonthlySummaryController {
         alert.setContentText(msg);
         alert.showAndWait();
     }
-
 }

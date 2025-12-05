@@ -27,7 +27,14 @@ public class AdminSystemSummaryController {
 
     @FXML
     public void initialize() {
-        loadSummary();
+        showPlaceholders();
+    }
+
+    private void showPlaceholders() {
+        totalUsersLabel.setText("Total Users");
+        totalPaymentsLabel.setText("Total Payments");
+        totalPropertiesLabel.setText("Total Properties");
+        totalLogsLabel.setText("Total Logs");
     }
 
     @FXML
@@ -41,7 +48,7 @@ public class AdminSystemSummaryController {
         int totalUsers = UserService.loadUsers().size();
         int totalPayments = PaymentService.loadPayments().size();
         int totalProperties = PropertyService.loadProperties().size();
-        int totalLogs = 0;
+        int totalLogs = 0; // If you later add logs, update here
 
         totalUsersLabel.setText(String.valueOf(totalUsers));
         totalPaymentsLabel.setText(String.valueOf(totalPayments));
