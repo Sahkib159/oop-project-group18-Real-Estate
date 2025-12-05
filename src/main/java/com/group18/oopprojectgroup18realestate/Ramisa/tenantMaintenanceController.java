@@ -1,34 +1,3 @@
-<<<<<<< HEAD
-//package com.group18.oopprojectgroup18realestate.Ramisa;
-//
-//public class tenantMaintenanceController
-//{
-//    @javafx.fxml.FXML
-//    private TextArea issueTA;
-//    @javafx.fxml.FXML
-//    private Label outputmessgaelabel;
-//    @javafx.fxml.FXML
-//    private TableView maintenanceTableview;
-//    @javafx.fxml.FXML
-//    private TableColumn MIDCol;
-//    @javafx.fxml.FXML
-//    private TableColumn statusCol;
-//    @javafx.fxml.FXML
-//    private TableColumn IssuesCol;
-//    @javafx.fxml.FXML
-//    private Label selectedIssueIndetailsLabel;
-//    @javafx.fxml.FXML
-//    private TextArea managersNoteTA;
-//
-//    @javafx.fxml.FXML
-//    public void initialize() {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void submitOnClickButton(ActionEvent actionEvent) {
-//    }
-//}
-=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -39,7 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class tenantMaintenanceController
 {
@@ -61,6 +33,8 @@ public class tenantMaintenanceController
     private TextArea managersNoteTA;
     @javafx.fxml.FXML
     private TextField propertyidTF;
+
+    private ArrayList<MaintenanceRequest> maintenanceList = new ArrayList<>();
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -85,6 +59,21 @@ public class tenantMaintenanceController
             outputmessgaelabel.setText("Please describe the issue!");
             return;
         }
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("maintenance.bin"))) {
+            ArrayList<MaintenanceRequest> allRequests = new ArrayList<>();
+            allRequests.addAll(maintenanceTableview.getItems());
+            out.writeObject(allRequests);
+            outputmessgaelabel.setText("Request submitted successfully!");
+
+            issueTA.clear();
+            propertyidTF.clear();
+
+        } catch (IOException e) {
+            outputmessgaelabel.setText("Failed to submit request!");
+            e.printStackTrace();
+        }
+
     }
 
     @javafx.fxml.FXML
@@ -95,5 +84,12 @@ public class tenantMaintenanceController
         stage.setScene(scene);
         stage.show();
     }
+
+    @javafx.fxml.FXML
+    public void showbuttonOC(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void loadOC(ActionEvent actionEvent) {
+    }
 }
->>>>>>> origin/main

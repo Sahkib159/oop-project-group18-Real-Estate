@@ -118,13 +118,17 @@ public class propertyManagementController
     private TableColumn<propertymanagement,Integer> contactCOL;
 
 
-    //Property Management Controller,propertymanagement model class(Manager can: Add, Update, Remove, Search properties)
+    //Property Management Controller,propertymanagement model class
+    // (Manager can: Add, Update, Remove, Search properties)
 
 
 
 
     //arraylist
     private ArrayList<propertymanagement> propertyList =new ArrayList<>();
+    @javafx.fxml.FXML
+    private TextField facilitesTF;
+
     @javafx.fxml.FXML
     public void initialize() {
 
@@ -180,7 +184,7 @@ public class propertyManagementController
         propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
-            messageL.setText("Please select a property from table!");
+            messageL.setText("Please select a property");
             return;
         }
 
@@ -190,10 +194,10 @@ public class propertyManagementController
         String type = proTypeTF.getValue();
         String status = statusTF.getValue();
         String contact = contactTF.getText().strip();
-        String facilities = "WiFi, Parking";
+        String facilities = facilitesTF.getText().strip();
 
         // Validation1
-        if ( propertyID.isEmpty() || location.isEmpty() || rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
+        if ( propertyID.isEmpty() ||facilities.isEmpty()|| location.isEmpty() || rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
             messageL.setText("please fill all information");
             return;
         }
@@ -250,7 +254,7 @@ public class propertyManagementController
         propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
-            messageL.setText("Please select a property first!");
+            messageL.setText("Please select a property");
             return;
         }
 
@@ -310,10 +314,10 @@ public class propertyManagementController
         String type = proTypeTF.getValue();
         String status = statusTF.getValue();
         String contact = contactTF.getText().strip();
-        String facilities = "WiFi, Parking";
+        String facilities = facilitesTF.getText().strip();;
 
         // Validation
-        if ( propertyID.isEmpty() || location.isEmpty() || rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
+        if ( propertyID.isEmpty() || location.isEmpty() || facilities.isEmpty()||rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
             messageL.setText("please fill all information");
             return;
         }

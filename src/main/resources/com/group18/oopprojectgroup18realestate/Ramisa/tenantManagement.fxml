@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="462.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantManagementController">
    <children>
@@ -16,8 +16,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="21.0" layoutY="80.0" mnemonicParsing="false" onAction="#searchtenantbutton" text="search tenant" />
-      <Button layoutX="124.0" layoutY="80.0" mnemonicParsing="false" onAction="#showallbutton" text="Show all" />
+      <Button layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#showallbutton" text="Show all" />
       <TableView fx:id="tenantmanagementtV" layoutX="14.0" layoutY="119.0" prefHeight="200.0" prefWidth="382.0">
         <columns>
           <TableColumn fx:id="tenantidCol" prefWidth="52.79998779296875" text="ID" />
@@ -28,7 +27,6 @@
             <TableColumn fx:id="leaseendCol" prefWidth="78.4000244140625" text="lease end" />
         </columns>
       </TableView>
-      <Button layoutX="21.0" layoutY="327.0" mnemonicParsing="false" onAction="#viewfulldetailsOC" text="view full details " />
       <Button layoutX="146.0" layoutY="327.0" mnemonicParsing="false" onAction="#refreshOC" text="refresh" />
       <Label layoutX="409.0" layoutY="84.0" text="Tenant Application">
          <font>
@@ -47,5 +45,11 @@
       </TableView>
       <Button layoutX="432.0" layoutY="293.0" mnemonicParsing="false" onAction="#approvebuttonOC" text="Approve" />
       <Button layoutX="539.0" layoutY="293.0" mnemonicParsing="false" onAction="#declinedOC" text="Declined" />
+      <Button layoutX="20.0" layoutY="327.0" mnemonicParsing="false" onAction="#LoadtenantOC" text="Load" />
+      <Button layoutX="646.0" layoutY="293.0" mnemonicParsing="false" onAction="#loadAppOC" text="Load" />
+      <Label fx:id="messageL" layoutX="345.0" layoutY="389.0" prefHeight="18.0" prefWidth="348.0" text="message" />
+      <Label layoutX="25.0" layoutY="93.0" text="Search tenant" />
+      <TextField fx:id="searchTF" layoutX="105.0" layoutY="89.0" />
+      <Button layoutX="265.0" layoutY="89.0" mnemonicParsing="false" onAction="#searchOC" text="search" />
    </children>
 </AnchorPane>

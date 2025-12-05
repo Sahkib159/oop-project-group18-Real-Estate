@@ -18,4 +18,9 @@ module com.group18.oopprojectgroup18realestate {
     exports com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
     opens com.group18.oopprojectgroup18realestate.Sonda.MarketingOfficer to javafx.fxml;
     exports com.group18.oopprojectgroup18realestate.Sonda.MarketingOfficer;
+
+    opens com.group18.oopprojectgroup18realestate.Ramisa to javafx.fxml;
+    exports com.group18.oopprojectgroup18realestate.Ramisa;
+
+
 }

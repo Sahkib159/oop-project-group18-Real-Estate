@@ -45,10 +45,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class handleMaintenanceReqController
 {
@@ -79,8 +81,20 @@ public class handleMaintenanceReqController
     @javafx.fxml.FXML
     private Label reqidL;
 
+    private ArrayList<MaintenanceRequest> maintenanceList = new ArrayList<>();
+
     @javafx.fxml.FXML
     public void initialize() {
+        updateStatusCB.getItems().addAll("Open", "In Progress", "Resolved");
+        filtercombobox.getItems().addAll("All", "Open", "In Progress", "Resolved");
+
+        reqidcol.setCellValueFactory(new PropertyValueFactory<>("requestID"));
+        tenantidMMcol.setCellValueFactory(new PropertyValueFactory<>("tenantID"));
+        propertycol.setCellValueFactory(new PropertyValueFactory<>("propertyID"));
+        issuecol.setCellValueFactory(new PropertyValueFactory<>("issue"));
+        datecol.setCellValueFactory(new PropertyValueFactory<>("submittedDate"));
+
+
     }
 
     @javafx.fxml.FXML

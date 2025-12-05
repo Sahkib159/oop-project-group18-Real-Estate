@@ -1,5 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
+import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.LogEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.CollationElementIterator;
 import java.time.LocalDate;
 
 public class AdminActivityReportController
@@ -24,7 +24,7 @@ public class AdminActivityReportController
     @javafx.fxml.FXML
     private DatePicker startDatePicker;
 
-    // In-memory logs (sample data for now)
+
     private final ObservableList<LogEntry> logList = FXCollections.observableArrayList();
 
     @javafx.fxml.FXML

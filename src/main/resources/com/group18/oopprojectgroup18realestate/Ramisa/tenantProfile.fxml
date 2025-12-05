@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantProfileController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="back" />
@@ -26,5 +25,6 @@
       <TextField fx:id="emailTF" layoutX="91.0" layoutY="145.0" prefHeight="26.0" prefWidth="215.0" />
       <TextField fx:id="PhoneTF" layoutX="92.0" layoutY="178.0" prefHeight="26.0" prefWidth="215.0" />
       <TextField fx:id="LocationTF" layoutX="93.0" layoutY="209.0" prefHeight="26.0" prefWidth="215.0" />
+      <Button layoutX="53.0" layoutY="256.0" mnemonicParsing="false" onAction="#loadOC" text="load" />
    </children>
 </AnchorPane>

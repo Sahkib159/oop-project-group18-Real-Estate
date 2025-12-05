@@ -8,13 +8,14 @@ import java.util.List;
 
 public class IssueService {
 
+    //path
     private static final String FILE_PATH = "issues.bin";
 
     public static List<Issue> loadIssues() {
         File file = new File(FILE_PATH);
-
         if (!file.exists()) return new ArrayList<>();
 
+       //Read
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
             return (List<Issue>) in.readObject();
         } catch (Exception e) {
@@ -23,6 +24,7 @@ public class IssueService {
     }
 
     public static void saveIssues(List<Issue> issues) {
+        //Write
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
             out.writeObject(issues);
         } catch (Exception e) {

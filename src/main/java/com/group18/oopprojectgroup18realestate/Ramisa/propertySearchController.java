@@ -54,10 +54,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -106,6 +103,55 @@ public class propertySearchController
 
     @javafx.fxml.FXML
     public void bookPropertyOnClickButton(ActionEvent actionEvent) {
+        propertymanagement selected = searchPropertyTableview.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            messageL.setText("Please select a property first!");
+            return;
+        }
+
+        ArrayList<BookMark> bookmarks = new ArrayList<>();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("bookmarks.bin"))) {
+            bookmarks = (ArrayList<BookMark>) in.readObject();
+        } catch (FileNotFoundException e) {
+            // First time - no file yet
+            bookmarks = new ArrayList<>();
+        } catch (Exception e) {
+            messageL.setText("Error");
+            bookmarks = new ArrayList<>();
+        }
+
+        // Check if already bookmarked
+        for (BookMark b : bookmarks) {
+            if (b.getPropertyID() == selected.getPropertyID()) {
+                messageL.setText("This property is already bookmarked!");
+                return;
+            }
+        }
+
+        // Create new BookMark object
+        int newBookmarkID = bookmarks.size() + 1;
+        BookMark newBookmark = new BookMark(
+                1,
+                newBookmarkID,
+                selected.getPropertyID(),
+                java.time.LocalDate.now(),
+                selected.getLocation(),
+                selected.getRentPrice(),
+                selected.getPropertyType()
+        );
+
+        bookmarks.add(newBookmark);
+
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("bookmarks.bin"))) {
+            out.writeObject(bookmarks);
+            messageL.setText(" bookmarked successfully!");
+        } catch (IOException e) {
+            messageL.setText("Failed ");
+            e.printStackTrace();
+        }
     }
 
     @javafx.fxml.FXML
@@ -151,7 +197,7 @@ public class propertySearchController
 
             boolean isAvailable = property.getStatus().equalsIgnoreCase("Available");
 
-            if (matchLocation || matchType || matchBudget || isAvailable) {
+            if (matchLocation && matchType && matchBudget && isAvailable) {
                 searchPropertyTableview.getItems().add(property);
 
                 count++;
