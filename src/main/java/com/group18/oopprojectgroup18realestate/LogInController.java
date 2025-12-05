@@ -30,7 +30,7 @@ public class LogInController {
                 "Finance Officer",
                 "Marketing Officer",
                 "Customer Support Executive",
-                "Property Tenant",
+                "Property Renter",
                 "Property Manager",
                 "Property buyer",
                 "Sales Agent"
@@ -86,22 +86,22 @@ public class LogInController {
                     "Sahkib/FinanceOfficer/FinanceOfficerDashboard";
 
             case "Marketing Officer" ->
-                    "Sahkib/MarketingOfficer/MarketingOfficerDashboard";
+                    "Sonda/MarketingOfficer/MarketingOfficerdashboard";
 
             case "Customer Support Executive" ->
-                    "Sahkib/CustomerSupport/CustomerSupportDashboard";
+                    "Sonda/CustomerSupport/customerSupportDashboard";
 
             case "Property Renter" ->
-                    "Ramisa/tenantDashBoardController";
+                    "Ramisa/tenantDashBoard";
 
             case "Property Manager" ->
                     "Ramisa/ProjectManagerDashboard";
 
             case "Property buyer" ->
-                    "Sahkib/PropertyBuyer/PropertyBuyerDashboard";
+                    "Adiba/PropertyBuyer/PropertyBuyerDashboard";
 
             case "Sales Agent" ->
-                    "Sahkib/SalesAgent/SalesAgentDashboard";
+                    "Adiba/SalesAgent/SalesAgentDashboard";
 
             default -> "";
         };

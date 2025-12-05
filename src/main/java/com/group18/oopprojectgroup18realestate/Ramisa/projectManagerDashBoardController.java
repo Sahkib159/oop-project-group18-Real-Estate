@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //import javafx.event.ActionEvent;
@@ -33,7 +33,7 @@
 //    public void aboutrentbutton(ActionEvent actionEvent) {
 //    }
 //}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -97,4 +97,4 @@ public class projectManagerDashBoardController
 
     }
 }
->>>>>>> origin/main
+//>>>>>>> origin/main

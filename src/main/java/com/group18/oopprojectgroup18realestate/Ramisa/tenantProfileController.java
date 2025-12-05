@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //public class tenantProfileController
@@ -26,7 +26,7 @@
 //    public void backButtonOnClick(ActionEvent actionEvent) {
 //    }
 //}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -81,4 +81,4 @@ public class tenantProfileController
         stage.show();
     }
 }
->>>>>>> origin/main
+//>>>>>>> origin/main

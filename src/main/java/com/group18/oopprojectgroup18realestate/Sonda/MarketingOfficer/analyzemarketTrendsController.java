@@ -10,7 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.imageio.IIOException;
+import java.io.IOException;
 
 public class analyzemarketTrendsController {
 
@@ -44,18 +44,16 @@ public class analyzemarketTrendsController {
     }
 
     @FXML
-    public void backbutton(ActionEvent event) throws IIOException {
+    public void backbutton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MarketingOfficerdashboard.fxml"));
         Scene nextScene = new Scene(fxmlLoader.load());
-        Stage nextStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage nextStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         nextStage.setScene(nextScene);
         nextStage.show();
-
     }
 
     @FXML
     void exportButton(ActionEvent event) {
 
     }
-
 }

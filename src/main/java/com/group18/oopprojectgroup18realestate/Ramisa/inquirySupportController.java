@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //public class inquirySupportController
@@ -20,7 +20,7 @@
 //    public void backbuttonOC(ActionEvent actionEvent) {
 //    }
 //}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -82,4 +82,4 @@ public class inquirySupportController
         stage.show();
     }
 }
->>>>>>> origin/main
+//>>>>>>> origin/main

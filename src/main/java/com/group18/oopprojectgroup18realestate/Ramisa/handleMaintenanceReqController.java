@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //import javafx.scene.control.*;
@@ -37,7 +37,7 @@
 //    @javafx.fxml.FXML
 //    public void initialize() {
 //    }}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -110,4 +110,4 @@ public class handleMaintenanceReqController
     public void applyCBonclickbutton(ActionEvent actionEvent) {
     }
 }
->>>>>>> origin/main
+//>>>>>>> origin/main

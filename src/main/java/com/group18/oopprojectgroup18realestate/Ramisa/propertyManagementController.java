@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //public class propertyManagementController
@@ -70,7 +70,7 @@
 //    public void addbuttonOC(ActionEvent actionEvent) {
 //    }
 //}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -388,4 +388,4 @@ public class propertyManagementController
 
 
 }
->>>>>>> origin/main
+//>>>>>>> origin/main

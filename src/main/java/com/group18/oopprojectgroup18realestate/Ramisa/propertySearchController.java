@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package com.group18.oopprojectgroup18realestate.Ramisa;
 //
 //import javafx.event.ActionEvent;
@@ -43,7 +43,7 @@
 //    public void backButtonOnClick(ActionEvent actionEvent) {
 //    }
 //}
-=======
+//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -248,4 +248,4 @@ public class propertySearchController
     }
 
 }
->>>>>>> origin/main
+//>>>>>>> origin/main
