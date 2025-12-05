@@ -51,4 +51,8 @@ public class tenantProfileController
         stage.setScene(scene);
         stage.show();
     }
+
+    @javafx.fxml.FXML
+    public void loadOC(ActionEvent actionEvent) {
+    }
 }

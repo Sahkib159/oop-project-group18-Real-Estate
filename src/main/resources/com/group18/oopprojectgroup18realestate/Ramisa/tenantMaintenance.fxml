@@ -21,7 +21,7 @@
       <Label layoutX="16.0" layoutY="105.0" text="describe issue:" />
       <TextArea fx:id="issueTA" layoutX="19.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" />
       <Button layoutX="19.0" layoutY="340.0" mnemonicParsing="false" onAction="#submitOnClickButton" text="submit" />
-      <Label fx:id="outputmessgaelabel" layoutX="79.0" layoutY="343.0" prefHeight="18.0" prefWidth="157.0" />
+      <Label fx:id="outputmessgaelabel" layoutX="114.0" layoutY="375.0" prefHeight="18.0" prefWidth="157.0" />
       <Label layoutX="265.0" layoutY="85.0" text="My request" />
       <TableView fx:id="maintenanceTableview" layoutX="279.0" layoutY="129.0" prefHeight="200.0" prefWidth="228.0">
         <columns>
@@ -37,5 +37,7 @@
       <TextArea fx:id="managersNoteTA" layoutX="19.0" layoutY="401.0" prefHeight="108.0" prefWidth="200.0" />
       <Label layoutX="20.0" layoutY="85.0" text="property Id:" />
       <TextField fx:id="propertyidTF" layoutX="93.0" layoutY="81.0" />
+      <Button layoutX="93.0" layoutY="339.0" mnemonicParsing="false" onAction="#loadOC" text="Load" />
+      <Button layoutX="167.0" layoutY="339.0" mnemonicParsing="false" onAction="#showbuttonOC" text="show" />
    </children>
 </AnchorPane>
