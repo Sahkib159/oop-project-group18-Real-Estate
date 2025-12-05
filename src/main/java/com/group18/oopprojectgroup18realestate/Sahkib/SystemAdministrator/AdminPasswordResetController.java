@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminPasswordResetController {
@@ -36,11 +37,9 @@ public class AdminPasswordResetController {
     @FXML
     public void initialize() {
 
-        // Bind columns
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-        // Load users from users.bin
         List<User1> loadedUsers = UserService.loadUsers();
         userList = FXCollections.observableArrayList(loadedUsers);
 
@@ -66,16 +65,19 @@ public class AdminPasswordResetController {
         // Update password
         selectedUser.setPassword(newPassword);
 
-        // Save back to users.bin
-        UserService.saveUsers(userList);
+        // Save fix → convert ObservableList → ArrayList
+        UserService.saveUsers(new ArrayList<>(userList));
 
         tableView.refresh();
         newPasswordTextField.clear();
 
         showAlert("Success", "Password updated for user: " + selectedUser.getUsername());
-//I added it later
-        LogService.addLog("Password reset for user: " + selectedUser.getUsername());
 
+        try {
+            LogService.addLog("Password reset for user: " + selectedUser.getUsername());
+        } catch (Exception e) {
+            System.out.println("LogService error: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -83,8 +85,7 @@ public class AdminPasswordResetController {
         FXMLLoader fxmlLoader =
                 new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) event.getSource())
-                .getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

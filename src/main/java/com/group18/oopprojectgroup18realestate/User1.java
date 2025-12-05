@@ -38,6 +38,11 @@ public class User1 implements Serializable {
         this.role = role;
     }
 
+
+    public void resetPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
     @Override
     public String toString() {
         return "User1{" +

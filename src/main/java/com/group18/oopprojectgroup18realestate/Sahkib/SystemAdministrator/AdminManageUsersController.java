@@ -195,7 +195,7 @@ public class AdminManageUsersController {
     }
 
 
-    // Helpers
+
     private void clearFields() {
         usernameTextField.clear();
         passwordTextField.clear();
@@ -211,7 +211,7 @@ public class AdminManageUsersController {
     }
 
 
-    // BACK BUTTON
+
     @FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));

@@ -1,35 +1,49 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
-public class SalaryRecord {
-    private String employeeName;
-    private double salary;
+import java.io.Serializable;
 
-    public SalaryRecord(String employeeName, double salary) {
-        this.employeeName = employeeName;
-        this.salary = salary;
+public class SalaryRecord implements Serializable {
+
+    private String employeeId;
+    private double amount;
+    private String date;
+
+    public SalaryRecord(String employeeId, double amount, String date) {
+        this.employeeId = employeeId;
+        this.amount = amount;
+        this.date = date;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public double getSalary() {
-        return salary;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
         return "SalaryRecord{" +
-                "employeeName='" + employeeName + '\'' +
-                ", salary=" + salary +
+                "employeeId='" + employeeId + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

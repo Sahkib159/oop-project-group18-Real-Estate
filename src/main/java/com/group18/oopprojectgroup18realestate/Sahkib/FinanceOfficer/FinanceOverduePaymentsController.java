@@ -1,5 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
 
+import com.group18.oopprojectgroup18realestate.Payment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,75 +10,58 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
-public class FinanceOverduePaymentsController
-{
+public class FinanceOverduePaymentsController {
+
     @javafx.fxml.FXML
     private TableColumn<Payment, String > clientCol;
+
     @javafx.fxml.FXML
     private TableColumn<Payment, String> amountCol;
+
     @javafx.fxml.FXML
     private TableColumn<Payment, String> dateCol;
+
     @javafx.fxml.FXML
     private TableView<Payment> tableView;
 
-    // Sample payment list
-    private final ObservableList<Payment> paymentList = FXCollections.observableArrayList();
 
-    // Overdue result list
     private final ObservableList<Payment> overdueList = FXCollections.observableArrayList();
+
 
     @javafx.fxml.FXML
     public void initialize() {
 
-
-
         // Bind columns
-        clientCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getClientId())
-        );
-
-        amountCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cell.getValue().getAmount()))
-        );
-
-        dateCol.setCellValueFactory(
-                cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getDate())
-        );
-
-        // Add sample data
-        paymentList.add(new Payment("C101", 50000, "2025-01-01"));
-        paymentList.add(new Payment("C102", 30000, "2024-12-10"));
-        paymentList.add(new Payment("C103", 25000, "2025-02-01"));
-        paymentList.add(new Payment("C104", 45000, "2024-11-20"));
-        paymentList.add(new Payment("C105", 60000, "2025-01-25"));
+        clientCol.setCellValueFactory(new PropertyValueFactory<>("client"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
-    @javafx.fxml.FXML
-    public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @javafx.fxml.FXML
-    public void loadOverdueOnClick(ActionEvent actionEvent) {
+    public void loadOverdueOnClick(ActionEvent event) {
+
         overdueList.clear();
+
+        // Load all payments from payments.bin
+        List<Payment> allPayments = FinanceService.loadPayments();
+
         LocalDate today = LocalDate.now();
 
-        for (Payment p : paymentList) {
+        for (Payment p : allPayments) {
 
-            LocalDate date = LocalDate.parse(p.getDate());
-            long daysOld = ChronoUnit.DAYS.between(date, today);
+            LocalDate paymentDate = LocalDate.parse(p.getDate());
+            long daysOld = ChronoUnit.DAYS.between(paymentDate, today);
 
-            // Overdue if older than 30 days
+            // If payment older than 30 days → overdue
             if (daysOld > 30) {
                 overdueList.add(p);
             }
@@ -89,6 +73,18 @@ public class FinanceOverduePaymentsController
 
         tableView.setItems(overdueList);
     }
+
+
+    @javafx.fxml.FXML
+    public void backOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinanceOfficerDashboard.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -96,6 +92,4 @@ public class FinanceOverduePaymentsController
         alert.setContentText(msg);
         alert.showAndWait();
     }
-
-
 }

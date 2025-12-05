@@ -9,6 +9,7 @@ import java.util.List;
 
 public class LogService {
 
+    //Path
     private static final String LOG_FILE = "logs.bin";
 
     public static List<LogEntry> loadLogs() {
@@ -16,6 +17,7 @@ public class LogService {
 
         if (!file.exists()) return new ArrayList<>();
 
+        //Read
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
             return (List<LogEntry>) in.readObject();
         } catch (Exception e) {
@@ -24,6 +26,7 @@ public class LogService {
     }
 
     public static void saveLogs(List<LogEntry> logs) {
+        //Write
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(LOG_FILE))) {
             out.writeObject(logs);
         } catch (Exception e) {
@@ -31,6 +34,7 @@ public class LogService {
         }
     }
 
+    //add new log
     public static void addLog(String message) {
         List<LogEntry> logs = loadLogs();
 

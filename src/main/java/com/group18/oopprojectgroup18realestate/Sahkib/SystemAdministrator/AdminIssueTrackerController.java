@@ -1,8 +1,5 @@
 package com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator;
 
-import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.Issue;
-import com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.IssueService;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,15 +33,22 @@ public class AdminIssueTrackerController {
     @FXML
     public void initialize() {
 
-        // Bind table columns
+        // Bind Table Columns
         issueIdCol.setCellValueFactory(new PropertyValueFactory<>("issueId"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Load from issues.bin
+        // Load issues from file
         List<Issue> loadedIssues = IssueService.loadIssues();
         issueList = FXCollections.observableArrayList(loadedIssues);
 
         tableView.setItems(issueList);
+
+        // Show issue details when selecting a row
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                issueDetailsTextArea.setText(newVal.getDetails());
+            }
+        });
     }
 
     @FXML
@@ -58,14 +62,11 @@ public class AdminIssueTrackerController {
         }
 
         selected.setStatus("In Progress");
-
-        tableView.refresh();
         saveChanges();
+        tableView.refresh();
 
-        showAlert("Success", "Issue marked as In Progress!");
-//I added it later
         LogService.addLog("Issue " + selected.getIssueId() + " marked In Progress.");
-
+        showAlert("Success", "Issue marked as In Progress!");
     }
 
     @FXML
@@ -79,14 +80,11 @@ public class AdminIssueTrackerController {
         }
 
         selected.setStatus("Resolved");
-
-        tableView.refresh();
         saveChanges();
+        tableView.refresh();
 
-        showAlert("Success", "Issue marked as Resolved!");
-//I added it later
         LogService.addLog("Issue " + selected.getIssueId() + " resolved.");
-
+        showAlert("Success", "Issue marked as Resolved!");
     }
 
     private void saveChanges() {
@@ -95,14 +93,19 @@ public class AdminIssueTrackerController {
 
     @FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("SystemAdministratorDashboard.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
         stage.setScene(scene);
         stage.show();
     }
 
     private void showAlert(String title, String msg) {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setTitle(title);

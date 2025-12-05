@@ -1,6 +1,8 @@
-package com.group18.oopprojectgroup18realestate.Sahkib.FinanceOfficer;
+package com.group18.oopprojectgroup18realestate;
 
-public class Payment {
+import java.io.Serializable;
+
+public class Payment implements Serializable {
     private String clientId;
     private double amount;
     private String date;
