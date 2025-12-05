@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="527.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.tenantMaintenanceController">
    <children>
-      <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" text="back" />
+      <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#backbuttonOnClick" text="back" />
       <Label layoutX="167.0" layoutY="23.0" text="MAINTENACE REQUEST">
          <font>
             <Font name="System Bold" size="14.0" />

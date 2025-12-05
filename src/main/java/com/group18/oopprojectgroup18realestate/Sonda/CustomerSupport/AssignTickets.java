@@ -2,7 +2,7 @@ package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 import com.group18.oopprojectgroup18realestate.User;
 import java.io.Serializable;
 
-public class AssignTickets extends User implements Serializable {
+public class AssignTickets extends User  implements Serializable {
     private int ticId;
     private String ticSummary;
     private String currentStatus;

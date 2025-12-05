@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 public class createCampaignsController {
 
     @FXML
-    private TableColumn<?, ?> EndDateColumn;
+    private TableColumn<Createcampaigns, String> EndDateColumn;
 
     @FXML
     private DatePicker EndDatePicker;
@@ -18,22 +18,22 @@ public class createCampaignsController {
     private TextField campaignBudetField;
 
     @FXML
-    private TableColumn<?, ?> campaignBudgetColumn;
+    private TableColumn<Createcampaigns, String> campaignBudgetColumn;
 
     @FXML
     private TextField campaignTitleField;
 
     @FXML
-    private TableColumn<?, ?> campaigntitleColumn;
+    private TableColumn<Createcampaigns, String> campaigntitleColumn;
 
     @FXML
-    private TableColumn<?, ?> startDateColumn;
+    private TableColumn<Createcampaigns, String> startDateColumn;
 
     @FXML
     private DatePicker startDatePicker;
 
     @FXML
-    private TableColumn<?, ?> targetaudiColumn;
+    private TableColumn<Createcampaigns, String> targetaudiColumn;
 
     @FXML
     private TextField targetaudiField;

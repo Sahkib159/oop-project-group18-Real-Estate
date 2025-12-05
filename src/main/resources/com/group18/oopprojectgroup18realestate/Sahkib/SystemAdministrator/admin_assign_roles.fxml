@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="434.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Sahkib.SystemAdministrator.AdminAssignRolesController">
+   <children>
+      <Label layoutX="180.0" layoutY="36.0" text="Assign Roles">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="107.0" layoutY="96.0" text="New Role ComboBox:" />
+      <ComboBox fx:id="newRoleComboBox" layoutX="238.0" layoutY="92.0" prefWidth="150.0" />
+      <Button layoutX="206.0" layoutY="143.0" mnemonicParsing="false" onAction="#updateRoleOnClick" text="Update Role" />
+      <TableView fx:id="tableView" layoutX="91.0" layoutY="186.0" prefHeight="200.0" prefWidth="327.0">
+        <columns>
+          <TableColumn fx:id="usernameCol" prefWidth="156.00006103515625" text="username" />
+          <TableColumn fx:id="currentRoleCol" prefWidth="171.9999542236328" text="currentRole" />
+        </columns>
+      </TableView>
+      <Button layoutX="435.0" layoutY="386.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+   </children>
+</AnchorPane>

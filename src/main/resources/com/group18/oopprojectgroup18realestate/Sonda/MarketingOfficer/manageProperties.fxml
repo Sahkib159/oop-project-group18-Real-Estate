@@ -29,7 +29,7 @@
       <Button layoutX="66.0" layoutY="218.0" mnemonicParsing="false" onAction="#addPropertybutton" text="Add Property" />
       <Button layoutX="248.0" layoutY="218.0" mnemonicParsing="false" onAction="#updatePropertyButton" text="Update Property" />
       <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#backbutton" text="back" />
-      <TableView layoutX="-2.0" layoutY="273.0" prefHeight="213.0" prefWidth="607.0">
+      <TableView fx:id="tableview" layoutX="-2.0" layoutY="273.0" prefHeight="213.0" prefWidth="607.0">
         <columns>
           <TableColumn fx:id="propertyIdcolumn" prefWidth="123.99999737739563" text="Property ID" />
           <TableColumn fx:id="propertynameColumn" prefWidth="116.66666412353516" text="Property Name" />

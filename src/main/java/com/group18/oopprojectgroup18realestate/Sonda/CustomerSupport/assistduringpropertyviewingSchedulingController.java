@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class assistduringpropertyviewingSchedulingController {
-
     @FXML
     private TableColumn<assistduringproperty, String> bookingidcolumn;
 
@@ -44,7 +42,7 @@ public class assistduringpropertyviewingSchedulingController {
     @FXML
     private TableColumn<AssistduringpropertyviewingScheduling, String> timecolumn;
     @FXML
-    private TableView<assistduringproperty> tableview;
+    private TableView<AssistduringpropertyviewingScheduling> tableview;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -71,10 +69,10 @@ public class assistduringpropertyviewingSchedulingController {
     public void loadAll() {
         ObjectInputStream ois = null;
         try {
-            CoordinateIssue y;
+            AssistduringpropertyviewingScheduling y;
             ois = new ObjectInputStream(new FileInputStream("Assistduringproperty.bin"));
             while (true) {
-                y = (CoordinateIssue) ois.readObject();
+                y = (AssistduringpropertyviewingScheduling) ois.readObject();
                 tableview.getItems().addAll(y);
             }
         } catch (Exception ex) {

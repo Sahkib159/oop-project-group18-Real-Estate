@@ -1,5 +1,6 @@
 package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 
+import com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport.CoordinateIssue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

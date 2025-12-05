@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group18.oopprojectgroup18realestate.Ramisa.bookmarkPropertyController">
    <children>
-      <Button fx:id="backButtonOnClick" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" text="back" />
+      <Button fx:id="backButtonOnClick" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="back" />
       <Label layoutX="198.0" layoutY="25.0" prefHeight="20.0" prefWidth="177.0" text="Saved bookmark property">
          <font>
             <Font name="System Bold" size="14.0" />

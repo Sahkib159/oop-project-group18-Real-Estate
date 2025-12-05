@@ -1,17 +1,21 @@
 package com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport;
 
+import com.group18.oopprojectgroup18realestate.Sonda.CustomerSupport.AssignTickets;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class assignTicketsController {
+
+public class assignTicketsController{
 
     @FXML
     private TableColumn<AssignTickets, String> assignedtocolumn;
@@ -49,15 +53,20 @@ public class assignTicketsController {
     @FXML
     private TextField ticketsummaryField;
     @FXML
-    private TableView tableview;
+    private TableView<AssignTickets> tableview;
 
     @javafx.fxml.FXML
     public void initialize() {
         selectdepartmentcombobox.getItems().addAll("Sales",  "Maintenance",  "Finance", "Support");
         assigntocombobox.getItems().addAll("Staff Name", "Team");
         prioritycombobox.getItems().addAll("Low , Medium , High");
-        //assignedtocolumn.setCellValueFactory("");
 
+        ticketidcolumn.setCellValueFactory(new PropertyValueFactory<>("ticId"));
+        issuetypecolumn.setCellValueFactory(new PropertyValueFactory<>("issueType"));
+        customercolumn.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        prioritycolumn.setCellValueFactory(new PropertyValueFactory<>("priority"));
+        assignedtocolumn.setCellValueFactory(new PropertyValueFactory<>("assignTo"));
+        statuscolumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
     }
 
@@ -65,9 +74,43 @@ public class assignTicketsController {
     @FXML
     void assignticketbutton(ActionEvent event) {
         tableview.getItems().clear();
+        String currentStatus=currentstatusField.getText();
+        int ticId=Integer.parseInt(tickedidfield.getText());
+        String ticSummary=ticketsummaryField.getText();
+
+        String email= null;
+        File f= null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try{
+            f=new File("AssignTickets.bin");
+            if(f.exists()){
+                fos=new FileOutputStream(f,true);
+                oos=new AppendableObjectOutPutStream(fos);
+            }
+            else{
+                fos=new FileOutputStream(f);
+                oos=new ObjectOutputStream(fos);
+            }
+            AssignTickets y=new AssignTickets(email,ticSummary,ticId,currentStatus);
+            tableview.getItems().add(y);
+
+            oos.writeObject(y);
+
+        }catch(IOException ex){
+            Logger.getLogger(AssignTickets.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                if(oos!=null){
+                    oos.close();
+                }
+            }catch(IOException ex){
+                Logger.getLogger(AssignTickets.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
 
-    }
+}
 
     @FXML
     void cleatformbutton(ActionEvent event) {
@@ -83,10 +126,10 @@ public class assignTicketsController {
     public void loadAll() {
         ObjectInputStream ois = null;
         try {
-            CoordinateIssue y;
+            AssignTickets y;
             ois = new ObjectInputStream(new FileInputStream("AssignTickets.bin"));
             while (true) {
-                y = (CoordinateIssue) ois.readObject();
+                y = (AssignTickets) ois.readObject();
                 tableview.getItems().add(y);
             }
         } catch (Exception ex) {
