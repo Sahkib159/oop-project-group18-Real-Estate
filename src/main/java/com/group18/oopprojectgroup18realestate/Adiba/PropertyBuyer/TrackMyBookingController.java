@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -12,12 +13,18 @@ import java.io.IOException;
 public class TrackMyBookingController
 {
     @javafx.fxml.FXML
-    private TextField enterBookingIdTF;
-    @javafx.fxml.FXML
     private TextField currentStatusTF;
+    @javafx.fxml.FXML
+    private TextField propertyIdTF;
+    @javafx.fxml.FXML
+    private TextField nameTF;
+    @javafx.fxml.FXML
+    private Label outputLabel;
+
 
     @javafx.fxml.FXML
     public void initialize() {
+
     }
 
     @javafx.fxml.FXML

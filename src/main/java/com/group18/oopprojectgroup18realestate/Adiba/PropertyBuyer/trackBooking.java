@@ -3,20 +3,30 @@ package com.group18.oopprojectgroup18realestate.Adiba.PropertyBuyer;
 import java.io.Serializable;
 
 public class trackBooking implements Serializable {
-    private String bookingID;
+    private String name;
+    private String propertyID;
     private String currentStatus;
 
-    public trackBooking(String bookingID, String currentStatus) {
-        this.bookingID = bookingID;
+    public trackBooking(String name, String propertyID, String currentStatus) {
+        this.name = name;
+        this.propertyID = propertyID;
         this.currentStatus = currentStatus;
     }
 
-    public String getBookingID() {
-        return bookingID;
+    public String getName() {
+        return name;
     }
 
-    public void setBookingID(String bookingID) {
-        this.bookingID = bookingID;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPropertyID() {
+        return propertyID;
+    }
+
+    public void setPropertyID(String propertyID) {
+        this.propertyID = propertyID;
     }
 
     public String getCurrentStatus() {
@@ -30,8 +40,10 @@ public class trackBooking implements Serializable {
     @Override
     public String toString() {
         return "trackBooking{" +
-                "bookingID='" + bookingID + '\'' +
+                "name='" + name + '\'' +
+                ", propertyID='" + propertyID + '\'' +
                 ", currentStatus='" + currentStatus + '\'' +
                 '}';
     }
 }
+

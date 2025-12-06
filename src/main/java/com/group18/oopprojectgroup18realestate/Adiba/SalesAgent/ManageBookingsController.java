@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -14,17 +15,19 @@ import java.io.IOException;
 public class ManageBookingsController
 {
     @javafx.fxml.FXML
-    private TableColumn<bookings, String> bookingIdCol;
+    private TableColumn<addProperty, String> bookingIdCol;
     @javafx.fxml.FXML
-    private TableColumn<bookings, String> statusCol;
+    private TableColumn<addProperty, String> statusCol;
     @javafx.fxml.FXML
-    private TableColumn<bookings, String> buyerNameCol;
+    private TableColumn<addProperty, String> buyerNameCol;
     @javafx.fxml.FXML
     private ComboBox<String> updateStatusCB;
     @javafx.fxml.FXML
-    private TableView<bookings> bookingsTable;
+    private TableView<addProperty> bookingsTable;
     @javafx.fxml.FXML
-    private TableColumn<bookings, String> propertyIdCol;
+    private TableColumn<addProperty, String> propertyIdCol;
+    @javafx.fxml.FXML
+    private Label outputLabel;
 
     @javafx.fxml.FXML
     public void initialize() {

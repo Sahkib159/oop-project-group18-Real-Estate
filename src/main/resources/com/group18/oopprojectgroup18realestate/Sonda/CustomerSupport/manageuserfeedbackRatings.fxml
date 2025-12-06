@@ -29,7 +29,7 @@
       <Button layoutX="46.0" layoutY="204.0" mnemonicParsing="false" onAction="#submitfeedbackbutton" text="Submit Feedback" />
       <Button layoutX="218.0" layoutY="204.0" mnemonicParsing="false" onAction="#updatefeedbackbutton" text="Update Feedback" />
       <Button layoutX="395.0" layoutY="204.0" mnemonicParsing="false" onAction="#clearformbutton" text="Clear Form" />
-      <TableView layoutY="273.0" prefHeight="214.0" prefWidth="651.0">
+      <TableView fx:id="tableview" layoutY="273.0" prefHeight="214.0" prefWidth="651.0">
         <columns>
           <TableColumn fx:id="feedbackidcolumn" prefWidth="116.66665649414062" text="Feedback ID" />
           <TableColumn fx:id="customernamecolumn" prefWidth="156.66668701171875" text="Customer Name" />

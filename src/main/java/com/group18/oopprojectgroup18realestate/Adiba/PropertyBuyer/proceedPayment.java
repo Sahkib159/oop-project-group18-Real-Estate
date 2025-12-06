@@ -2,14 +2,14 @@ package com.group18.oopprojectgroup18realestate.Adiba.PropertyBuyer;
 
 import java.io.Serializable;
 
-public class payment implements Serializable {
+public class proceedPayment implements Serializable {
     private String paymentMethod;
     private String cardholderName;
     private String cardNumber;
     private String expiryDate;
     private String cvv;
 
-    public payment(String paymentMethod, String cardholderName, String cardNumber, String expiryDate, String cvv) {
+    public proceedPayment(String paymentMethod, String cardholderName, String cardNumber, String expiryDate, String cvv) {
         this.paymentMethod = paymentMethod;
         this.cardholderName = cardholderName;
         this.cardNumber = cardNumber;
@@ -59,7 +59,7 @@ public class payment implements Serializable {
 
     @Override
     public String toString() {
-        return "payment{" +
+        return "proceedPayment{" +
                 "paymentMethod='" + paymentMethod + '\'' +
                 ", cardholderName='" + cardholderName + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +

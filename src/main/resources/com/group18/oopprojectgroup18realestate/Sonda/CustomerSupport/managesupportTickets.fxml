@@ -27,7 +27,7 @@
       <Button layoutX="47.0" layoutY="168.0" mnemonicParsing="false" onAction="#createticketbutton" text="Create Ticket" />
       <Button layoutX="198.0" layoutY="168.0" mnemonicParsing="false" onAction="#updateticketbutton" text="Update Ticket" />
       <Button layoutX="385.0" layoutY="168.0" mnemonicParsing="false" onAction="#closeticketbutton" text="Close Ticket" />
-      <TableView layoutY="257.0" prefHeight="258.0" prefWidth="656.0">
+      <TableView fx:id="tableview" layoutY="257.0" prefHeight="258.0" prefWidth="656.0">
         <columns>
           <TableColumn fx:id="ticketidColumn" prefWidth="157.33331298828125" text="Ticket ID" />
           <TableColumn fx:id="usernamecolumn" prefWidth="156.66665649414062" text="User Name" />

@@ -1,15 +1,15 @@
 package com.group18.oopprojectgroup18realestate.Adiba.PropertyBuyer;
+
 import java.io.Serializable;
 
-public class Property implements Serializable {
+public class propertyDetails implements Serializable {
     private String name;
     private String location;
     private String type;
     private Double price;
     private String size;
 
-
-    public Property(String name, String location, String type, Double price, String size) {
+    public propertyDetails(String name, String location, String type, Double price, String size) {
         this.name = name;
         this.location = location;
         this.type = type;
@@ -59,7 +59,7 @@ public class Property implements Serializable {
 
     @Override
     public String toString() {
-        return "Property{" +
+        return "propertyDetails{" +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", type='" + type + '\'' +

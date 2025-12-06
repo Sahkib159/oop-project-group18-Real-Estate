@@ -25,7 +25,7 @@
       <TextField fx:id="complainthistorytextfield" layoutX="137.0" layoutY="210.0" />
       <Button layoutX="381.0" layoutY="81.0" mnemonicParsing="false" onAction="#refreshstatusbutton" text="Refresh Status" />
       <Button layoutX="381.0" layoutY="132.0" mnemonicParsing="false" onAction="#clearbutton" text="Clear" />
-      <TableView layoutY="283.0" prefHeight="251.0" prefWidth="643.0">
+      <TableView fx:id="tableview" layoutY="283.0" prefHeight="251.0" prefWidth="643.0">
         <columns>
           <TableColumn fx:id="idcolumn" prefWidth="106.00000250339508" text="ID" />
           <TableColumn fx:id="customercolumn" prefWidth="102.66667938232422" text="Customer" />
