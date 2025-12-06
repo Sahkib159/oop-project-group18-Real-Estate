@@ -1,76 +1,3 @@
-//<<<<<<< HEAD
-//package com.group18.oopprojectgroup18realestate.Ramisa;
-//
-//public class propertyManagementController
-//{
-//    @javafx.fxml.FXML
-//    private TextField rentTF;
-//    @javafx.fxml.FXML
-//    private TableColumn typeCOL;
-//    @javafx.fxml.FXML
-//    private TableColumn StatusCOL;
-//    @javafx.fxml.FXML
-//    private TableColumn PriceCol;
-//    @javafx.fxml.FXML
-//    private ComboBox proTypeTF;
-//    @javafx.fxml.FXML
-//    private TextField contactTF;
-//    @javafx.fxml.FXML
-//    private TableColumn facilitiesCOL;
-//    @javafx.fxml.FXML
-//    private TableColumn idcol;
-//    @javafx.fxml.FXML
-//    private TableColumn locCol;
-//    @javafx.fxml.FXML
-//    private TextField loIDTF;
-//    @javafx.fxml.FXML
-//    private TextField proIDTF;
-//    @javafx.fxml.FXML
-//    private ComboBox statusTF;
-//    @javafx.fxml.FXML
-//    private TableView PMtableView;
-//
-//    @javafx.fxml.FXML
-//    public void initialize() {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void clearOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void backbutton(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void refreshOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void removeOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void updateOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void showOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void searchOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void loadOC(ActionEvent actionEvent) {
-//    }
-//
-//    @javafx.fxml.FXML
-//    public void addbuttonOC(ActionEvent actionEvent) {
-//    }
-//}
-//=======
 package com.group18.oopprojectgroup18realestate.Ramisa;
 
 import javafx.event.ActionEvent;
@@ -84,26 +11,14 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 
-public class propertyManagementController
-{
+public class propertyManagementController {
+
     @javafx.fxml.FXML
     private TextField rentTF;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,String> typeCOL;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,String>StatusCOL;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,Double> PriceCol;
     @javafx.fxml.FXML
     private ComboBox<String> proTypeTF;
     @javafx.fxml.FXML
     private TextField contactTF;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,String> facilitiesCOL;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,Integer> idcol;
-    @javafx.fxml.FXML
-    private TableColumn<propertymanagement,String> locCol;
     @javafx.fxml.FXML
     private TextField loIDTF;
     @javafx.fxml.FXML
@@ -111,146 +26,116 @@ public class propertyManagementController
     @javafx.fxml.FXML
     private ComboBox<String> statusTF;
     @javafx.fxml.FXML
-    private TableView<propertymanagement> PMtableView;
+    private TextField facilitesTF;
     @javafx.fxml.FXML
     private Label messageL;
     @javafx.fxml.FXML
-    private TableColumn<propertymanagement,Integer> contactCOL;
-
-
-    //Property Management Controller,propertymanagement model class
-    // (Manager can: Add, Update, Remove, Search properties)
-
-
-
-
-    //arraylist
-    private ArrayList<propertymanagement> propertyList =new ArrayList<>();
+    private TableView<propertymanagement> PMtableView;
     @javafx.fxml.FXML
-    private TextField facilitesTF;
+    private TableColumn<propertymanagement, Integer> idcol;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, String> locCol;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, String> typeCOL;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, Double> PriceCol;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, String> StatusCOL;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, String> facilitiesCOL;
+    @javafx.fxml.FXML
+    private TableColumn<propertymanagement, Integer> contactCOL;
+
+    private ArrayList<propertymanagement> propertyList = new ArrayList<>();
+
+
 
     @javafx.fxml.FXML
     public void initialize() {
 
-        //  comboboxes
         proTypeTF.getItems().addAll("Apartment", "House", "Flat", "Commercial");
         statusTF.getItems().addAll("Available", "Occupied", "Maintenance");
 
-        // tablecolumns
         idcol.setCellValueFactory(new PropertyValueFactory<>("propertyID"));
         locCol.setCellValueFactory(new PropertyValueFactory<>("location"));
         typeCOL.setCellValueFactory(new PropertyValueFactory<>("propertyType"));
         PriceCol.setCellValueFactory(new PropertyValueFactory<>("rentPrice"));
         StatusCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
         facilitiesCOL.setCellValueFactory(new PropertyValueFactory<>("facilities"));
+        contactCOL.setCellValueFactory(new PropertyValueFactory<>("contact"));
 
         loadOC(null);
-
     }
-
 
     @javafx.fxml.FXML
     public void backbutton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProjectManagerDashBoard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage =(Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
 
     @javafx.fxml.FXML
-    public void removeOC(ActionEvent actionEvent) {
-        propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
+    public void addbuttonOC(ActionEvent actionEvent) {
 
-        if (selected == null) {
-            messageL.setText(" Please select a property to remove!");
-            return;
-        }
-        propertyList.remove(selected);
-        PMtableView.getItems().remove(selected);
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("properties.bin"))) {
-            out.writeObject(propertyList);
-        } catch (IOException e) {
-            messageL.setText(" Remove failed!");
-        }
-
-
-    }
-
-    @javafx.fxml.FXML
-    public void updateOC(ActionEvent actionEvent) {
-        propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            messageL.setText("Please select a property");
-            return;
-        }
-
-        String propertyID = proIDTF.getText().strip();
-        String location = loIDTF.getText().strip();
-        String rentText = rentTF.getText().strip();
+        String propertyID = proIDTF.getText().trim();
+        String location = loIDTF.getText().trim();
+        String rentText = rentTF.getText().trim();
         String type = proTypeTF.getValue();
         String status = statusTF.getValue();
-        String contact = contactTF.getText().strip();
-        String facilities = facilitesTF.getText().strip();
+        String contactText = contactTF.getText().trim();
+        String facilities = facilitesTF.getText().trim();
 
-        // Validation1
-        if ( propertyID.isEmpty() ||facilities.isEmpty()|| location.isEmpty() || rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
-            messageL.setText("please fill all information");
+        if (propertyID.isEmpty() || location.isEmpty() || rentText.isEmpty()
+                || type == null || status == null
+                || contactText.isEmpty() || facilities.isEmpty()) {
+            messageL.setText("Please fill all information!");
             return;
         }
 
-        // Validation2
         int propertyIdInt;
         try {
             propertyIdInt = Integer.parseInt(propertyID);
-            if (propertyIdInt <= 0) {
-                messageL.setText(" PropertyID should be positive!");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            messageL.setText(" Invalid Property ID!");
+            if (propertyIdInt <= 0) throw new NumberFormatException();
+        } catch (Exception e) {
+            messageL.setText("Invalid Property ID!");
             return;
         }
-
-        // Validation3
 
         double rentDouble;
         try {
             rentDouble = Double.parseDouble(rentText);
-            if (rentDouble <= 0) {
-                messageL.setText("Rent should positive!");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            messageL.setText("Invalid rent amount!");
+            if (rentDouble <= 0) throw new NumberFormatException();
+        } catch (Exception e) {
+            messageL.setText("Invalid rent!");
             return;
         }
-        // Validation4
+
         int contactInt;
         try {
-            contactInt = Integer.parseInt(contact);
-        } catch (NumberFormatException e) {
+            contactInt = Integer.parseInt(contactText);
+        } catch (Exception e) {
             messageL.setText("Invalid contact number!");
             return;
         }
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("properties.bin"))) {
-            out.writeObject(propertyList);
-            messageL.setText("Property updated!");
-            PMtableView.refresh();
-            ;
-        } catch (IOException e) {
-            messageL.setText("Update failed!");
-        }
 
+        propertymanagement newProperty =
+                new propertymanagement(propertyIdInt, location, rentDouble,
+                        type, status, contactInt, facilities);
 
+        propertyList.add(newProperty);
+        saveToFile();
 
+        PMtableView.getItems().setAll(propertyList);
+        messageL.setText("Property saved!");
     }
+
 
     @javafx.fxml.FXML
     public void showOC(ActionEvent actionEvent) {
+
         propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
@@ -264,128 +149,107 @@ public class propertyManagementController
         rentTF.setText(String.valueOf(selected.getRentPrice()));
         statusTF.setValue(selected.getStatus());
         contactTF.setText(String.valueOf(selected.getContact()));
+        facilitesTF.setText(selected.getFacilities());
 
-        messageL.setText(" Property details loaded!");
-
+        messageL.setText("Property loaded!");
     }
+
+
+    @javafx.fxml.FXML
+    public void updateOC(ActionEvent actionEvent) {
+
+        propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            messageL.setText("Please select a property");
+            return;
+        }
+
+        try {
+            selected.setPropertyID(Integer.parseInt(proIDTF.getText().trim()));
+            selected.setLocation(loIDTF.getText().trim());
+            selected.setRentPrice(Double.parseDouble(rentTF.getText().trim()));
+            selected.setPropertyType(proTypeTF.getValue());
+            selected.setStatus(statusTF.getValue());
+            selected.setContact(Integer.parseInt(contactTF.getText().trim()));
+            selected.setFacilities(facilitesTF.getText().trim());
+
+            PMtableView.refresh();
+            saveToFile();
+            messageL.setText("Property updated!");
+
+        } catch (Exception e) {
+            messageL.setText("Invalid update data!");
+        }
+    }
+
+
+    @javafx.fxml.FXML
+    public void removeOC(ActionEvent actionEvent) {
+
+        propertymanagement selected = PMtableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            messageL.setText("Please select a property to remove!");
+            return;
+        }
+
+        propertyList.remove(selected);
+        PMtableView.getItems().remove(selected);
+        saveToFile();
+
+        messageL.setText("Property removed!");
+    }
+
 
     @javafx.fxml.FXML
     public void searchOC(ActionEvent actionEvent) {
+
         try {
-            int searchID = Integer.parseInt(proIDTF.getText().strip());
+            int searchID = Integer.parseInt(proIDTF.getText().trim());
             PMtableView.getItems().clear();
 
             for (propertymanagement p : propertyList) {
-            if (p.getPropertyID() == searchID) {
-                PMtableView.getItems().add(p);
-                messageL.setText("Property found!");
-                return;
+                if (p.getPropertyID() == searchID) {
+                    PMtableView.getItems().add(p);
+                    messageL.setText("Property found!");
+                    return;
+                }
             }
-        }messageL.setText("Property not found!");
 
-    } catch (NumberFormatException e) {
-        loadOC(actionEvent);
+            messageL.setText("Property not found!");
+
+        } catch (Exception e) {
+            loadOC(null);
+        }
     }
 
-
-    }
 
     @javafx.fxml.FXML
     public void loadOC(ActionEvent actionEvent) {
-        try(ObjectInputStream in = new ObjectInputStream( new FileInputStream("properties.bin"))){
-            propertyList=(ArrayList<propertymanagement>) in.readObject();
 
-            PMtableView.getItems().clear();
-            for (propertymanagement p : propertyList) {
-                PMtableView.getItems().add(p);
-            }
+        try (ObjectInputStream in =
+                     new ObjectInputStream(new FileInputStream("properties.bin"))) {
+
+            propertyList = (ArrayList<propertymanagement>) in.readObject();
+            PMtableView.getItems().setAll(propertyList);
             messageL.setText("Loaded successfully!");
+
         } catch (Exception e) {
             messageL.setText("No saved file found!");
         }
     }
 
 
-    @javafx.fxml.FXML
-    public void addbuttonOC(ActionEvent actionEvent) {
-        String propertyID = proIDTF.getText().strip();
-        String location = loIDTF.getText().strip();
-        String rentText = rentTF.getText().strip();
-        String type = proTypeTF.getValue();
-        String status = statusTF.getValue();
-        String contact = contactTF.getText().strip();
-        String facilities = facilitesTF.getText().strip();;
+    private void saveToFile() {
 
-        // Validation
-        if ( propertyID.isEmpty() || location.isEmpty() || facilities.isEmpty()||rentText.isEmpty() || type == null || status == null || contact.isEmpty() ) {
-            messageL.setText("please fill all information");
-            return;
-        }
+        try (ObjectOutputStream out =
+                     new ObjectOutputStream(new FileOutputStream("properties.bin"))) {
 
-        int propertyIdInt;
-        try {
-            propertyIdInt = Integer.parseInt(propertyID);
-            if (propertyIdInt <= 0) {
-                messageL.setText(" PropertyID should be positive!");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            messageL.setText(" Invalid Property ID!");
-            return;
-        }
-
-
-        double rentDouble;
-        try {
-            rentDouble = Double.parseDouble(rentText);
-            if (rentDouble <= 0) {
-                messageL.setText("Rent should positive!");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            messageL.setText("Invalid rent amount!");
-            return;
-        }
-
-
-        int contactInt;
-        try {
-            contactInt = Integer.parseInt(contact);
-        } catch (NumberFormatException e) {
-            messageL.setText("Invalid contact number!");
-            return;
-        }
-
-        //unique
-        //for (propertymanagement p : propertyList){
-         //   if (p.getPropertyID() == propertyID){
-          //      messageL.setText("this Id already exist");
-          //      return;
-        //    }
-
-       // }
-
-        propertymanagement newProperty = new propertymanagement(propertyIdInt, location, type, rentDouble , status, facilities, contactInt );
-
-        propertyList.add(newProperty);
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("properties.bin"))) {
             out.writeObject(propertyList);
-            messageL.setText("Property saved!");
 
-            PMtableView.getItems().clear();
-            PMtableView.getItems().addAll(propertyList);
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             messageL.setText("Saving failed!");
-
-
         }
-
     }
-
-
-
-
 }
-//>>>>>>> origin/main

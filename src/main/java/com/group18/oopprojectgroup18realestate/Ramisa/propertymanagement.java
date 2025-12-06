@@ -3,70 +3,77 @@ package com.group18.oopprojectgroup18realestate.Ramisa;
 import java.io.Serializable;
 
 public class propertymanagement implements Serializable {
-    private int PropertyID;
-    private String Location;
-    private double RentPrice;
-    private String PropertyType;
-    private String Status;
-    private int Contact;
+
+    private static final long serialVersionUID = 1L;
+
+    private int propertyID;
+    private String location;
+    private double rentPrice;
+    private String propertyType;
+    private String status;
+    private int contact;
     private String facilities;
 
-    public propertymanagement(int propertyID, String location, String propertyType, double rentPrice, String status, String facilities, int contact) {
-        PropertyID = propertyID;
-        Location = location;
-        PropertyType = propertyType;
-        RentPrice = rentPrice;
-        Status = status;
+
+    public propertymanagement(int propertyID, String location, double rentPrice,
+                              String propertyType, String status,
+                              int contact, String facilities) {
+
+        this.propertyID = propertyID;
+        this.location = location;
+        this.rentPrice = rentPrice;
+        this.propertyType = propertyType;
+        this.status = status;
+        this.contact = contact;
         this.facilities = facilities;
-        Contact = contact;
     }
 
     public int getPropertyID() {
-        return PropertyID;
+        return propertyID;
     }
 
     public void setPropertyID(int propertyID) {
-        PropertyID = propertyID;
-    }
-
-    public double getRentPrice() {
-        return RentPrice;
-    }
-
-    public void setRentPrice(double rentPrice) {
-        RentPrice = rentPrice;
+        this.propertyID = propertyID;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
+    }
+
+    public double getRentPrice() {
+        return rentPrice;
+    }
+
+    public void setRentPrice(double rentPrice) {
+        this.rentPrice = rentPrice;
     }
 
     public String getPropertyType() {
-        return PropertyType;
+        return propertyType;
     }
 
     public void setPropertyType(String propertyType) {
-        PropertyType = propertyType;
+        this.propertyType = propertyType;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public int getContact() {
-        return Contact;
+        return contact;
     }
 
     public void setContact(int contact) {
-        Contact = contact;
+        this.contact = contact;
     }
 
     public String getFacilities() {
@@ -80,12 +87,12 @@ public class propertymanagement implements Serializable {
     @Override
     public String toString() {
         return "propertymanagement{" +
-                "PropertyID=" + PropertyID +
-                ", Location='" + Location + '\'' +
-                ", RentPrice=" + RentPrice +
-                ", PropertyType='" + PropertyType + '\'' +
-                ", Status='" + Status + '\'' +
-                ", Contact=" + Contact +
+                "propertyID=" + propertyID +
+                ", location='" + location + '\'' +
+                ", rentPrice=" + rentPrice +
+                ", propertyType='" + propertyType + '\'' +
+                ", status='" + status + '\'' +
+                ", contact=" + contact +
                 ", facilities='" + facilities + '\'' +
                 '}';
     }
