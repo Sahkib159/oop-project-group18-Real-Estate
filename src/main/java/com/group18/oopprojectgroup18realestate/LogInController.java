@@ -91,8 +91,8 @@ public class LogInController {
             case "Customer Support Executive" ->
                     "Sonda/CustomerSupport/CustomerSupportDashboard";
 
-            case "Property Renter" ->
-                    "Ramisa/tenantDashBoardController";
+            case "Property Tenant" ->
+                    "Ramisa/tenantDashBoard";
 
             case "Property Manager" ->
                     "Ramisa/ProjectManagerDashboard";

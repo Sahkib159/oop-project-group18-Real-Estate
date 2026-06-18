@@ -34,7 +34,7 @@ public class CreateAccountController {
                 "Finance Officer",
                 "Marketing Officer",
                 "Customer Support Executive",
-                "Property Renter",
+                "Property Tenant",
                 "Property Manager",
                 "Property buyer",
                 "Sales Agent"
